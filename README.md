@@ -1,7 +1,7 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\<"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<RPG\>
+# RPG
  > Your author list below should include links to all members GitHub and should begin with a "\<" (remove existing author).
  
  > Authors: \<[Danz Moses](https://github.com/danzmoses)\> \<[Royce Moses](https://github.com/roycemoses)\> \<[Linda Ly](https://github.com/lly022)\>
@@ -23,7 +23,7 @@
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
  >     * We plan to use C++. For the UI, we are going to use Qt Creator. We will also be using Hammer in order to use Valgrind and for unit testing. 
- > [Qt Creator](https://www.qt.io/product/development-tools) - This is our UI that we will be using which we will also be using C++ for. 
+ >     * [Qt Creator](https://www.qt.io/product/development-tools) - This is our UI that we will be using which we will also be using C++ for. 
  > * What will be the input/output of your project?
  >   * The input is the user's name that they can choose at the starting screen, at their own will. The output will be the context of the user's objective in order to win the game. Throughout the game, there will be information displayed through GUIs which explain what actions have been done to and by the player. 
  > * What are the three design patterns you will be using. For each design pattern you must:
