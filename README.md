@@ -1,10 +1,10 @@
  > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
  > Prompt text is any lines beginning with "\<"
  > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
-# \<Project title\>
+# \<RPG\>
  > Your author list below should include links to all members GitHub and should begin with a "\<" (remove existing author).
  
- > Authors: \<[Jeffrey McDaniel](https://github.com/jmcda001)\>
+ > Authors: \<[Jeffrey McDaniel](https://github.com/jmcda001)\> \<[Danz Moses](https://github.com/danzmoses)\> \<[Royce Moses](https://github.com/roycemoses)\> \<[Linda Ly](https://github.com/lly022)\>
  
  > You will be forming a group of **THREE** students and work on an interesting project that you will propose yourself (in this `README.md` document). You can pick any project that you'd like, but it needs ot implement three design patterns. Each of the members in a group is expected to work on at least one design pattern and its test cases. You can, of course, help each other, but it needs to be clear who will be responsible for which pattern and for which general project features.
  
@@ -19,13 +19,20 @@
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include
  > * Why is it important or interesting to you?
+ The project is interesting for us because we wanted something fun, yet challenging. 
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
+  We plan to use C++. For the UI, we are going to use Qt Creator. We will also be using Hammer in order to use Valgrind and for unit testing. 
+  [Qt Creator](https://www.qt.io/product/development-tools) - This is our UI that we will be using which we will also be using C++ for. 
  > * What will be the input/output of your project?
+ The input is the user's name that they can choose at the starting screen, at their own will. The output will be the context of the user's objective in order to win the game. Throughout the game, there will be information displayed through GUIs which explain what actions have been done to and by the player. 
  > * What are the three design patterns you will be using. For each design pattern you must:
  >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
-
+  We are using composite for our objects themselves. Each object will have functions for the object in which the functions will give the object the ability to attack, spend gold, etc. Also, we will be using composite for items in the game such as swords and shields. In addition, we will have a game class in order to facilitate the game itself such as the rolls from the user. 
+  We are also using strategy. We need this design pattern primarily for the battle system. Strategy should determine how damage is calculated, how gold is earned from battles, and whether the player or enemy attacks in a turn. We may also use algorithms to determine which stats the player gains when they level up.
+  Another design pattern we will use is visitor. This will be used to modify the attributes of entities. For example, when they are in battle and they are giving and dealing damage. This will also be used for enchantments of items when we want to modify them throughout the game.  
+  Lastly, we will be using abstract factory for an entity class, which will be an abstract class used for our player and enemy classes. Inside of player and enemy, we will have the stats, name, and inventory of the player/enemy. We will also have an abstract class for items such as weapons, armor, and boots. 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
  > * Set up your GitHub project board as a Kanban board for the project. It should have columns that map roughly to 
