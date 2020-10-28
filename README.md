@@ -19,7 +19,7 @@
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include
  > * Why is it important or interesting to you?
- >   * The project is interesting for us because we wanted something fun, yet challenging. 
+ >   * The project is interesting for us because we wanted something fun, yet challenging. This project could help us understand how to work as a team in developing a game/software.
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
  >     * We plan to use C++. For the UI, we are going to use Qt Creator. We will also be using Hammer in order to use Valgrind and for unit testing. 
@@ -29,10 +29,9 @@
  > * What are the three design patterns you will be using. For each design pattern you must:
  >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
-  >    * We are using composite for our objects themselves. Each object will have functions for the object in which the functions will give the object the ability to attack, spend gold, etc. Also, we will be using composite for items in the game such as swords and shields. In addition, we will have a game class in order to facilitate the game itself such as the rolls from the user. 
-  >    * We are also using strategy. We need this design pattern primarily for the battle system. Strategy should determine how damage is calculated, how gold is earned from battles, and whether the player or enemy attacks in a turn. We may also use algorithms to determine which stats the player gains when they level up.
-  >    * Another design pattern we will use is visitor. This will be used to modify the attributes of entities. For example, when they are in battle and they are giving and dealing damage. This will also be used for enchantments of items when we want to modify them throughout the game.  
-  >    * Lastly, we will be using abstract factory for an entity class, which will be an abstract class used for our player and enemy classes. Inside of player and enemy, we will have the stats, name, and inventory of the player/enemy. We will also have an abstract class for items such as weapons, armor, and boots. 
+   >    * We will be using abstract factory for an entity class, which will be an abstract class used for our player and enemy classes. Inside of player and enemy, we will have the stats, name, and inventory of the player/enemy. We will also have an abstract class for items such as weapons, armor, and boots. 
+  >    * As a complement to the abstract factory, we will be using the prototype design pattern. This allows us to create different subtypes of enemies based on what they are. For example, we could have a Slime prototype that potentially creates "Green Slime", "Red Slime", "Blue Slime", etc. These unique enemies could then have different stats. 
+  >    * Finally, we are also using strategy. We need this design pattern primarily for the battle system. Strategy should determine how damage is calculated, how gold is earned from battles, and whether the player or enemy attacks in a turn. We may also use algorithms to determine which stats the player gains when they level up.
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
  > * Set up your GitHub project board as a Kanban board for the project. It should have columns that map roughly to 
