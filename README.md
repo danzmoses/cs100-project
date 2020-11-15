@@ -26,6 +26,16 @@
  >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
 ## Class Diagram
  > Include a class diagram(s) for each design pattern and a description of the diagram(s). This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
+
+### Abstract Factory Class Diagram
+ > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/AbstractFactory.png?raw=true)
+ 
+ - The AbstractFactory design pattern allows us to create families of related objects (such as Entities and Items). This reveals the interface of the objects to the client, but not their implementation. This design pattern helps us organize the class structure.
+
+### Strategy (Battle) Class Diagram
+ > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Strategy(Battle).png?raw=true) 
+ 
+ - The Strategy design pattern helps us define a family of algorithms (the AttackStrategy). The algorithm changes depending on who is attacking (Player or Enemy). This allows us to change the behavior of the algorithm without using many conditional statements and avoid duplicating similar code.
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
