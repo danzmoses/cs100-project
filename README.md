@@ -38,7 +38,7 @@
  - The Strategy design pattern helps us define a family of algorithms (the AttackStrategy). The algorithm changes depending on who is attacking (Player or Enemy). This allows us to change the behavior of the algorithm without using many conditional statements and avoid duplicating similar code.
 
 ### Prototype Class Diagram
-> ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Strategy.png?raw=true)
+> ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Prototype.png?raw=true)
 
 - test
  
