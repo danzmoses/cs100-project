@@ -40,7 +40,7 @@
 ### Prototype Class Diagram
 > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Prototype.png?raw=true)
 
-- The Prototype design pattern allows us to create developer presets for our enemies such as Goblins and Slimes. The client is able to then choose from these presets and instantiate them using an EnemyFactory class. This is directly tied with our AbstractFactory design pattern.
+- The Prototype design pattern allows us to create different types of enemies such as Goblins or Slimes, etc. There will be preset classes in the "Prototypes" folder that we will use to instantiate these different types of enemies. The BossPrototype will also go under EnemyPrototype.
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
