@@ -7,7 +7,7 @@ class GoblinPrototype : public EnemyPrototype
 {
     public:
         GoblinPrototype();
-        virtual void Clone();
+        virtual void Clone() { setName("Goblin"); setHealth(25); };
 };
 
 #endif // __GOBLIN_PROTOTYPE__
