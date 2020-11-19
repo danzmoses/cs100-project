@@ -10,7 +10,7 @@ class Entity
         int health;
 
     public:
-        Entity();
+        Entity() {};
         Entity(std::string name, int health) : name(name), health(health) {};
     
         virtual std::string getName() { return this->name; };
