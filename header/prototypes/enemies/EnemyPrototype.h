@@ -6,7 +6,8 @@
 class EnemyPrototype : public Entity 
 {
     public:
-        EnemyPrototype();
+        EnemyPrototype() : Entity() {};
+        EnemyPrototype(std::string name, int health) : Entity(name, health) {};
         virtual void Clone() = 0;
 };
 
