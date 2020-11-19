@@ -10,4 +10,4 @@ class EnemyPrototype : public Entity
         virtual void Clone() = 0;
 };
 
-#endif
+#endif // __ENEMY_PROTOTYPE__
