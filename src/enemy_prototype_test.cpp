@@ -7,14 +7,14 @@ using namespace std;
 
 int main()
 {
-    Entity* goblin = new GoblinPrototype("Goblin", 25);
+    EnemyPrototype* goblin = new GoblinPrototype("Spear Goblin", 10);
     cout << "Name: " << goblin->getName() << endl;
     cout << "Health: " << goblin->getHealth() << endl;
 
-    goblin->setName("Spear Goblin");
-    goblin->setHealth(100);
+    goblin->Clone();
 
     cout << "Name: " << goblin->getName() << endl;
     cout << "Health: " << goblin->getHealth() << endl;
+    // only Use Clone() for prototype objects
 
 }
