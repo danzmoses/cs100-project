@@ -5,7 +5,9 @@
 
 class EnemyPrototype : public Entity 
 {
-
+    public:
+        EnemyPrototype();
+        virtual void Clone() = 0;
 };
 
 #endif
