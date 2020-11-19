@@ -16,8 +16,8 @@ class Entity
         virtual std::string getName() { return this->name; };
         virtual int getHealth() { return this->health; };
 
-        virtual std::string setName(std::string name) { this->name = name; };
-        virtual int setHealth(int health) { this->health = health; };
+        virtual void setName(std::string name) { this->name = name; };
+        virtual void setHealth(int health) { this->health = health; };
 };
 
 #endif // __ENTITY_H__
