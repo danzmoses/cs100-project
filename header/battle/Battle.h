@@ -34,5 +34,9 @@ class Battle
 
     public:
         Battle();
-        void nextTurn();
+        void nextTurn()
+        {
+            getRoll();
+            attackStrategy->attack(attacker, defender);
+        }
 };
