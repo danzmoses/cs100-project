@@ -8,7 +8,7 @@ class EnemyPrototype : public Entity
     public:
         EnemyPrototype() : Entity() {};
         EnemyPrototype(std::string name) : Entity(name) {};
-        virtual void Clone() = 0;
+        virtual EnemyPrototype* Clone() = 0;
 };
 
 #endif // __ENEMY_PROTOTYPE__
