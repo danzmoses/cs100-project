@@ -5,7 +5,9 @@
 
 class EnemyFactory : public EntityFactory
 {
-
+    public:
+        EnemyFactory() : EntityFactory() {};
+        virtual void createEntity(std::string name) { };
 
 };
 
