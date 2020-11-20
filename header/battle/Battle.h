@@ -14,8 +14,9 @@ class Battle
         Enemy* enemy;
         Entity* attacker;
         Entity* defender;
-        AttackStrategy* attack_strategy;
+        AttackStrategy* attackStrategy;
 
     public:
-        Battle();      
+        Battle();
+        void getRoll();  
 };
