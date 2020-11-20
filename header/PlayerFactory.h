@@ -5,6 +5,9 @@
 
 class PlayerFactory : public EntityFactory
 {
+    public:
+        PlayerFactory() : EntityFactory() {};
+        virtual void createEntity(std::string name) { };
 
 };
 
