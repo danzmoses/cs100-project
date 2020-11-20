@@ -2,12 +2,13 @@
 #define __ENTITY_FACTORY__
 
 #include <string>
+#include "Entity.h"
 
 class EntityFactory
 {
     public:
         EntityFactory() {};
-        virtual void createEntity(std::string name) = 0;
+        virtual Entity* createEntity(std::string name) = 0;
 
 };
 
