@@ -11,6 +11,8 @@ class Entity{
 		int ATK;
 		int DEF;
 		std::string name;
+	protected:
+		int gold;
 	public:
 		Entity(){
 		}
@@ -20,11 +22,20 @@ class Entity{
 			this->level = 1;
 			this->exp = 0; //max exp = 5
 			this->health = 5; //max health = 5
-			this->ATK = 1;
-			this-> DEF = 1;		
+			this->ATK = 1; //->struct
+			this-> DEF = 1;	//->struct
+			this->gold = 1000;	
 		}
 
 		//getters and setters
+		int getGold(){
+			return this->gold;
+		}
+
+		void setGold(int gold){
+			this->gold = gold;
+		}
+
 		int getLevel(){
 			return this->level;
 		}

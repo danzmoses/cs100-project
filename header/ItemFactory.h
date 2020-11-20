@@ -1,12 +1,10 @@
 #ifndef __ITEM_FACTORY_H__
 #define __ITEM_FACTORY_H__
-#include "AbstractFactory.h"
 #include "Item.h"
 
-
-class ItemFactory : public AbstractFactory{
+class ItemFactory{
 	public:
-		ItemFactory() : AbstractFactory {};
+		ItemFactory();
 		virtual Item* createItem(std::string name) = 0;
 };
 

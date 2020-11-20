@@ -4,7 +4,7 @@
 
 class EnemyFactory : public EntityFactory{
 	private:
-		EnemyPrototype* enemy; 
+		//std::vector <EnemyPrototype*> enemyPrototypes;
 	public:
 		EnemyFactory() : EntityFactory() {};
 		virtual Entity* createEntity(std::string name);

@@ -7,8 +7,7 @@ class PlayerFactory : public EntityFactory{
 	public:
 		PlayerFactory() : EntityFactory(){};  
 		virtual Entity* createEntity(std::string name){
-			Player* p = new Player(name);
-			return p;
+			return new Player(name);
 		}
 };
 

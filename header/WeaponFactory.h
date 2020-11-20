@@ -1,6 +1,13 @@
-#ifndef __ITEM_FACTORY_H__
-#define __ITEM_FACTORY_H__
+#ifndef __WEAPON_FACTORY_H__
+#define __WEAPON_FACTORY_H__
+#include "ItemFactory.h"
 
-class 
+class WeaponFactory : public ItemFactory{
+	public:
+		WeaponFactory() : ItemFactory(){
+		}
+		virtual Item* createItem(std::string name){
+		} 
+};
 
-#endif //__ITEM_FACTORY_H__
+#endif //__WEAPON_FACTORY_H__
