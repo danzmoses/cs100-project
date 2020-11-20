@@ -34,4 +34,5 @@ class Battle
 
     public:
         Battle();
+        void nextTurn();
 };
