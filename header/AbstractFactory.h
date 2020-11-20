@@ -4,8 +4,8 @@
 class AbstractFactory{
 	public:
 		AbstractFactory();
-		virtual void CreateEntity();
-		virtual void CreateItem();
+		virtual void createEntity();
+		virtual void createItem();
 };
 
 #endif //__ABSTRACT_FACTORY_H__
