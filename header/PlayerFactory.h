@@ -2,12 +2,13 @@
 #define __PLAYER_FACTORY__
 
 #include "EntityFactory.h"
+#include "Player.h"
 
 class PlayerFactory : public EntityFactory
 {
     public:
         PlayerFactory() : EntityFactory() {};
-        virtual void createEntity(std::string name) { };
+        virtual Entity* createEntity(std::string name) { };
 
 };
 
