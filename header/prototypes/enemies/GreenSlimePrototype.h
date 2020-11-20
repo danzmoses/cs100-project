@@ -6,9 +6,9 @@
 class GreenSlimePrototype : public EnemyPrototype 
 {
     public:
-        GreenSlimePrototype() : EnemyPrototype() {};
-        GreenSlimePrototype(std::string name) : EnemyPrototype(name) {};
-        virtual void Clone() { setName("Green Slime"); setHealth(10); };
+        GreenSlimePrototype() : EnemyPrototype() { setName("Green Slime"); setHealth(2); }
+        GreenSlimePrototype(std::string name) : EnemyPrototype(name) {}
+        virtual EnemyPrototype* Clone() { return this; }
 };
 
 #endif //__GREEN_SLIME_PROTOTYPE__
