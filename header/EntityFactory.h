@@ -6,6 +6,7 @@
 class EntityFactory
 {
     public:
+        EntityFactory() {};
         virtual void createEntity(std::string name) = 0;
 
 };
