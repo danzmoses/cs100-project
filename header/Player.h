@@ -10,6 +10,7 @@ class Player : public Entity
         int gold;
     public:
         Player() : Entity() {}
+        Player(std::string name) : Entity(name) {}
         int getGold() { return this->gold; }
         void addGold(int gold) { this->gold += gold; }
 
