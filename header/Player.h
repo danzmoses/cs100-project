@@ -10,7 +10,7 @@ class Player : public Entity
         int gold;
 
     public:
-        Player() : Entity() {}
+        Player() : Entity(), gold(50) {}
         Player(std::string name) : Entity(name), gold(50) {}
         
         int getGold() { return this->gold; }

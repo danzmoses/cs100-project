@@ -10,7 +10,7 @@ class Enemy : public Entity
         std::string description;
         
     public:
-        Enemy() : Entity() {}
+        Enemy() : Entity(), description("rawr") {}
         Enemy(std::string name) : Entity(name), description("rawr") {}
 
         std::string getDescription() { return description; }
