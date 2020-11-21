@@ -19,4 +19,4 @@ class Player : public Entity
 
 };
 
-#endif // __PLAYER_FACTORY__
+#endif // __PLAYER__
