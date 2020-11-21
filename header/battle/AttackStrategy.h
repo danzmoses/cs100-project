@@ -9,7 +9,9 @@ class AttackStrategy
         
     public:
         AttackStrategy() {};
-        virtual void attack(Entity* attacker, Entity* defender) = 0;
+
+        // returns total damage done to the defender after calculation
+        virtual int attack(Entity* attacker, Entity* defender) = 0;
 };
 
 #endif // ATTACK_STRATEGY_H
