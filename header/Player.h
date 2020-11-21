@@ -6,14 +6,10 @@
 
 class Player : public Entity
 {
-    private:
-        int gold;
+
     public:
         Player() : Entity() {}
         Player(std::string name) : Entity(name) {}
-        int getGold() { return this->gold; }
-        void addGold(int gold) { this->gold += gold; }
-
 };
 
 #endif // __PLAYER_FACTORY__
