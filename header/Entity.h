@@ -18,11 +18,11 @@ class Entity
     
         virtual std::string getName() { return this->name; }
         virtual int getHealth() { return this->health; }
+        virtual int getGold() { return this->gold; };
+
 
         virtual void setName(std::string name) { this->name = name; }
         virtual void setHealth(int health) { this->health = health; }
-
-        virtual int getGold() { return this->gold; };
         virtual void setGold(int gold) { this->gold = gold; } ;
 
 };
