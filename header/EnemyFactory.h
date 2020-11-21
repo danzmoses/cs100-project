@@ -1,20 +1,20 @@
 #ifndef __ENEMY_FACTORY__
 #define __ENEMY_FACTORY__
 
-#include "EntityFactory.h"
+
 #include "prototypes/enemies/EnemyPrototype.h"
 #include "prototypes/enemies/GoblinPrototype.h"
 #include "prototypes/enemies/GreenSlimePrototype.h"
 #include "prototypes/enemies/RedSlimePrototype.h"
 #include <vector>
 
-class EnemyFactory : public EntityFactory
+class EnemyFactory
 {
     private:
         std::vector<EnemyPrototype*> enemyPrototypes;
 
     public:
-        EnemyFactory() : EntityFactory() 
+        EnemyFactory()
         {
             this->enemyPrototypes.push_back(new GoblinPrototype());
             this->enemyPrototypes.push_back(new GreenSlimePrototype());
@@ -22,7 +22,7 @@ class EnemyFactory : public EntityFactory
         }
         
         
-        virtual Entity* createEntity(std::string name) 
+        virtual EnemyPrototype* createEnemy(std::string name) 
         { 
             for (int i = 0; i < enemyPrototypes.size(); ++i)
             {
