@@ -1,15 +1,11 @@
 #ifndef __PLAYER__
 #define __PLAYER__
 
-#include "EntityFactory.h"
-#include "Player.h"
-
-class Player : public Entity
+class Player
 {
-
     public:
-        Player() : Entity() {}
-        Player(std::string name) : Entity(name) {}
+        Player() {}
+        Player(std::string name) {}
 };
 
 #endif // __PLAYER_FACTORY__
