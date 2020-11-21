@@ -29,7 +29,7 @@ class Entity{
 
 		//getters and setters
 		int getGold(){
-			return this->gold;
+			return gold;
 		}
 
 		void setGold(int gold){
