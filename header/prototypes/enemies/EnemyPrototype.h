@@ -1,11 +1,13 @@
 #ifndef __ENEMY_PROTOTYPE__
 #define __ENEMY_PROTOTYPE__
 
-class EnemyPrototype
+#include "../../Enemy.h"
+
+class EnemyPrototype : public Enemy
 {
     public:
-        EnemyPrototype() {};
-        EnemyPrototype(std::string name) {};
+        EnemyPrototype() : Enemy() {}
+        EnemyPrototype(std::string name) : Enemy(name) {}
         virtual EnemyPrototype* Clone() = 0;
 };
 

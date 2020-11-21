@@ -6,7 +6,7 @@
 class SlimePrototype : public EnemyPrototype 
 {
     public:
-        SlimePrototype() : EnemyPrototype() { setHealth(2); }
+        SlimePrototype() : EnemyPrototype() { setHP(2); }
         SlimePrototype(std::string name) : EnemyPrototype(name) {}
         virtual EnemyPrototype* Clone() = 0;
 };
