@@ -8,6 +8,7 @@ class Player : public Entity
 {
     private:
         int gold;
+        int level;
         int EXP;
 
     public:
@@ -16,9 +17,11 @@ class Player : public Entity
         
         int getGold() { return this->gold; }
         int getEXP() { return this->EXP; }
+        int getLevel() { return this->level; }
 
         void setGold(int gold) { this->gold = gold; }
         void setEXP(int EXP) { this->EXP = EXP; }
+        void setLevel(int level) { this->level = level; }
 };
 
 #endif // __PLAYER__
