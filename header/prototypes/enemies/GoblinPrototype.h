@@ -6,7 +6,7 @@
 class GoblinPrototype : public EnemyPrototype 
 {
     public:
-        GoblinPrototype() : EnemyPrototype() { setName("Goblin"); setHealth(8); }
+        GoblinPrototype() : EnemyPrototype() { setName("Goblin"); setHealth(5); }
         GoblinPrototype(std::string name) : EnemyPrototype(name) {}
         virtual EnemyPrototype* Clone() { return this; }
 };

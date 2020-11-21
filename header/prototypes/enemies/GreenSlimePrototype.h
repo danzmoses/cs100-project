@@ -1,13 +1,13 @@
 #ifndef __GREEN_SLIME_PROTOTYPE__
 #define __GREEN_SLIME_PROTOTYPE__
 
-#include "EnemyPrototype.h"
+#include "SlimePrototype.h"
 
-class GreenSlimePrototype : public EnemyPrototype 
+class GreenSlimePrototype : public SlimePrototype 
 {
     public:
-        GreenSlimePrototype() : EnemyPrototype() { setName("Green Slime"); setHealth(2); }
-        GreenSlimePrototype(std::string name) : EnemyPrototype(name) {}
+        GreenSlimePrototype() : SlimePrototype() { setName("Green Slime"); setHealth(this->getHealth() + 0); }
+        GreenSlimePrototype(std::string name) : SlimePrototype(name) {}
         virtual EnemyPrototype* Clone() { return this; }
 };
 

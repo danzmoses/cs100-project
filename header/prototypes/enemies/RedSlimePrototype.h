@@ -1,13 +1,13 @@
 #ifndef __RED_SLIME_PROTOTYPE__
 #define __RED_SLIME_PROTOTYPE__
 
-#include "EnemyPrototype.h"
+#include "SlimePrototype.h"
 
-class RedSlimePrototype : public EnemyPrototype 
+class RedSlimePrototype : public SlimePrototype 
 {
     public:
-        RedSlimePrototype() : EnemyPrototype() { setName("Red Slime"); setHealth(5); }
-        RedSlimePrototype(std::string name) : EnemyPrototype(name) {}
+        RedSlimePrototype() : SlimePrototype() { setName("Red Slime"); setHealth(getHealth() + 1); }
+        RedSlimePrototype(std::string name) : SlimePrototype(name) {}
         virtual EnemyPrototype* Clone() { return this; }
 };
 
