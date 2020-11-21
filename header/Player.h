@@ -12,8 +12,8 @@ class Player : public Entity
         int EXP;
 
     public:
-        Player() : Entity(), gold(50), EXP(0) {}
-        Player(std::string name) : Entity(name), gold(50), EXP(0) {}
+        Player() : Entity(), gold(50), level(1), EXP(0) {}
+        Player(std::string name) : Entity(name), gold(50), level(1), EXP(0) {}
         
         int getGold() { return this->gold; }
         int getEXP() { return this->EXP; }
