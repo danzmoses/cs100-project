@@ -11,7 +11,6 @@
 class EnemyFactory : public EntityFactory
 {
     private:
-        EnemyPrototype* enemy;
         std::vector<EnemyPrototype*> enemyPrototypes;
 
     public:
@@ -21,15 +20,15 @@ class EnemyFactory : public EntityFactory
             this->enemyPrototypes.push_back(new GreenSlimePrototype());
             this->enemyPrototypes.push_back(new RedSlimePrototype());
         }
+        
+        
         virtual Entity* createEntity(std::string name) 
         { 
             for (int i = 0; i < enemyPrototypes.size(); ++i)
             {
                 if (enemyPrototypes.at(i)->getName() == name)
                 {
-                    enemy = enemyPrototypes.at(i);
-                    enemy->Clone();
-                    return enemy;
+                    return enemyPrototypes.at(i)->Clone();
                 }
             }
             std::invalid_argument ia("Invalid argument. Unable to find \"" + name + '\"' );
