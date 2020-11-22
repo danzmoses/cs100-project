@@ -34,5 +34,15 @@ TEST(PlayerTests, NameConstructorTest)
 }
 
 
+TEST(PlayerTests, setATKTest)
+{
+    Player* player = new Player();
+
+    EXPECT_EQ(player->getATK(), 1);
+    player->setATK(2);
+    EXPECT_EQ(player->getATK(), 2);
+    player->setATK(-2);
+    EXPECT_EQ(player->getATK(), -2);
+}
 
 #endif // __ENTITY_TESTS__
