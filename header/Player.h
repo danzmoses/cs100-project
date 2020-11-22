@@ -4,23 +4,15 @@
 #include "Entity.h"
 
 class Player : public Entity{
-
+	private:
+		int gold;
+		int level;
+		int EXP;
 	public:
-	Player(){
-	}
+	Player() : Entity(), gold(50), level(1), EXP(0){}
 
-	Player(std::string name){
-		this->setName(name);
-		//stats for player inherited from entity
-	}	
+	Player(std::string name) : Entity(name), gold(50), level(1), EXP(0){}
 
-	//addWeapon(std::string name, ItemFactory* WF){
-	//	inventory.push_back(item_factory->createItem(name));
-	//}
-
-	//addArmor(std::string name, ItemFactory* AF){
-	//	inventory.push_back(item_factory->createItem(name));
-	//}
 };
 
 #endif //__PLAYER_H__
