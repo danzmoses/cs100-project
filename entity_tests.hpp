@@ -57,4 +57,26 @@ TEST(PlayerTests, setDEFTest)
     EXPECT_EQ(player->getDEF(), -2);
 }
 
+TEST(PlayerTests, setEXPTest)
+{
+    Player* player = new Player();
+
+    EXPECT_EQ(player->getEXP(), 0);
+    player->setEXP(2);
+    EXPECT_EQ(player->getEXP(), 2);
+    
+    EXPECT_THROW(
+        try 
+        {
+            player->setEXP(-1);    
+        }
+        catch (std::invalid_argument& ia)
+        {
+            EXPECT_STREQ(ia.what(), "Invalid argument. EXP cannot be negative.");
+            throw;
+        }
+        , std::invalid_argument);
+}
+
+
 #endif // __ENTITY_TESTS__
