@@ -12,21 +12,30 @@ MainWindow::MainWindow(QWidget *parent) :
 
     // connections
 
-    connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(switch_to_main_menu()));
-    connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(switch_to_battle_menu()));
+    connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
+    connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(initializePlayer()));
+    connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(switchToBattleMenu()));
 }
 
 MainWindow::~MainWindow()
 {
+    delete player;
     delete ui;
 }
 
-void MainWindow::switch_to_main_menu()
+void MainWindow::initializePlayer()
+{
+    QString name = ui->enter_name_lineedit->text();
+    player = new Player(name.toStdString());
+    ui->main_menu_name_label->setText(QString("Name: ") + name);
+}
+
+void MainWindow::switchToMainMenu()
 {
     ui->menu_pages->setCurrentIndex(1);
 }
 
-void MainWindow::switch_to_battle_menu()
+void MainWindow::switchToBattleMenu()
 {
     ui->menu_pages->setCurrentIndex(2);
 }

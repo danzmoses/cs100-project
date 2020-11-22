@@ -3,6 +3,10 @@
 
 #include <QMainWindow>
 
+#include "header/Player.h"
+#include "header/Enemy.h"
+#include "header/battle/Battle.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -17,12 +21,13 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
+    Player* player;
 
 private slots:
     //
-    void switch_to_main_menu();
-    void switch_to_battle_menu();
+    void switchToMainMenu();
+    void switchToBattleMenu();
+    void initializePlayer();
 };
 
 #endif // MAINWINDOW_H
