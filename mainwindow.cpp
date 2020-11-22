@@ -15,19 +15,45 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
     connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(initializePlayer()));
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(switchToBattleMenu()));
+    connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
 }
 
 MainWindow::~MainWindow()
 {
     delete player;
+    delete battle;
     delete ui;
+}
+
+void MainWindow::update_main_menu_player_stats()
+{
+    ui->main_menu_name->setText("Name: " + QString::fromStdString(player->getName()));
+    ui->main_menu_level->setText("Level: " + QString::number(player->getLevel()));
+    ui->main_menu_exp->setText("EXP: " + QString::number(player->getEXP()) + '/' + QString::number(player->getMaxEXP()));
+    ui->main_menu_health->setText("Health: " + QString::number(player->getHP()) + '/' + QString::number(player->getMaxHP()));
+    ui->main_menu_attack->setText("ATK: " + QString::number(player->getATK()));
+    ui->main_menu_defense->setText("DEF: " + QString::number(player->getDEF()));
 }
 
 void MainWindow::initializePlayer()
 {
-    QString name = ui->enter_name_lineedit->text();
-    player = new Player(name.toStdString());
-    ui->main_menu_name_label->setText(QString("Name: ") + name);
+    std::string name = ui->enter_name_lineedit->text().toStdString();
+    if (name.empty())
+        name = "Hero";
+
+    player = new Player(name);
+    update_main_menu_player_stats();
+    //ui->battle_menu_player_name_and_level->setText(name + " (Level " + level + ")");
+}
+
+void MainWindow::enterArea()
+{
+    area_enemies.push_back(ef.createEnemy("Green Slime"));
+}
+
+void MainWindow::battleEnemy()
+{
+    ;
 }
 
 void MainWindow::switchToMainMenu()

@@ -1046,7 +1046,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_18">
            <item>
-            <widget class="QLabel" name="main_menu_name_label">
+            <widget class="QLabel" name="main_menu_name">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1058,7 +1058,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_13">
+            <widget class="QLabel" name="main_menu_level">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1070,7 +1070,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_14">
+            <widget class="QLabel" name="main_menu_exp">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1082,7 +1082,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_15">
+            <widget class="QLabel" name="main_menu_health">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1094,7 +1094,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_16">
+            <widget class="QLabel" name="main_menu_attack">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1106,7 +1106,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_17">
+            <widget class="QLabel" name="main_menu_defense">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2009,7 +2009,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_28">
          <item>
-          <widget class="QLabel" name="start_menu_goal_label_52">
+          <widget class="QLabel" name="battle_menu_player_name_and_level">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
