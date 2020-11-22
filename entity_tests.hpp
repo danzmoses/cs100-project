@@ -45,4 +45,16 @@ TEST(PlayerTests, setATKTest)
     EXPECT_EQ(player->getATK(), -2);
 }
 
+
+TEST(PlayerTests, setDEFTest)
+{
+    Player* player = new Player();
+
+    EXPECT_EQ(player->getDEF(), 1);
+    player->setDEF(2);
+    EXPECT_EQ(player->getDEF(), 2);
+    player->setDEF(-2);
+    EXPECT_EQ(player->getDEF(), -2);
+}
+
 #endif // __ENTITY_TESTS__
