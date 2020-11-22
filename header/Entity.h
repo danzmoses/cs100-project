@@ -5,37 +5,17 @@
 
 class Entity{
 	private:
-		int level;
-		int health;
-		int exp;
+		int HP;
+		int maxHP;
 		int ATK;
 		int DEF;
 		std::string name;
-	protected:
-		int gold;
 	public:
-		Entity(){
-		}
+		Entity() : HP(10), maxHP(10), ATK(1), DEF(1){}
 		
-		Entity(std::string name){
-			this->name = name;
-			this->level = 1;
-			this->exp = 0; //max exp = 5
-			this->health = 5; //max health = 5
-			this->ATK = 1; //->struct
-			this-> DEF = 1;	//->struct
-			this->gold = 1000;	
-		}
+		Entity(std::string name) : name(name), HP(10), maxHP(10), ATK(1), DEF(1) {}
 
 		//getters and setters
-		int getGold(){
-			return gold;
-		}
-
-		void setGold(int gold){
-			this->gold = gold;
-		}
-
 		int getLevel(){
 			return this->level;
 		}

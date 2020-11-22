@@ -6,8 +6,7 @@ class WeaponFactory : public ItemFactory{
 	public:
 		WeaponFactory() : ItemFactory(){
 		}
-		virtual Item* createItem(std::string name){
-		} 
+		virtual Item* createItem(std::string name); 
 };
 
 #endif //__WEAPON_FACTORY_H__
