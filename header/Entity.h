@@ -36,17 +36,14 @@ class Entity{
 			return this->name;
 		}
 
-		void setLevel(int level){
-			this->level = level;
+		void setHP(int HP){
+			this->HP = HP;
 		}
 
-		void setHealth(int health){
-			this->health = health;
+		void setMaxHP(int maxHP){
+			this->maxHP = maxHP;
 		}
 
-		void setExp(int exp){
-			this->exp = exp;
-		}
 
 		void setATK(int ATK){
 			this->ATK = ATK;
@@ -58,6 +55,10 @@ class Entity{
 
 		void setName(std::string name){
 			this->name = name;
+		}
+
+		void restoreHP(){
+			this->HP = maxHP;
 		}
 
 };
