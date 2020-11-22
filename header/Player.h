@@ -2,6 +2,7 @@
 #define __PLAYER__
 
 #include <string>
+#include <stdexcept>
 #include "Entity.h"
 
 class Player : public Entity
@@ -20,7 +21,15 @@ class Player : public Entity
         int getLevel() { return this->level; }
 
         void setGold(int gold) { this->gold = gold; }
-        void setEXP(int EXP) { this->EXP = EXP; }
+        void setEXP(int EXP) 
+        { 
+            if (EXP < 0) 
+            { 
+                std::invalid_argument ia("Invalid argument. EXP cannot be negative."); 
+                throw ia;
+            } 
+            this->EXP = EXP;
+        }
         void setLevel(int level) { this->level = level; }
 };
 
