@@ -14,7 +14,7 @@ class Entity
         int DEF;
 
     public:
-        Entity() : HP(10), maxHP(10), ATK(1), DEF(1) {}
+        Entity() : name("Entity"), HP(10), maxHP(10), ATK(1), DEF(1) {}
         Entity(std::string name) : name(name), HP(10), maxHP(10), ATK(1), DEF(1) {}
         
         std::string getName() { return this->name; }
