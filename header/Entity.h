@@ -16,16 +16,12 @@ class Entity{
 		Entity(std::string name) : name(name), HP(10), maxHP(10), ATK(1), DEF(1) {}
 
 		//getters and setters
-		int getLevel(){
-			return this->level;
+		int getHP(){
+			return this->HP;
 		}
 		
-		int getHealth(){
-			return this->health;
-		}
-
-		int getExp(){
-			return this->exp;
+		int getMaxHP(){
+			return this->maxHP;
 		}
 
 		int getATK(){
