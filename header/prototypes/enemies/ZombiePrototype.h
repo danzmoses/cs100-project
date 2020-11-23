@@ -6,7 +6,7 @@
 class ZombiePrototype : public EnemyPrototype 
 {
     public:
-        ZombiePrototype() : EnemyPrototype() { setName("Zombie"); setHP(5); setDescription("brains..."); }
+        ZombiePrototype() : EnemyPrototype() { setName("Zombie"); setHP(5); setMaxHP(5); setDescription("brains..."); }
         ZombiePrototype(std::string name) : EnemyPrototype(name) {}
         virtual EnemyPrototype* Clone() { return this; }
 };
