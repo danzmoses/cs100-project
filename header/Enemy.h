@@ -13,7 +13,7 @@ class Enemy : public Entity{
 
 		//getters and setters
 		std::string getDescription(){
-			return descritpion;
+			return description;
 		}
 
 		void setDescription(std::string description){

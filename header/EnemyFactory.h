@@ -18,7 +18,7 @@ class EnemyFactory{
         	}
  
 		virtual EnemyPrototype* createEnemy(std::string name){
-			for(int i = 0, i < enemyPrototypes.size(), ++i){
+			for(int i = 0; i < enemyPrototypes.size(); ++i){
 				if(enemyPrototypes.at(i)->getName() == name){
 					return enemyPrototypes.at(i)->Clone();
 				}

@@ -3,48 +3,44 @@
 
 #include "gtest/gtest.h"
 
-#include "Entity.h"
+#include "Player.h"
+#include "EnemyFactory.h"
 
-TEST(EntityTest, LevelTest){
-	Entity* e = new Entity("name");
-	EXPECT_EQ(e->getLevel(), 1);
-	e->setLevel(5);
-	EXPECT_EQ(e->getLevel(), 5);
+TEST(PlayerTests, DefaultConstructorTest){
+	Player *p = new Player();
+	EXPECT_EQ(p->getHP(), 10);
+	EXPECT_EQ(p->getMaxHP(), 10);
+	EXPECT_EQ(p->getATK(), 1);
+	EXPECT_EQ(p->getDEF(), 1);		
+
+	EXPECT_EQ(p->getGold(), 50);
+	EXPECT_EQ(p->getLevel(), 1);
+	EXPECT_EQ(p->getEXP(), 0);
+
+	p->setName("newName");
+	p->setHP(5);
+	p->setMaxHP(9);
+	p->setATK(3);
+	p->setDEF(3);
+	p->setGold(100);
+	p->setLevel(2);
+	p->setEXP(2);
+
+	EXPECT_EQ(p->getName(), "newName");	
+       	EXPECT_EQ(p->getHP(), 5);
+	EXPECT_EQ(p->getMaxHP(), 9);
+        EXPECT_EQ(p->getATK(), 3);
+        EXPECT_EQ(p->getDEF(), 3);
+
+        EXPECT_EQ(p->getGold(), 100);
+        EXPECT_EQ(p->getLevel(), 2);
+	EXPECT_EQ(p->getEXP(), 2);
+
+	p->restoreHP();
+	EXPECT_EQ(p->getHP(), 9); //maxHP is no longer 10 because it was set to 9 when setMaxHP() was tested above
 }
 
-TEST(EntityTest, HealthTest){
-	Entity* e = new Entity("name");
-	EXPECT_EQ(e->getHealth(), 5);
-	e->setHealth(3);
-	EXPECT_EQ(e->getHealth(), 3);
-}
-
-TEST(EntityTest, ExpTest){
-	Entity* e = new Entity("name");
-	EXPECT_EQ(e->getExp(), 0);
-	e->setExp(2);
-	EXPECT_EQ(e->getExp(), 2);
-}
-
-TEST(EntityTest, NameTest){
-	Entity* e = new Entity("name");
-	EXPECT_EQ(e->getName(), "name");
-	e->setName("newName");
-	EXPECT_EQ(e->getName(), "newName");
-}
-
-TEST(EntityTest, ATKTest){
-	Entity* e = new Entity("name");
-	EXPECT_EQ(e->getATK(), 1);
-	e->setATK(3);
-	EXPECT_EQ(e->getATK(), 3);
-}
-
-TEST(EntityTest, DEFTest){
-	Entity* e = new Entity("name");
-	EXPECT_EQ(e->getDEF(), 1);
-	e->setDEF(3);
-	EXPECT_EQ(e->getDEF(), 3);
-}
+//TEST(PlayerTests, nameConstructorTest){
+//}
 
 #endif //__ENTITY_TEST_H__
