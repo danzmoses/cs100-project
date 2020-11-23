@@ -6,6 +6,8 @@
 #include "prototypes/enemies/GoblinPrototype.h"
 #include "prototypes/enemies/GreenSlimePrototype.h"
 #include "prototypes/enemies/RedSlimePrototype.h"
+#include "prototypes/enemies/SkeletonPrototype.h"
+#include "prototypes/enemies/ZombiePrototype.h"
 #include <vector>
 
 class EnemyFactory
@@ -19,6 +21,8 @@ class EnemyFactory
             this->enemyPrototypes.push_back(new GoblinPrototype());
             this->enemyPrototypes.push_back(new GreenSlimePrototype());
             this->enemyPrototypes.push_back(new RedSlimePrototype());
+            this->enemyPrototypes.push_back(new SkeletonPrototype());
+            this->enemyPrototypes.push_back(new ZombiePrototype());
         }
         
         
