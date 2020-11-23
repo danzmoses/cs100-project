@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <vector>
 #include <string>
+#include <cmath>
 
 #include "header/Player.h"
 #include "header/Enemy.h"

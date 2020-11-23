@@ -103,17 +103,23 @@ void MainWindow::nextTurn()
     battle->nextTurn();
     QString playerRoll = QString::number(battle->getPlayerRoll());
     QString enemyRoll = QString::number(battle->getEnemyRoll());
+    QString rollDifference = QString::number(abs(playerRoll.toInt() - enemyRoll.toInt()));
 
     QString damageDone = QString::number(battle->getDamageDone());
     QString playerName = QString::fromStdString(player->getName());
     QString enemyName = QString::fromStdString(current_enemy->getName());
 
-    ui->battle_menu_roll_result->setText(playerName + " roll: " + playerRoll + '\t' + enemyName + " roll: " + enemyRoll);
+    ui->battle_menu_player_roll->setText(playerName + " Roll: " + playerRoll);
+    ui->battle_menu_enemy_roll->setText(enemyName + " Roll: " + enemyRoll);
 
     if (battle->getPlayerWonRoll())
-        ui->battle_menu_turn_result->setText(playerName + " deals " + damageDone + " to " + enemyName + "!");
+    {
+        ui->battle_menu_turn_result->setText(playerName + " deals " + damageDone + " damage to " + enemyName + "!");
+    }
     else
-        ui->battle_menu_turn_result->setText(enemyName + " deals " + damageDone + " to " + playerName + "!");
+        ui->battle_menu_turn_result->setText(enemyName + " deals " + damageDone + " damage to " + playerName + "!");
+
+    ui->battle_menu_roll_difference->setText("Roll difference: " + rollDifference);
 
     if (player->getHP() <= 0)
         ui->battle_menu_battle_result->setText(enemyName + " has won!");
