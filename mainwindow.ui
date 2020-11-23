@@ -1729,7 +1729,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_20">
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_39">
+            <widget class="QLabel" name="battle_menu_player_atk">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1741,7 +1741,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_40">
+            <widget class="QLabel" name="battle_menu_player_def">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2024,7 +2024,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="start_menu_goal_label_47">
+          <widget class="QLabel" name="battle_menu_player_health">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2039,7 +2039,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="start_menu_goal_label_44">
+          <widget class="QLabel" name="battle_menu_player_exp">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2172,7 +2172,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_29">
          <item>
-          <widget class="QLabel" name="start_menu_goal_label_53">
+          <widget class="QLabel" name="battle_menu_enemy_name_and_level">
            <property name="font">
             <font>
              <pointsize>20</pointsize>
@@ -2187,7 +2187,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="start_menu_goal_label_48">
+          <widget class="QLabel" name="battle_menu_enemy_health">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2322,7 +2322,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_21">
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_41">
+            <widget class="QLabel" name="battle_menu_enemy_atk">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2334,7 +2334,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_42">
+            <widget class="QLabel" name="battle_menu_enemy_def">
              <property name="font">
               <font>
                <pointsize>16</pointsize>

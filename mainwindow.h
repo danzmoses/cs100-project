@@ -24,19 +24,22 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    Player* player;
-    Battle* battle;
+    Player* player = nullptr;
+    Enemy* current_enemy = nullptr;
+    Battle* battle = nullptr;
     EnemyFactory ef;
     std::vector<Enemy*> area_enemies;
 
     void update_main_menu_player_stats();
+    void update_battle_menu_player_stats();
+    void update_battle_menu_enemy_stats();
 
 private slots:
 
     // functions
     void initializePlayer();
     void enterArea();
-    void battleEnemy();
+    void initializeBattleWithEnemy();
 
     // switch between menu pages
     void switchToMainMenu();
