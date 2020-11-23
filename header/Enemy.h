@@ -11,6 +11,14 @@ class Enemy : public Entity{
 		
 		Enemy(std::string name) : Entity(name), description("this is an enemy"){}
 
+		//getters and setters
+		std::string getDescription(){
+			return descritpion;
+		}
+
+		void setDescription(std::string description){
+			this->description = description;
+		}
 };
 
 #endif //__ENEMY_H__
