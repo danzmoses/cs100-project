@@ -1,13 +1,32 @@
 #ifndef __ENEMY_FACTORY_H__
 #define __ENEMY_FACTORY_H__
-#include "EntityFactory.h"
 
-class EnemyFactory : public EntityFactory{
+#include "prototypes/enemies/EnemyPrototype.h"
+#include "prototypes/enemies/GoblinPrototype.h"
+#include "prototypes/enemies/GreenSlimePrototype.h"
+#include "prototypes/enemies/RedSlimePrototype.h"
+#include <vector>
+
+class EnemyFactory{
 	private:
-		//std::vector <EnemyPrototype*> enemyPrototypes;
+		std::vector <EnemyPrototype*> enemyPrototypes;
 	public:
-		EnemyFactory() : EntityFactory() {};
-		virtual Entity* createEntity(std::string name);
+		EnemyFactory(){
+			this->enemyPrototypes.push_back(new GoblinPrototype());
+			this->enemyPrototypes.push_back(new GreenSlimePrototype());
+			this->enemyPrototypes.push_back(new RedSlimePrototype());
+        	}
+ 
+		virtual EnemyPrototype* createEnemy(std::string name){
+			for(int i = 0, i < enemyPrototypes.size(), ++i){
+				if(enemyPrototypes.at(i)->getName() == name){
+					return enemyPrototypes.at(i)->Clone();
+				}
+			}
+			std::invalid_argument ia("Invalid argument. Unable to find \"" + name + '\"');
+			throw ia;
+		}  
+		// search through dict: then set the prototype if it exists: then call clone on the prototype and return. throw ia if unable to find
 		
 };
 
