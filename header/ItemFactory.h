@@ -4,7 +4,7 @@
 
 class ItemFactory{
 	public:
-		ItemFactory();
+		ItemFactory() {};
 		virtual Item* createItem(std::string name) = 0;
 };
 

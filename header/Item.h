@@ -10,7 +10,7 @@ class Item{
 		int DEF;
 	public:
 		Item(){
-			this->name = "item";
+			this->name = "Item";
 			this->cost = 0;
 			this->ATK = 0;
 			this->DEF = 0;
