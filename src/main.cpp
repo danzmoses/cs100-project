@@ -2,11 +2,52 @@
 
 #include "../header/Player.h"
 #include "../header/EnemyFactory.h"
+#include "../header/Item.h"
+#include "../header/ArmorFactory.h"
+#include "../header/WeaponFactory.h"
 
 using namespace std;
 
 int main()
 {
+    ItemFactory* af = new ArmorFactory();
+    Item* armor = af->createItem("Iron Armor");
+
+    cout << "Armor Name: " << armor->getName() << endl;
+    cout << "Armor Cost: " << armor->getCost() << endl;
+    cout << "Armor ATK: " << armor->getATK() << endl;
+    cout << "Armor DEF: " << armor->getDEF() << endl << endl;
+    
+    armor->setName("Super cool Iron Armor");
+    armor->setCost(9999);
+    armor->setATK(1);
+    armor->setDEF(999);
+
+    cout << "Armor Name: " << armor->getName() << endl;
+    cout << "Armor Cost: " << armor->getCost() << endl;
+    cout << "Armor ATK: " << armor->getATK() << endl;
+    cout << "Armor DEF: " << armor->getDEF() << endl << endl;
+    
+    ItemFactory* wf = new WeaponFactory();
+    Item* weapon = wf->createItem("Stone Sword");
+
+    cout << "Weapon Name: " << weapon->getName() << endl;
+    cout << "Weapon Cost: " << weapon->getCost() << endl;
+    cout << "Weapon ATK: " << weapon->getATK() << endl;
+    cout << "Weapon DEF: " << weapon->getDEF() << endl << endl;
+    
+    weapon->setName("Super cool Stone Sword");
+    weapon->setCost(9999);
+    weapon->setATK(999);
+    weapon->setDEF(1);
+
+    cout << "Weapon Name: " << weapon->getName() << endl;
+    cout << "Weapon Cost: " << weapon->getCost() << endl;
+    cout << "Weapon ATK: " << weapon->getATK() << endl;
+    cout << "Weapon DEF: " << weapon->getDEF() << endl << endl;
+
+    
+
     Player* player = new Player("Rice");
 
     cout << "Player Name: " << player->getName() << endl;
@@ -41,7 +82,7 @@ int main()
     cout << "Player HP: " << player->getHP() << endl << endl;
 
     EnemyFactory* ef = new EnemyFactory(); // instantiate all enemy prototypes at once
-    Enemy* enemy = ef->createEnemy("Goblin");
+    Enemy* enemy = ef->createEnemy("Zombie");
 
     cout << "Enemy Name: " << enemy->getName() << endl;
     cout << "Enemy HP: " << enemy->getHP() << endl;
