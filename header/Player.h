@@ -8,6 +8,7 @@ class Player : public Entity{
 		int gold;
 		int level;
 		int EXP;
+		int maxEXP;
 	public:
 	Player() : Entity(), gold(50), level(1), EXP(0){}
 
@@ -26,6 +27,10 @@ class Player : public Entity{
 		return this->EXP;
 	}
 
+	int getMaxEXP(){
+		return this->maxEXP;
+	}
+
 	void setGold(int gold){
 		this->gold = gold;
 	}
@@ -37,6 +42,28 @@ class Player : public Entity{
 	void setEXP(int EXP){
 		this->EXP = EXP;
 	}
+
+	void setMaxEXP(int EXP){
+		this->maxEXP = maxEXP;
+	}
+
+	//in battle or after battle, if(this->EXP >= maxEXP){ player->levelUp(); }
+	void levelUp(){
+		int additionalEXP = 0;
+		int numLevels = 0;
+			//bc player's curr EXP could be more than double MaxEXP
+			//each time a multiple of maxEXP is met = level up by 1
+			while(this->EXP >= maxEXP){
+				additionalEXP = this->EXP - maxEXP;
+				numLevels++;
+			}
+			this->setEXP(additionalEXP); 
+			this->level += numLevels;
+			this->ATK += 1;
+			this->DEF += 1;
+			//this->setMaxHP(this->maxHP+5); 
+	}		
+			
 };
 
 #endif //__PLAYER_H__
