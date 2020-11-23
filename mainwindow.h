@@ -40,6 +40,7 @@ private slots:
     void initializePlayer();
     void enterArea();
     void initializeBattleWithEnemy();
+    void nextTurn();
 
     // switch between menu pages
     void switchToMainMenu();

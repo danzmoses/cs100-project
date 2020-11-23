@@ -7,7 +7,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     const QSize BUTTON_SIZE = QSize(100, 10);
-    ui->pushButton_5->setMinimumSize(BUTTON_SIZE);
+    ui->rollButton->setMinimumSize(BUTTON_SIZE);
 
 
     // connections
@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(initializePlayer()));
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(switchToBattleMenu()));
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
+    connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
 }
 
 MainWindow::~MainWindow()
@@ -73,17 +74,16 @@ void MainWindow::update_battle_menu_enemy_stats()
 void MainWindow::initializePlayer()
 {
     std::string name = ui->enter_name_lineedit->text().toStdString();
-
     if (name.empty())
-        player = new Player();
-    else
-        player = new Player(name);
+        name = "Hero";
+
+    player = new Player(name);
     update_main_menu_player_stats();
 }
 
 void MainWindow::enterArea()
 {
-    area_enemies.push_back(ef.createEnemy("Goblin"));
+    area_enemies.push_back(ef.createEnemy("Green Slime"));
     initializeBattleWithEnemy();
 }
 
@@ -93,6 +93,32 @@ void MainWindow::initializeBattleWithEnemy()
         delete battle;
     current_enemy = area_enemies[area_enemies.size() - 1];
     battle = new Battle(player, current_enemy);
+
+    update_battle_menu_player_stats();
+    update_battle_menu_enemy_stats();
+}
+
+void MainWindow::nextTurn()
+{
+    battle->nextTurn();
+    QString playerRoll = QString::number(battle->getPlayerRoll());
+    QString enemyRoll = QString::number(battle->getEnemyRoll());
+
+    QString damageDone = QString::number(battle->getDamageDone());
+    QString playerName = QString::fromStdString(player->getName());
+    QString enemyName = QString::fromStdString(current_enemy->getName());
+
+    ui->battle_menu_roll_result->setText(playerName + " roll: " + playerRoll + '\t' + enemyName + " roll: " + enemyRoll);
+
+    if (battle->getPlayerWonRoll())
+        ui->battle_menu_turn_result->setText(playerName + " deals " + damageDone + " to " + enemyName + "!");
+    else
+        ui->battle_menu_turn_result->setText(enemyName + " deals " + damageDone + " to " + playerName + "!");
+
+    if (player->getHP() <= 0)
+        ui->battle_menu_battle_result->setText(enemyName + " has won!");
+    else if (current_enemy->getHP() <= 0)
+        ui->battle_menu_battle_result->setText(playerName + " has won!");
 
     update_battle_menu_player_stats();
     update_battle_menu_enemy_stats();

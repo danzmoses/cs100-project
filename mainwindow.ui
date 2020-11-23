@@ -2360,7 +2360,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QLineEdit" name="lineEdit_3">
+          <widget class="QLineEdit" name="battle_menu_roll_result">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2369,7 +2369,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="battle_menu_turn_result">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2378,7 +2378,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="lineEdit_4">
+          <widget class="QLineEdit" name="battle_menu_battle_result">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2398,7 +2398,7 @@
          </rect>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_5">
+       <widget class="QPushButton" name="rollButton">
         <property name="geometry">
          <rect>
           <x>430</x>
@@ -2414,6 +2414,36 @@
         </property>
         <property name="text">
          <string>Roll</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="battle_menu_player_roll">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>440</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="battle_menu_enemy_roll">
+        <property name="geometry">
+         <rect>
+          <x>590</x>
+          <y>440</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>16</pointsize>
+         </font>
         </property>
        </widget>
       </widget>
