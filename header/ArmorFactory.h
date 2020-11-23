@@ -6,6 +6,7 @@ class ArmorFactory : public ItemFactory{
         public:
                 ArmorFactory() : ItemFactory(){
                 }
+
                 virtual Item* createItem(std::string name){
                 } 
 };

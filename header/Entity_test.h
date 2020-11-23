@@ -94,4 +94,7 @@ TEST(PlayerTests, nameConstructorTest){
 	EXPECT_EQ(p->getHP(), 15);
 } 
 
+//add tests for enemies
+//add test for player->levelUp();
+
 #endif //__ENTITY_TEST_H__
