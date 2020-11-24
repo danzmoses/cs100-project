@@ -152,4 +152,30 @@ TEST(EnemyTests, GreenSlimeTest){
 	EXPECT_EQ(e->getDescription(), "New Green Slime Description");
 }
 
+TEST(EnemyTests, RedSlimeTest){
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *e = ef->createEnemy("Red Slime");
+	
+	EXPECT_EQ(e->getName(), "Red Slime");
+	EXPECT_EQ(e->getHP(), 3);
+	EXPECT_EQ(e->getMaxHP(), 4); //bug?: red slime HP increases to 3, gets 3 and adds 1 = 4 for maxHP
+	EXPECT_EQ(e->getATK(), 1);
+	EXPECT_EQ(e->getDEF(), 1);
+	EXPECT_EQ(e->getDescription(), "A bouncing blob of goo. It looks aggressive.");
+	
+	e->setName("New Red Slime");
+	e->setHP(6);
+	e->setMaxHP(6);
+	e->setATK(3);
+	e->setDEF(3);
+	e->setDescription("New Red Slime Description");
+
+	EXPECT_EQ(e->getName(), "New Red Slime");
+	EXPECT_EQ(e->getHP(), 6);
+	EXPECT_EQ(e->getMaxHP(), 6);
+	EXPECT_EQ(e->getATK(), 3);
+	EXPECT_EQ(e->getDEF(), 3);
+	EXPECT_EQ(e->getDescription(), "New Red Slime Description");
+}
+
 #endif //__ENTITY_TEST_H__
