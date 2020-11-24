@@ -30,9 +30,15 @@ class Player : public Entity{
 		this->gold = gold;
 	}
 
-	void setEXP(int EXP){
-		this->EXP = EXP;
-	}
+	void setEXP(int EXP) 
+        { 
+            if (EXP < 0) 
+            { 
+                std::invalid_argument ia("Invalid argument. EXP cannot be negative."); 
+                throw ia;
+            } 
+            this->EXP = EXP;
+        }
 
 	void setMaxEXP(int maxEXP){
 		this->maxEXP = maxEXP;
