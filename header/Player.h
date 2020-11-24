@@ -55,6 +55,7 @@ class Player : public Entity{
 			//each time a multiple of maxEXP is met = level up by 1
 			while(this->EXP >= maxEXP){
 				additionalEXP = this->EXP - maxEXP;
+				this->EXP = additionalEXP;
 				numLevels++;
 			}
 			this->setEXP(additionalEXP); 
