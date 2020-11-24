@@ -6,7 +6,7 @@
 class Weapon : public Item{
 	public:
 		Weapon() : Item(){}
-		Armor(std::string name) : Item(name){} 
+		Weapon(std::string name) : Item(name){} 
 };
 
 #endif //__WEAPON_H__

@@ -43,9 +43,9 @@ class Player : public Entity{
 		this->EXP = EXP;
 	}
 
-	void setMaxEXP(int EXP){
+	void setMaxEXP(int maxEXP){
 		this->maxEXP = maxEXP;
-	}
+	} 
 
 	//in battle or after battle, if(this->EXP >= maxEXP){ player->levelUp(); }
 	void levelUp(){

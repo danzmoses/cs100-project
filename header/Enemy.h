@@ -19,6 +19,7 @@ class Enemy : public Entity{
 		void setDescription(std::string description){
 			this->description = description;
 		}
+
 };
 
 #endif //__ENEMY_H__

@@ -5,11 +5,12 @@
 
 class Entity{
 	private:
-		int HP;
-		int maxHP;
+		int HP; 
+		int maxHP; 
+		std::string name;
+	protected:
 		int ATK;
 		int DEF;
-		std::string name;
 	public:
 		Entity() : HP(10), maxHP(10), ATK(1), DEF(1){}
 		
@@ -17,9 +18,9 @@ class Entity{
 
 		//getters and setters
 		int getHP(){
-			return this->HP;
-		}
-		
+                        return this->HP;
+                }
+
 		int getMaxHP(){
 			return this->maxHP;
 		}
@@ -44,7 +45,6 @@ class Entity{
 			this->maxHP = maxHP;
 		}
 
-
 		void setATK(int ATK){
 			this->ATK = ATK;
 		}
@@ -60,6 +60,7 @@ class Entity{
 		void restoreHP(){
 			this->HP = maxHP;
 		}
+
 
 };
 
