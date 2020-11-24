@@ -126,4 +126,30 @@ TEST(EnemyTests, GoblinTest){
 	EXPECT_EQ(e->getDescription(), "New Goblin Description");	
 }
 
+TEST(EnemyTests, GreenSlimeTest){
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *e = ef->createEnemy("Green Slime");
+
+	EXPECT_EQ(e->getName(), "Green Slime");
+	EXPECT_EQ(e->getHP(), 2);
+	EXPECT_EQ(e->getMaxHP(), 2);
+	EXPECT_EQ(e->getATK(), 1);
+	EXPECT_EQ(e->getDEF(), 1);
+	EXPECT_EQ(e->getDescription(), "A bouncing blob of goo. It looks harmless.");
+
+	e->setName("New Green Slime");
+	e->setHP(5);
+	e->setMaxHP(10);
+	e->setATK(2);
+	e->setDEF(2);
+	e->setDescription("New Green Slime Description");
+
+	EXPECT_EQ(e->getName(), "New Green Slime");
+	EXPECT_EQ(e->getHP(), 5);
+	EXPECT_EQ(e->getMaxHP(), 10);
+	EXPECT_EQ(e->getATK(), 2);
+	EXPECT_EQ(e->getDEF(), 2);
+	EXPECT_EQ(e->getDescription(), "New Green Slime Description");
+}
+
 #endif //__ENTITY_TEST_H__
