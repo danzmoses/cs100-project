@@ -19,7 +19,8 @@
 ### Abstract Factory Class Diagram
  > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/AbstractFactory.png?raw=true)
  
- - The AbstractFactory design pattern allows us to create families of related objects (such as Entities and Items). This reveals the interface of the objects to the client, but not their implementation. This design pattern helps us organize the class structure.
+ - The AbstractFactory design pattern allows us to create families of related objects (in this case we have Items). This reveals the interface of the objects to the client, but not their implementation. The Concrete Factories (WeaponFactory and ArmorFactory) have a similar interface, but the client only uses the ItemFactory to create the Concrete Products. This design pattern works together with the Prototype design pattern to create a variety of different items.
+ - In this design pattern, ItemFactory is the AbstractFactory. The Concrete Factories are WeaponFactory and ArmorFactory. The Abstract Products are Weapon and Armor. The ConcreteProducts are WeaponPrototype and ArmorPrototype.
 
 ### Strategy Class Diagram
  > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Strategy.png?raw=true) 
