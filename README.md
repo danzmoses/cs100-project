@@ -30,6 +30,7 @@
 > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Prototype.png?raw=true)
 
 - The Prototype design pattern allows us to create different types of enemies such as Goblins or Slimes, etc. There will be preset classes in the "Prototypes" folder that we will use to instantiate these different types of enemies. The BossPrototype will also go under EnemyPrototype.
+- In this design pattern, EnemyPrototype is the Prototype. GreenSlimePrototype, RedSlimePrototype, and GoblinPrototype are the Concrete Prototypes. The Client in this case is the EnemyFactory, which calls clone on a prototype to return a copy of that prototype.
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
