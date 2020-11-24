@@ -6,22 +6,17 @@
 class Player : public Entity{
 	private:
 		int gold;
-		int level;
 		int EXP;
 		int maxEXP;
 	public:
-	Player() : Entity(), gold(50), level(1), EXP(0){}
+    Player() : Entity(), gold(50), EXP(0){}
 
-	Player(std::string name) : Entity(name), gold(50), level(1), EXP(0){}
+    Player(std::string name) : Entity(name), gold(50), EXP(0){}
 
 	//getters and setters
 	int getGold(){
 		return this->gold;
-	}
-
-	int getLevel(){
-		return this->level;
-	}
+    }
 
 	int getEXP(){
 		return this->EXP;
@@ -33,10 +28,6 @@ class Player : public Entity{
 
 	void setGold(int gold){
 		this->gold = gold;
-	}
-
-	void setLevel(int level){
-		this->level = level;
 	}
 
 	void setEXP(int EXP){
@@ -59,7 +50,7 @@ class Player : public Entity{
 				numLevels++;
 			}
 			this->setEXP(additionalEXP); 
-			this->level += numLevels;
+            this->setLevel(this->getLevel() + numLevels);
 			this->setATK(this->getATK() + 1);
 			this->setDEF(this->getDEF() + 1);
 			this->setMaxHP(this->getMaxHP()+5); 
