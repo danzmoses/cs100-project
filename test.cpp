@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 
-#include "entity_tests.hpp"
 #include "header/Entity_test.h"
 #include "header/Item_test.h"
 
