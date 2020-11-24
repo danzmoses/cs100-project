@@ -2,6 +2,7 @@
 #define __PLAYER_H__
 
 #include "Entity.h"
+#include <stdexcept>
 
 class Player : public Entity{
 	private:
