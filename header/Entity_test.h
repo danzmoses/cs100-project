@@ -205,4 +205,30 @@ TEST(EnemyTests, SkeletonTest){
 	EXPECT_EQ(e->getDescription(), "New Skeleton Description");
 }
 
+TEST(EnemyTests, ZombieTest){
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *e = ef->createEnemy("Zombie");
+
+	EXPECT_EQ(e->getName(), "Zombie");
+	EXPECT_EQ(e->getHP(), 5);
+	EXPECT_EQ(e->getMaxHP(), 5);
+	EXPECT_EQ(e->getATK(), 3);
+	EXPECT_EQ(e->getDEF(), 2);
+	EXPECT_EQ(e->getDescription(), "brains...");
+
+	e->setName("New Zombie");
+	e->setHP(10);
+	e->setMaxHP(10);
+	e->setATK(6);
+	e->setDEF(4);
+	e->setDescription("New Zombie Description");
+
+	EXPECT_EQ(e->getName(), "New Zombie");
+	EXPECT_EQ(e->getHP(), 10);
+	EXPECT_EQ(e->getMaxHP(), 10);
+	EXPECT_EQ(e->getATK(), 6);
+	EXPECT_EQ(e->getDEF(), 4);
+	EXPECT_EQ(e->getDescription(), "New Zombie Description");
+}
+
 #endif //__ENTITY_TEST_H__
