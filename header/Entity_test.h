@@ -97,7 +97,24 @@ TEST(PlayerTests, nameConstructorTest){
 	EXPECT_EQ(p->getHP(), 15);
 } 
 
-//add test for player->levelUp();
+TEST(PlayerTests, levelUPTest){
+	Player *p = new Player("Linda");
+	p->setLevel(1);
+	p->setATK(1);
+	p->setDEF(1);
+	p->setMaxEXP(5);
+	p->setEXP(14);
+
+	EXPECT_EQ(p->getMaxEXP(), 5);
+	EXPECT_EQ(p->getEXP(), 14);
+
+	p->levelUp();
+	
+	EXPECT_EQ(p->getLevel(), 3);
+	EXPECT_EQ(p->getEXP(), 4);
+	EXPECT_EQ(p->getATK(), 2);
+	EXPECT_EQ(p->getDEF(), 2);	
+}
 
 //add tests for enemies
 TEST(EnemyTests, GoblinTest){
