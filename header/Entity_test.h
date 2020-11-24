@@ -104,12 +104,14 @@ TEST(PlayerTests, levelUPTest){
 	p->setDEF(1);
 	p->setMaxEXP(5);
 	p->setEXP(14);
+	p->setMaxHP(5);
 
 	EXPECT_EQ(p->getLevel(), 1);
 	EXPECT_EQ(p->getATK(), 1);
 	EXPECT_EQ(p->getDEF(), 1);
 	EXPECT_EQ(p->getMaxEXP(), 5);
 	EXPECT_EQ(p->getEXP(), 14);
+	EXPECT_EQ(p->getMaxHP(), 5);	
 
 	p->levelUp();
 	
@@ -117,7 +119,8 @@ TEST(PlayerTests, levelUPTest){
 	EXPECT_EQ(p->getEXP(), 4);
 	EXPECT_EQ(p->getMaxEXP(), 5);
 	EXPECT_EQ(p->getATK(), 2);
-	EXPECT_EQ(p->getDEF(), 2);	
+	EXPECT_EQ(p->getDEF(), 2);
+	EXPECT_EQ(p->getMaxHP(), 10);	
 }
 
 //add tests for enemies

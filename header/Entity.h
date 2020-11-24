@@ -6,11 +6,11 @@
 class Entity{
 	private:
 		int HP; 
-		int maxHP; 
 		std::string name;
 	protected:
-		int ATK;
+		int ATK; //ATK, DEF, maxHP used in Player's levelUp()
 		int DEF;
+		int maxHP; 
 	public:
 		Entity() : HP(10), maxHP(10), ATK(1), DEF(1){}
 		
