@@ -62,7 +62,7 @@ class Player : public Entity{
 			this->level += numLevels;
 			this->ATK += 1;
 			this->DEF += 1;
-			//this->setMaxHP(this->maxHP+5); 
+			this->setMaxHP(this->maxHP+5); 
 	}		
 			
 };
