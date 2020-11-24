@@ -178,4 +178,31 @@ TEST(EnemyTests, RedSlimeTest){
 	EXPECT_EQ(e->getDescription(), "New Red Slime Description");
 }
 
+TEST(EnemyTests, SkeletonTest){
+	//exception thrown in EnemyPrototype.h also works (took out skeleton prototype from enemyPrototypes vector)
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *e = ef->createEnemy("Skeleton");
+
+	EXPECT_EQ(e->getName(), "Skeleton");
+	EXPECT_EQ(e->getHP(), 5);
+	EXPECT_EQ(e->getMaxHP(), 5);
+	EXPECT_EQ(e->getATK(), 2);
+	EXPECT_EQ(e->getDEF(), 2);
+	EXPECT_EQ(e->getDescription(), "An undead humanoid made up of bones.");
+
+	e->setName("New Skeleton");
+	e->setHP(10);
+	e->setMaxHP(10);
+	e->setATK(4);
+	e->setDEF(4);
+	e->setDescription("New Skeleton Description");
+
+	EXPECT_EQ(e->getName(), "New Skeleton");
+	EXPECT_EQ(e->getHP(), 10);
+	EXPECT_EQ(e->getMaxHP(), 10);
+	EXPECT_EQ(e->getATK(), 4);
+	EXPECT_EQ(e->getDEF(), 4);
+	EXPECT_EQ(e->getDescription(), "New Skeleton Description");
+}
+
 #endif //__ENTITY_TEST_H__
