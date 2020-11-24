@@ -105,6 +105,9 @@ TEST(PlayerTests, levelUPTest){
 	p->setMaxEXP(5);
 	p->setEXP(14);
 
+	EXPECT_EQ(p->getLevel(), 1);
+	EXPECT_EQ(p->getATK(), 1);
+	EXPECT_EQ(p->getDEF(), 1);
 	EXPECT_EQ(p->getMaxEXP(), 5);
 	EXPECT_EQ(p->getEXP(), 14);
 
@@ -112,6 +115,7 @@ TEST(PlayerTests, levelUPTest){
 	
 	EXPECT_EQ(p->getLevel(), 3);
 	EXPECT_EQ(p->getEXP(), 4);
+	EXPECT_EQ(p->getMaxEXP(), 5);
 	EXPECT_EQ(p->getATK(), 2);
 	EXPECT_EQ(p->getDEF(), 2);	
 }
