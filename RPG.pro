@@ -38,7 +38,18 @@ HEADERS  += mainwindow.h \
     header/Item.h \
     header/ItemFactory.h \
     header/Player.h \
-    header/Weapon.h
+    header/Weapon.h \
+    header/prototypes/armor/IronArmorPrototype.h \
+    header/prototypes/armor/LeatherArmorPrototype.h \
+    header/prototypes/weapons/StoneSwordPrototype.h \
+    header/prototypes/weapons/SwordPrototype.h \
+    header/prototypes/weapons/WoodenSwordPrototype.h \
+    header/ArmorFactory.h \
+    header/Entity_test.h \
+    header/Item_test.h \
+    header/PlayerFactory.h \
+    header/WeaponFactory.h \
+    entity_tests.hpp
 
 FORMS    += mainwindow.ui
 
@@ -47,4 +58,6 @@ DISTFILES += \
     images/Prototype.png \
     images/Strategy.png \
     .gitmodules \
-    README.md
+    README.md \
+    .gitignore \
+    CMakeLists.txt
