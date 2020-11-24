@@ -7,8 +7,6 @@ ADD_SUBDIRECTORY(googletest)
 
 ADD_EXECUTABLE(test
     test.cpp
-    Entity_test.h
-    Item_test.h
 )
 
 ADD_EXECUTABLE(main
