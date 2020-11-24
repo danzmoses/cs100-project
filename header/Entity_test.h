@@ -97,7 +97,7 @@ TEST(PlayerTests, nameConstructorTest){
 	EXPECT_EQ(p->getHP(), 15);
 } 
 
-TEST(PlayerTests, levelUPTest){
+TEST(PlayerTests, levelUpTest){
 	Player *p = new Player("Linda");
 	p->setLevel(1);
 	p->setATK(1);
