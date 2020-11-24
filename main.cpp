@@ -1,24 +1,11 @@
-#include <iostream>
-#include "header/PlayerFactory.h"
-#include "header/EnemyFactory.h"
+#include "mainwindow.h"
+#include <QApplication>
 
-using namespace std;
-
-int main()
+int main(int argc, char *argv[])
 {
-    EntityFactory* pf = new PlayerFactory();
-    Entity* player = pf->createEntity("Linda");
+    QApplication a(argc, argv);
+    MainWindow w;
+    w.show();
 
-    cout << "Player Name: " << player->getName() << endl;
-    cout << "Player Health: " << player->getHealth() << endl << endl;
-
-    player->setName("Royce");
-    player->setHealth(99);
-
-    cout << "Player Name: " << player->getName() << endl;
-    cout << "Player Health: " << player->getHealth() << endl << endl;
-
-    cout << "Player Gold: " << player->getGold() << endl;
-    player->setGold(5000);
-    cout << "Player Gold: " << player->getGold() << endl;
+    return a.exec();
 }
