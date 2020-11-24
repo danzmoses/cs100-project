@@ -1,21 +1,25 @@
-#ifndef __ENEMY__
-#define __ENEMY__
+#ifndef __ENEMY_H__
+#define __ENEMY_H__
 
-#include <string>
 #include "Entity.h"
 
-class Enemy : public Entity
-{
-    private:
-        std::string description;
-        
-    public:
-        Enemy() : Entity(), description("rawr") {}
-        Enemy(std::string name) : Entity(name), description("rawr") {}
+class Enemy : public Entity{
+	private:
+		std::string description;
+	public:
+		Enemy() : Entity(), description("this is an enemy"){}
+		
+		Enemy(std::string name) : Entity(name), description("this is an enemy"){}
 
-        std::string getDescription() { return description; }
+		//getters and setters
+		std::string getDescription(){
+			return description;
+		}
 
-        void setDescription(std::string description) { this->description = description; }
+		void setDescription(std::string description){
+			this->description = description;
+		}
+
 };
 
-#endif // __ENEMY__
+#endif //__ENEMY_H__

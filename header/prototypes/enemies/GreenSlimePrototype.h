@@ -14,3 +14,4 @@ class GreenSlimePrototype : public SlimePrototype
 };
 
 #endif //__GREEN_SLIME_PROTOTYPE__
+

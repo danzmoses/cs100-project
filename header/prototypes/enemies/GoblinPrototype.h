@@ -1,5 +1,5 @@
-#ifndef __GOBLIN_PROTOTYPE__
-#define __GOBLIN_PROTOTYPE__
+#ifndef __GOBLIN_PROTOTYPE_H__
+#define __GOBLIN_PROTOTYPE_H__
 
 #include "EnemyPrototype.h"
 
@@ -13,4 +13,4 @@ class GoblinPrototype : public EnemyPrototype
         virtual EnemyPrototype* Clone() { return this; }
 };
 
-#endif // __GOBLIN_PROTOTYPE__
+#endif // __GOBLIN_PROTOTYPE_H__
