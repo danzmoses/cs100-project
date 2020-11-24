@@ -7,7 +7,7 @@ class GreenSlimePrototype : public SlimePrototype
 {
     public:
         GreenSlimePrototype() : SlimePrototype() { setName("Green Slime"); setHP(getHP() + 0); setMaxHP(getHP() + 0); 
-		setDescription(getDescription() + "It looks harmless."); 
+            setDescription(getDescription() + "It looks harmless."); 
         }
         GreenSlimePrototype(std::string name) : SlimePrototype(name) {}
         virtual EnemyPrototype* Clone() { return this; }

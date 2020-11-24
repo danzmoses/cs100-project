@@ -2,7 +2,8 @@
 #define __ITEM_FACTORY_H__
 #include "Item.h"
 
-class ItemFactory{
+class ItemFactory
+{
 	public:
 		ItemFactory() {};
 		virtual Item* createItem(std::string name) = 0;

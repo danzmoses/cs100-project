@@ -12,4 +12,3 @@ class ArmorPrototype : public Armor
 };
 
 #endif // __ARMOR_PROTOTYPE__
-

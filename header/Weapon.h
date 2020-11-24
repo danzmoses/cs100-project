@@ -3,10 +3,11 @@
 
 #include "Item.h"
 
-class Weapon : public Item{
+class Weapon : public Item
+{
 	public:
-		Weapon() : Item(){}
-		Weapon(std::string name) : Item(name){} 
+        Weapon() : Item() {}
+        Weapon(std::string name) : Item(name) {}
 };
 
 #endif //__WEAPON_H__
