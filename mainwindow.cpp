@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(switchToBattleMenu()));
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
     connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
+    connect(ui->returnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
 }
 
 MainWindow::~MainWindow()
@@ -83,12 +84,18 @@ void MainWindow::initializePlayer()
 
 void MainWindow::enterArea()
 {
-    area_enemies.push_back(ef.createEnemy("Green Slime"));
+    if (count == 0)
+        area_enemies.push_back(ef.createEnemy("Green Slime"));
+    else
+        area_enemies.push_back(ef.createEnemy("Goblin"));
     initializeBattleWithEnemy();
 }
 
 void MainWindow::initializeBattleWithEnemy()
 {
+    ui->rollButton->setEnabled(true);
+    ui->returnToMainMenuButton->setEnabled(false);
+    ui->battle_menu_battle_result->clear();
     if (battle != nullptr)
         delete battle;
     current_enemy = area_enemies[area_enemies.size() - 1];
@@ -121,11 +128,16 @@ void MainWindow::nextTurn()
 
     ui->battle_menu_roll_difference->setText("Roll difference: " + rollDifference);
 
-    if (player->getHP() <= 0)
-        ui->battle_menu_battle_result->setText(enemyName + " has won!");
-    else if (current_enemy->getHP() <= 0)
-        ui->battle_menu_battle_result->setText(playerName + " has won!");
-
+    if (player->getHP() <= 0 || current_enemy->getHP() <= 0)
+    {
+        if (player->getHP() <= 0)
+            ui->battle_menu_battle_result->setText(enemyName + " has won!");
+        else if (current_enemy->getHP() <= 0)
+            ui->battle_menu_battle_result->setText(playerName + " has won!");
+        ++count;
+        ui->rollButton->setEnabled(false);
+        ui->returnToMainMenuButton->setEnabled(true);
+    }
     update_battle_menu_player_stats();
     update_battle_menu_enemy_stats();
 }

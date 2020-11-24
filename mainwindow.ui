@@ -2530,6 +2530,27 @@
          </item>
         </layout>
        </widget>
+       <widget class="QPushButton" name="returnToMainMenuButton">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="geometry">
+         <rect>
+          <x>720</x>
+          <y>690</y>
+          <width>281</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>20</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Return To Main Menu</string>
+        </property>
+       </widget>
       </widget>
      </widget>
     </item>

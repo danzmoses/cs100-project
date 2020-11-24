@@ -31,6 +31,8 @@ private:
     EnemyFactory ef;
     std::vector<Enemy*> area_enemies;
 
+    int count = 0;
+
     void update_main_menu_player_stats();
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
