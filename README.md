@@ -24,7 +24,8 @@
 ### Strategy Class Diagram
  > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Strategy.png?raw=true) 
  
- - The Strategy design pattern helps us define a family of algorithms (the AttackStrategy). The algorithm changes depending on who is attacking (Player or Enemy). This allows us to change the behavior of the algorithm without using many conditional statements and avoid duplicating similar code.
+ - The Strategy design pattern helps us define a family of algorithms (the AttackStrategy). The algorithm changes depending on the type of attack being used by the attacker. This allows us to change the behavior of the algorithm without using many conditional statements and avoid duplicating similar code.
+ - In this design pattern, AttackStrategy is the Strategy. LightAttackStrategy, NormalAttackStrategy, and HeavyAttackStrategy are the ConcreteStrategy classes. The Context in this case is the Battle class, which chooses the type of AttackStrategy to use. When the Battle object does the nextTurn() function, it will call the attack() function and the Strategy pattern will decide which attack strategy to use.
 
 ### Prototype Class Diagram
 > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Prototype.png?raw=true)
