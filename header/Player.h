@@ -57,10 +57,10 @@ class Player : public Entity{
 				numLevels++;
 			}
 			this->setEXP(additionalEXP); 
-            this->setLevel(this->getLevel() + numLevels);
-			this->setATK(this->getATK() + 1);
-			this->setDEF(this->getDEF() + 1);
-			this->setMaxHP(this->getMaxHP()+5); 
+            		this->setLevel(this->getLevel() + numLevels);
+			this->ATK += 1;
+			this->DEF += 1;
+			this->maxHP += 5; 
 			//every time player levels up (no matter how many levels) maxHP increases only once
 			//we can always remove the part where maxHP increases if it becomes a problem/too advantageous in battle
 	}		

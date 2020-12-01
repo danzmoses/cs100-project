@@ -6,7 +6,12 @@
 class ZombiePrototype : public EnemyPrototype 
 {
     public:
-        ZombiePrototype() : EnemyPrototype() { setName("Zombie"); setHP(5); setMaxHP(5); setATK(3); setDEF(2);
+        ZombiePrototype() : EnemyPrototype() { 
+	    setName("Zombie");
+	    HP = 5; 
+	    maxHP = 5;
+	    ATK = 3; 
+	    DEF = 2;
             setDescription("brains...");
         }
         ZombiePrototype(std::string name) : EnemyPrototype(name) {}

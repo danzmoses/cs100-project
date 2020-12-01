@@ -6,7 +6,10 @@
 class GreenSlimePrototype : public SlimePrototype 
 {
     public:
-        GreenSlimePrototype() : SlimePrototype() { setName("Green Slime"); setHP(getHP() + 0); setMaxHP(getHP() + 0); 
+        GreenSlimePrototype() : SlimePrototype() { 
+	    setName("Green Slime"); 
+            HP += 0;
+	    maxHP = HP + 0;
             setDescription(getDescription() + "It looks harmless."); 
         }
         GreenSlimePrototype(std::string name) : SlimePrototype(name) {}
