@@ -10,7 +10,7 @@ class ZombiePrototype : public EnemyPrototype
             setDescription("brains...");
         }
         ZombiePrototype(std::string name) : EnemyPrototype(name) {}
-        virtual EnemyPrototype* Clone() { return this; }
+        virtual EnemyPrototype* Clone() { return new ZombiePrototype(); }
 };
 
 #endif // __ZOMBIE_PROTOTYPE__

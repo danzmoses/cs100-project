@@ -10,7 +10,7 @@ class RedSlimePrototype : public SlimePrototype
             setDescription(getDescription() + "It looks aggressive."); 
         }
         RedSlimePrototype(std::string name) : SlimePrototype(name) {}
-        virtual EnemyPrototype* Clone() { return this; }
+        virtual EnemyPrototype* Clone() { return new RedSlimePrototype(); }
 };
 
 #endif //__RED_SLIME_PROTOTYPE__

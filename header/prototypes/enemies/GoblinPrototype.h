@@ -10,7 +10,7 @@ class GoblinPrototype : public EnemyPrototype
             setDescription("Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items."); 
         }
         GoblinPrototype(std::string name) : EnemyPrototype(name) {}
-        virtual EnemyPrototype* Clone() { return this; }
+        virtual EnemyPrototype* Clone() { return new GoblinPrototype(); }
 };
 
 #endif // __GOBLIN_PROTOTYPE_H__
