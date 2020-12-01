@@ -10,17 +10,13 @@ using namespace std;
 
 int main()
 {
-    cout << "1" << endl;
     ItemFactory* af = new ArmorFactory();
     Item* armor = af->createItem("Iron Armor");
 
     cout << "Armor Name: " << armor->getName() << endl;
     cout << "Armor Cost: " << armor->getCost() << endl;
-    cout << "2" << endl;
     cout << "Armor ATK: " << armor->combatStats->ATK << endl;
     cout << "Armor DEF: " << armor->combatStats->DEF << endl << endl;
-    
-    cout << "3" << endl;
 
     armor->setName("Super cool Iron Armor");
     armor->setCost(9999);
