@@ -81,7 +81,7 @@ int main()
     cout << "Player HP: " << player->getHP() << endl << endl;
 
     EnemyFactory* ef = new EnemyFactory(); // instantiate all enemy prototypes at once
-    Enemy* enemy = ef->createEnemy("Zombie");
+    Enemy* enemy = ef->createEnemy("Green Slime");
 
     cout << "Enemy Name: " << enemy->getName() << endl;
     cout << "Enemy HP: " << enemy->getHP() << endl;
@@ -104,5 +104,22 @@ int main()
     cout << "Enemy ATK: " << enemy->getATK() << endl;
     cout << "Enemy DEF: " << enemy->getDEF() << endl << endl;
 
+    Enemy* enemy2 = ef->createEnemy("Green Slime");
+
+    cout << "Enemy2 Name: " << enemy2->getName() << endl;
+    cout << "Enemy2 HP: " << enemy2->getHP() << endl;
+    cout << "Enemy2 maxHP: " << enemy2->getMaxHP() << endl;
+    cout << "Enemy2 description: " << enemy2->getDescription() << endl;
+    cout << "Enemy2 ATK: " << enemy2->getATK() << endl;
+    cout << "Enemy2 DEF: " << enemy2->getDEF() << endl << endl;
+
+    enemy = ef->createEnemy("Zombie"); // we lost the pointer to Mega Goblin
+    
+    cout << "Enemy Name: " << enemy->getName() << endl;
+    cout << "Enemy HP: " << enemy->getHP() << endl;
+    cout << "Enemy maxHP: " << enemy->getMaxHP() << endl;
+    cout << "Enemy description: " << enemy->getDescription() << endl;
+    cout << "Enemy ATK: " << enemy->getATK() << endl;
+    cout << "Enemy DEF: " << enemy->getDEF() << endl << endl;
     
 }
