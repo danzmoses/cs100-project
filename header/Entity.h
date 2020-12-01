@@ -5,28 +5,38 @@
 #include <string>
 #include "Stats.h"
 
-class Entity : public Stats {
+class Entity {
     private:
         std::string name;
         int level;
 
     public:
-        Entity() : Stats(){
+	Stats *baseStats = new Stats();
+	Stats *combatStats = new Stats();
+        Entity(){
 		this->name = "Entity";
 		this->level = 1;
-		this->HP = 10;
-		this->maxHP = 10;
-		this->ATK = 1;
-		this->DEF = 1;
+		baseStats->HP = 10;
+		baseStats->maxHP = 10;
+		baseStats->ATK = 1;
+		baseStats->DEF = 1;
+		combatStats->HP = 10;
+		combatStats->maxHP = 10;
+		combatStats->ATK = 1;
+		combatStats->DEF = 1;
 	}
 
-        Entity(std::string name) : Stats(){
+        Entity(std::string name){
 		this->name= name; 
 		this->level = 1; 
-		this->HP = 10; 
-		this->maxHP = 10;
-		this->ATK = 1; 
-		this->DEF = 1;
+		baseStats->HP = 10; 
+		baseStats->maxHP = 10;
+		baseStats->ATK = 1; 
+		baseStats->DEF = 1;
+		combatStats->HP = 1;
+		combatStats->maxHP = 10;
+		combatStats->ATK = 1;
+		combatStats->DEF = 1;
 	}
         
         std::string getName() { return this->name; }
@@ -34,7 +44,7 @@ class Entity : public Stats {
 
         void setName(std::string name) { this->name = name; }
         void setLevel(int level){ this->level = level; }
-        void restoreHP() { this->HP = this->maxHP; }
+        void restoreHP() { combatStats->HP = combatStats->maxHP; }
 };
 
 #endif // __ENTITY__

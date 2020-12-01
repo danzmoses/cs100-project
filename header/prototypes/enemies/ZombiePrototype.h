@@ -8,10 +8,14 @@ class ZombiePrototype : public EnemyPrototype
     public:
         ZombiePrototype() : EnemyPrototype() { 
 	    setName("Zombie");
-	    HP = 5; 
-	    maxHP = 5;
-	    ATK = 3; 
-	    DEF = 2;
+	    baseStats->HP = 5; 
+	    baseStats->maxHP = 5;
+	    baseStats->ATK = 3; 
+	    baseStats->DEF = 2;
+	    combatStats-> HP = 5;
+	    combatStats->maxHP = 5;
+	    combatStats->ATK = 3;
+	    combatStats->DEF = 2;
             setDescription("brains...");
         }
         ZombiePrototype(std::string name) : EnemyPrototype(name) {}

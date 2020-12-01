@@ -8,8 +8,10 @@ class RedSlimePrototype : public SlimePrototype
     public:
         RedSlimePrototype() : SlimePrototype() { 
 	    setName("Red Slime"); 
-	    HP += 1;
-	    maxHP = HP + 1;
+	    baseStats->HP += 1;
+	    baseStats->maxHP = baseStats->HP + 1;
+	    combatStats->HP += 1;
+	    combatStats->maxHP = combatStats->HP + 1;
             setDescription(getDescription() + "It looks aggressive."); 
         }
         RedSlimePrototype(std::string name) : SlimePrototype(name) {}
