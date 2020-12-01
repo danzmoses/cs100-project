@@ -13,14 +13,12 @@ class Item{
 		Stats *baseStats = new Stats();
 		Stats *combatStats = new Stats();
         	Item(){
-			std::cout << "Item constructor" << std::endl;
 			this->name = "Item";
 			this->cost = 0; 
 			baseStats->ATK = 0; 
 			baseStats->DEF = 0;
 			combatStats->ATK = 0;
 			combatStats->DEF = 0;
-			std::cout << "End of Item Constructor" << std::endl;
 		}
 
         	Item(std::string name){
