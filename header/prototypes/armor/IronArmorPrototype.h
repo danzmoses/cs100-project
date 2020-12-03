@@ -9,12 +9,12 @@ class IronArmorPrototype : public ArmorPrototype
         IronArmorPrototype() : ArmorPrototype() { 
             this->setName("Iron Armor"); 
             this->setCost(450);
-            baseStats->ATK = 2;
-            baseStats->DEF = 0;
+            baseStats->ATK = 0;
+            baseStats->DEF = 2;
             baseStats->HP = 0;
             baseStats->maxHP = 0;
-            combatStats->ATK = 2;
-            combatStats->DEF = 0;
+            combatStats->ATK = 0;
+            combatStats->DEF = 2;
             combatStats->HP = 0;
             combatStats->maxHP = 0;
         }
