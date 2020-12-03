@@ -19,7 +19,7 @@ class LeatherArmorPrototype : public ArmorPrototype
             combatStats->maxHP = 0;
         }
         LeatherArmorPrototype(std::string name) : ArmorPrototype(name) {}
-        virtual ArmorPrototype* Clone() { return this; }
+        virtual ArmorPrototype* Clone() { return new LeatherArmorPrototype(); }
 };
 
 #endif // __LEATHERARMOR_PROTOTYPE__
