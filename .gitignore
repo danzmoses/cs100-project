@@ -1,7 +1,11 @@
 test
+.gitignore
 CMakeCache.txt
 CMakeFiles
 Makefile
 cmake_install.cmake
 lib
 a.out
+.vscode/
+CS100_final_project.code-workspace
+build/

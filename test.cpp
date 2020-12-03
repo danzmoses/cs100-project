@@ -2,6 +2,7 @@
 
 #include "header/Entity_test.h"
 #include "header/Item_test.h"
+#include "header/prototypes/prototype_tests.h"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
