@@ -7,7 +7,9 @@ class GoblinPrototype : public EnemyPrototype
 {
     public:
         GoblinPrototype() : EnemyPrototype() { 
-	    setName("Goblin"); 
+	    setName("Goblin");
+		setLevel(1);
+		setDescription("Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items."); 
 	    baseStats->HP = 4;
 	    baseStats->maxHP = 4;
 	    baseStats->ATK = 3;
@@ -16,7 +18,6 @@ class GoblinPrototype : public EnemyPrototype
 	    combatStats->maxHP = 4;
 	    combatStats->ATK = 3;
 	    combatStats->DEF = 1;
-            setDescription("Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items."); 
         }
         GoblinPrototype(std::string name) : EnemyPrototype(name) {}
         virtual EnemyPrototype* Clone() { return new GoblinPrototype(); }
