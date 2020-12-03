@@ -2,6 +2,7 @@
 #define __PLAYER_H__
 
 #include "Entity.h"
+#include <stdexcept>
 
 class Player : public Entity{
 	private:
@@ -9,9 +10,9 @@ class Player : public Entity{
 		int EXP;
 		int maxEXP;
 	public:
-    Player() : Entity(), gold(50), EXP(0){}
+    Player() : Entity(), gold(50), EXP(0), maxEXP(5) {}
 
-    Player(std::string name) : Entity(name), gold(50), EXP(0){}
+    Player(std::string name) : Entity(name), gold(50), EXP(0), maxEXP(5){}
 
 	//getters and setters
 	int getGold(){
@@ -30,9 +31,15 @@ class Player : public Entity{
 		this->gold = gold;
 	}
 
-	void setEXP(int EXP){
-		this->EXP = EXP;
-	}
+	void setEXP(int EXP) 
+        { 
+            if (EXP < 0) 
+            { 
+                std::invalid_argument ia("Invalid argument. EXP cannot be negative."); 
+                throw ia;
+            } 
+            this->EXP = EXP;
+        }
 
 	void setMaxEXP(int maxEXP){
 		this->maxEXP = maxEXP;
@@ -50,10 +57,10 @@ class Player : public Entity{
 				numLevels++;
 			}
 			this->setEXP(additionalEXP); 
-            this->setLevel(this->getLevel() + numLevels);
-			this->setATK(this->getATK() + 1);
-			this->setDEF(this->getDEF() + 1);
-			this->setMaxHP(this->getMaxHP()+5); 
+            		this->setLevel(this->getLevel() + numLevels);
+			combatStats->ATK += 1;
+			combatStats->DEF += 1;
+			combatStats->maxHP += 5; 
 			//every time player levels up (no matter how many levels) maxHP increases only once
 			//we can always remove the part where maxHP increases if it becomes a problem/too advantageous in battle
 	}		

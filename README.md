@@ -19,17 +19,20 @@
 ### Abstract Factory Class Diagram
  > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/AbstractFactory.png?raw=true)
  
- - The AbstractFactory design pattern allows us to create families of related objects (such as Entities and Items). This reveals the interface of the objects to the client, but not their implementation. This design pattern helps us organize the class structure.
+ - The AbstractFactory design pattern allows us to create families of related objects (in this case we have Items). This reveals the interface of the objects to the client, but not their implementation. The Concrete Factories (WeaponFactory and ArmorFactory) have a similar interface, but the client only uses the ItemFactory to create the Concrete Products. This design pattern works together with the Prototype design pattern to create a variety of different items.
+ - In this design pattern, ItemFactory is the AbstractFactory. The Concrete Factories are WeaponFactory and ArmorFactory. The Abstract Products are Weapon and Armor. The ConcreteProducts are WeaponPrototype and ArmorPrototype.
 
 ### Strategy Class Diagram
  > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Strategy.png?raw=true) 
  
- - The Strategy design pattern helps us define a family of algorithms (the AttackStrategy). The algorithm changes depending on who is attacking (Player or Enemy). This allows us to change the behavior of the algorithm without using many conditional statements and avoid duplicating similar code.
+ - The Strategy design pattern helps us define a family of algorithms (the AttackStrategy). The algorithm changes depending on the type of attack being used by the attacker. This allows us to change the behavior of the algorithm without using many conditional statements and avoid duplicating similar code.
+ - In this design pattern, AttackStrategy is the Strategy. LightAttackStrategy, NormalAttackStrategy, and HeavyAttackStrategy are the ConcreteStrategy classes. The Context in this case is the Battle class, which chooses the type of AttackStrategy to use. When the Battle object does the nextTurn() function, it will call the attack() function and the Strategy pattern will decide which attack strategy to use.
 
 ### Prototype Class Diagram
 > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/Prototype.png?raw=true)
 
 - The Prototype design pattern allows us to create different types of enemies such as Goblins or Slimes, etc. There will be preset classes in the "Prototypes" folder that we will use to instantiate these different types of enemies. The BossPrototype will also go under EnemyPrototype.
+- In this design pattern, EnemyPrototype is the Prototype. GreenSlimePrototype, RedSlimePrototype, and GoblinPrototype are the Concrete Prototypes. The Client in this case is the EnemyFactory, which calls clone on a prototype to return a copy of that prototype.
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
@@ -50,5 +53,4 @@
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
- 
+ ![CI](https://github.com/cs100/final-project-dmose013-lly022-rmose005/workflows/CI/badge.svg)

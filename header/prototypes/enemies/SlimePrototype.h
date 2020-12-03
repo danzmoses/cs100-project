@@ -6,7 +6,15 @@
 class SlimePrototype : public EnemyPrototype 
 {
     public:
-        SlimePrototype() : EnemyPrototype() { setHP(2); setMaxHP(2); setATK(1); setDEF(1);
+        SlimePrototype() : EnemyPrototype() { 
+	    baseStats->HP = 2; 
+	    baseStats->maxHP = 2;
+	    baseStats->ATK = 1;
+	    baseStats->DEF = 1;
+	    combatStats->HP = 2;
+	    combatStats->maxHP = 2;
+	    combatStats->ATK = 1;
+	    combatStats->DEF = 1;
             setDescription("A bouncing blob of goo. "); 
         }
         SlimePrototype(std::string name) : EnemyPrototype(name) {}
