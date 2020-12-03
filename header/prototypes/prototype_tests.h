@@ -223,4 +223,32 @@ TEST(PrototypeTests, SkeletonPrototypeTest)
     
 }
 
+TEST(PrototypeTests, ZombiePrototypeTest)
+{
+    EnemyFactory* ef = new EnemyFactory();
+    Enemy* enemy = ef->createEnemy("Zombie");
+
+    EXPECT_EQ(enemy->baseStats->ATK, 3);
+    EXPECT_EQ(enemy->baseStats->DEF, 2);
+    EXPECT_EQ(enemy->baseStats->HP, 5);
+    EXPECT_EQ(enemy->baseStats->maxHP, 5);
+    EXPECT_EQ(enemy->combatStats->ATK, 3);
+    EXPECT_EQ(enemy->combatStats->DEF, 2);
+    EXPECT_EQ(enemy->combatStats->HP, 5);
+    EXPECT_EQ(enemy->combatStats->maxHP, 5);
+    
+    EXPECT_EQ(enemy->getName(), "Zombie");
+    EXPECT_EQ(enemy->getLevel(), 1);
+    EXPECT_EQ(enemy->getDescription(), "brains...");
+
+    enemy->setName("Mega Goblin");
+    enemy->setLevel(2);
+    enemy->setDescription("test desc.");
+
+    EXPECT_EQ(enemy->getName(), "Mega Goblin");
+    EXPECT_EQ(enemy->getLevel(), 2);
+    EXPECT_EQ(enemy->getDescription(), "test desc.");
+    
+}
+
 #endif // __PROTOTYPE_TESTS_H__
