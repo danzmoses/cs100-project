@@ -108,19 +108,19 @@ int main()
     Enemy* enemy2 = ef->createEnemy("Green Slime");
 
     cout << "Enemy2 Name: " << enemy2->getName() << endl;
-    cout << "Enemy2 HP: " << enemy2->getHP() << endl;
-    cout << "Enemy2 maxHP: " << enemy2->getMaxHP() << endl;
+    cout << "Enemy2 HP: " << enemy2->combatStats->HP << endl;
+    cout << "Enemy2 maxHP: " << enemy2->combatStats->maxHP << endl;
     cout << "Enemy2 description: " << enemy2->getDescription() << endl;
-    cout << "Enemy2 ATK: " << enemy2->getATK() << endl;
-    cout << "Enemy2 DEF: " << enemy2->getDEF() << endl << endl;
+    cout << "Enemy2 ATK: " << enemy2->combatStats->ATK << endl;
+    cout << "Enemy2 DEF: " << enemy2->combatStats->DEF << endl << endl;
 
     enemy = ef->createEnemy("Zombie"); // we lost the pointer to Mega Goblin
     
     cout << "Enemy Name: " << enemy->getName() << endl;
-    cout << "Enemy HP: " << enemy->getHP() << endl;
-    cout << "Enemy maxHP: " << enemy->getMaxHP() << endl;
+    cout << "Enemy HP: " << enemy->combatStats->HP << endl;
+    cout << "Enemy maxHP: " << enemy->combatStats->maxHP << endl;
     cout << "Enemy description: " << enemy->getDescription() << endl;
-    cout << "Enemy ATK: " << enemy->getATK() << endl;
-    cout << "Enemy DEF: " << enemy->getDEF() << endl << endl;
+    cout << "Enemy ATK: " << enemy->combatStats->ATK << endl;
+    cout << "Enemy DEF: " << enemy->combatStats->DEF << endl << endl;
     
 }
