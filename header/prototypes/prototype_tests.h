@@ -111,4 +111,32 @@ TEST(PrototypeTests, WoodenSwordPrototypeTest)
     
 }
 
+TEST(PrototypeTests, GoblinPrototypeTest)
+{
+    EnemyFactory* ef = new EnemyFactory();
+    Enemy* enemy = ef->createEnemy("Goblin");
+
+    EXPECT_EQ(enemy->baseStats->ATK, 3);
+    EXPECT_EQ(enemy->baseStats->DEF, 1);
+    EXPECT_EQ(enemy->baseStats->HP, 4);
+    EXPECT_EQ(enemy->baseStats->maxHP, 4);
+    EXPECT_EQ(enemy->combatStats->ATK, 3);
+    EXPECT_EQ(enemy->combatStats->DEF, 1);
+    EXPECT_EQ(enemy->combatStats->HP, 4);
+    EXPECT_EQ(enemy->combatStats->maxHP, 4);
+    
+    EXPECT_EQ(enemy->getName(), "Goblin");
+    EXPECT_EQ(enemy->getLevel(), 1);
+    EXPECT_EQ(enemy->getDescription(), "Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items.");
+
+    enemy->setName("Mega Goblin");
+    enemy->setLevel(2);
+    enemy->setDescription("test desc.");
+
+    EXPECT_EQ(enemy->getName(), "Mega Goblin");
+    EXPECT_EQ(enemy->getLevel(), 2);
+    EXPECT_EQ(enemy->getDescription(), "test desc.");
+    
+}
+
 #endif // __PROTOTYPE_TESTS_H__
