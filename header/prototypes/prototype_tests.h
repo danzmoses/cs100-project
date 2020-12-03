@@ -85,4 +85,30 @@ TEST(PrototypeTests, StoneSwordPrototypeTest)
     
 }
 
+TEST(PrototypeTests, WoodenSwordPrototypeTest)
+{
+    ItemFactory* wf = new WeaponFactory();
+    Item* weapon = wf->createItem("Wooden Sword");
+
+
+    EXPECT_EQ(weapon->baseStats->ATK, 1);
+    EXPECT_EQ(weapon->baseStats->DEF, 0);
+    EXPECT_EQ(weapon->baseStats->HP, 0);
+    EXPECT_EQ(weapon->baseStats->maxHP, 0);
+    EXPECT_EQ(weapon->combatStats->ATK, 1);
+    EXPECT_EQ(weapon->combatStats->DEF, 0);
+    EXPECT_EQ(weapon->combatStats->HP, 0);
+    EXPECT_EQ(weapon->combatStats->maxHP, 0);
+    
+    EXPECT_EQ(weapon->getCost(), 25);
+    EXPECT_EQ(weapon->getName(), "Wooden Sword");
+
+    weapon->setCost(9999);
+    weapon->setName("Super cool Wooden Sword");
+
+    EXPECT_EQ(weapon->getCost(), 9999);
+    EXPECT_EQ(weapon->getName(), "Super cool Wooden Sword");
+    
+}
+
 #endif // __PROTOTYPE_TESTS_H__
