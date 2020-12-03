@@ -8,7 +8,7 @@ class LeatherArmorPrototype : public ArmorPrototype
     public:
         LeatherArmorPrototype() : ArmorPrototype() { this->setName("Leather Armor"); this->setCost(50); }
         LeatherArmorPrototype(std::string name) : ArmorPrototype(name) {}
-        virtual ArmorPrototype* Clone() { return this; }
+        virtual ArmorPrototype* Clone() { return new LeatherArmorPrototype(); }
 };
 
 #endif // __LEATHERARMOR_PROTOTYPE__
