@@ -19,7 +19,7 @@ class IronArmorPrototype : public ArmorPrototype
             combatStats->maxHP = 0;
         }
         IronArmorPrototype(std::string name) : ArmorPrototype(name) {}
-        virtual ArmorPrototype* Clone() { return this; }
+        virtual ArmorPrototype* Clone() { return new IronArmorPrototype(); }
 };
 
 #endif // __IRONARMOR_PROTOTYPE__

@@ -19,7 +19,7 @@ class StoneSwordPrototype : public SwordPrototype
             combatStats->maxHP = 0;
         }
         StoneSwordPrototype(std::string name) : SwordPrototype(name) {}
-        virtual WeaponPrototype* Clone() { return this; }
+        virtual WeaponPrototype* Clone() { return new StoneSwordPrototype(); }
 };
 
 #endif // __STONESWORD_PROTOTYPE__

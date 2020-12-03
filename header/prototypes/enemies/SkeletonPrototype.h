@@ -19,7 +19,7 @@ class SkeletonPrototype : public EnemyPrototype
             setDescription("An undead humanoid made up of bones."); 
         }
         SkeletonPrototype(std::string name) : EnemyPrototype(name) {}
-        virtual EnemyPrototype* Clone() { return this; }
+        virtual EnemyPrototype* Clone() { return new SkeletonPrototype(); }
 };
 
 #endif // __SKELETON_PROTOTYPE__
