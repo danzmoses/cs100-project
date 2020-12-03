@@ -2,6 +2,7 @@
 #define __PROTOTYPE_TESTS_H__
 
 #include "gtest/gtest.h"
+#include <stdexcept>
 #include "../Player.h"
 #include "../EnemyFactory.h"
 #include "../ArmorFactory.h"
@@ -249,6 +250,21 @@ TEST(PrototypeTests, ZombiePrototypeTest)
     EXPECT_EQ(enemy->getLevel(), 2);
     EXPECT_EQ(enemy->getDescription(), "test desc.");
     
+}
+
+TEST(PrototypeTests, InvalidNameTest)
+{
+    EnemyFactory* ef = new EnemyFactory();
+    Enemy* enemy;
+
+    EXPECT_THROW(
+        try {
+            ef->createEnemy("zOmBie");
+        }
+        catch (std::invalid_argument& ia) {
+            EXPECT_STREQ("Invalid argument. Unable to find \"zOmBie\"", ia.what());
+            throw;
+        }, std::invalid_argument);
 }
 
 #endif // __PROTOTYPE_TESTS_H__
