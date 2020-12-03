@@ -10,9 +10,9 @@ class Player : public Entity{
 		int EXP;
 		int maxEXP;
 	public:
-    Player() : Entity(), gold(50), EXP(0){}
+    Player() : Entity(), gold(50), EXP(0), maxEXP(5) {}
 
-    Player(std::string name) : Entity(name), gold(50), EXP(0){}
+    Player(std::string name) : Entity(name), gold(50), EXP(0), maxEXP(5){}
 
 	//getters and setters
 	int getGold(){

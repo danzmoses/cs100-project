@@ -6,7 +6,7 @@ struct Stats{
   int DEF;
   int HP;
   int maxHP;
-  Stats(){}; 
+  Stats() {}
 };
 
 #endif //__STATS_H__

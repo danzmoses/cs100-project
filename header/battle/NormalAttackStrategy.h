@@ -7,12 +7,12 @@ class NormalAttackStrategy : public AttackStrategy
 {
     private:
     public:
-        NormalAttackStrategy() {};
+        NormalAttackStrategy() {}
         int attack(Entity* attacker, Entity* defender)
         {
             // normal attack: player ATK multiplier is 2 (base ATK * 2)
             // return 0 if damage done is less than or equal to 0
-            int damageDone = (attacker->getATK() * 2) - defender->getDEF();
+            int damageDone = (attacker->combatStats->ATK * 2) - defender->combatStats->DEF;
             return damageDone > 0 ? damageDone : 0;
         }
 };
