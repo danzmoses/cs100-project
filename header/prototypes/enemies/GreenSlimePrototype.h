@@ -11,9 +11,9 @@ class GreenSlimePrototype : public SlimePrototype
             setLevel(1);
             setDescription(getDescription() + "It looks harmless."); 
             baseStats->HP += 0;
-            baseStats->maxHP = baseStats->HP + 0;
+            baseStats->maxHP += + 0;
             combatStats->HP += 0;
-            combatStats->maxHP = combatStats->HP + 0;
+            combatStats->maxHP += 0;
         }
         GreenSlimePrototype(std::string name) : SlimePrototype(name) {}
         virtual EnemyPrototype* Clone() { return new GreenSlimePrototype(); }
