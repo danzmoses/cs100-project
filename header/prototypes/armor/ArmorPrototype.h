@@ -8,7 +8,7 @@ class ArmorPrototype : public Armor
     public:
         ArmorPrototype() : Armor() {}
         ArmorPrototype(std::string name) : Armor(name) {}
-        virtual ArmorPrototype* Clone() { return this; }
+        virtual ArmorPrototype* Clone() = 0;
 };
 
 #endif // __ARMOR_PROTOTYPE__

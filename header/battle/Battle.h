@@ -52,12 +52,12 @@ class Battle
 
     public:
         Battle();
-        Battle(Player* player, Enemy* enemy): player(player), enemy(enemy) {};
+        Battle(Player* player, Enemy* enemy): player(player), enemy(enemy) {}
         void nextTurn()
         {
             getRoll();
             damageDone = attackStrategy->attack(attacker, defender);
-            defender->setHP(defender->getHP() - damageDone);
+            defender->combatStats->HP -= damageDone;
         }
         int getPlayerRoll() { return playerRoll; }
         int getEnemyRoll() { return enemyRoll; }

@@ -3,35 +3,48 @@
 
 #include <iostream>
 #include <string>
+#include "Stats.h"
 
-class Entity 
-{
+class Entity {
     private:
         std::string name;
         int level;
-        int HP;
-        int maxHP;
-        int ATK;
-        int DEF;
 
     public:
-        Entity() : name("Entity"), level(1), HP(10), maxHP(10), ATK(1), DEF(1) {}
-        Entity(std::string name) : name(name), level(1), HP(10), maxHP(10), ATK(1), DEF(1) {}
-        
-        std::string getName() { return this->name; }
-        int getLevel() { return this->level; }
-        int getHP() { return this->HP; }
-        int getMaxHP() { return this->maxHP; }
-        int getATK() { return this->ATK; }
-        int getDEF() { return this->DEF; }
+	Stats *baseStats = new Stats();
+	Stats *combatStats = new Stats();
+    Entity(){
+        this->name = "Entity";
+        this->level = 1;
+        baseStats->HP = 10;
+        baseStats->maxHP = 10;
+        baseStats->ATK = 1;
+        baseStats->DEF = 1;
+        combatStats->HP = 10;
+        combatStats->maxHP = 10;
+        combatStats->ATK = 1;
+        combatStats->DEF = 1;
+	}
 
-        void setName(std::string name) { this->name = name; }
-        void setLevel(int level){ this->level = level; }
-        void setHP(int HP) { this->HP = HP; }
-        void setMaxHP(int maxHP) { this->maxHP = maxHP; }
-        void setATK(int ATK) { this->ATK = ATK; }
-        void setDEF(int DEF) { this->DEF = DEF; }
-        void restoreHP() { this->HP = this->maxHP; }
+    Entity(std::string name){
+        this->name= name;
+        this->level = 1;
+        baseStats->HP = 10;
+        baseStats->maxHP = 10;
+        baseStats->ATK = 1;
+        baseStats->DEF = 1;
+        combatStats->HP = 10;
+        combatStats->maxHP = 10;
+        combatStats->ATK = 1;
+        combatStats->DEF = 1;
+    }
+        
+    std::string getName() { return this->name; }
+    int getLevel() { return this->level; }
+
+    void setName(std::string name) { this->name = name; }
+    void setLevel(int level){ this->level = level; }
+    void restoreHP() { combatStats->HP = combatStats->maxHP; }
 };
 
 #endif // __ENTITY__

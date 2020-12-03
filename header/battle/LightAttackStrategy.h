@@ -7,12 +7,12 @@ class LightAttackStrategy : public AttackStrategy
 {
     private:
     public:
-        LightAttackStrategy() {};
+        LightAttackStrategy() {}
         int attack(Entity* attacker, Entity* defender)
         {
             // light attack: player ATK multiplier is 1 (base ATK)
             // return 0 if damage done is less than or equal to 0
-            int damageDone = attacker->getATK() - defender->getDEF();
+            int damageDone = attacker->combatStats->ATK - defender->combatStats->DEF;
             return damageDone > 0 ? damageDone : 0;
         }
 };
