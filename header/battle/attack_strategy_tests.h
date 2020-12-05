@@ -187,6 +187,28 @@ TEST(AttackStrategyTests, NormalAttackStrategyEnemyDealsDamage)
     EXPECT_EQ(player->combatStats->HP, 2);
 }
 
+TEST(AttackStrategyTests, NormalAttackStrategyNoDamage)
+{
+    Entity* player = new Player;
+    EnemyFactory ef;
+    Entity* enemy = ef.createEnemy("Green Slime");
+
+    player->combatStats->HP = 5;        // player HP = 5
+    player->combatStats->ATK = 1;       // player ATK = 1
+    player->combatStats->DEF = 1;       // player DEF = 1
+
+    enemy->combatStats->HP = 5;         // enemy HP = 5
+    enemy->combatStats->ATK = 1;        // enemy ATK = 1
+    enemy->combatStats->DEF = 2;        // enemy DEF = 0
+
+    // NormalAttackStrategy: damage_done = (attacker->ATK*2) - defender->DEF = 1*2 - 2 = 0
+    AttackStrategy* strategy = new NormalAttackStrategy();
+    int damage_done = strategy->attack(player, enemy);
+    EXPECT_EQ(damage_done, 0);
+    enemy->combatStats->HP -= damage_done;
+    EXPECT_EQ(enemy->combatStats->HP, 5);
+}
+
 TEST(AttackStrategyTests, HeavyAttackStrategyPlayerDealsDamage)
 {
     Entity* player = new Player;
