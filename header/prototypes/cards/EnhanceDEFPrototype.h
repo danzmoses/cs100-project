@@ -15,6 +15,10 @@ class EnhanceDEFPrototype : public CardPrototype{
 			this->setCost(75);
 			this->setDescription("This card enhances DEF by 1");
 		}
+
+		virtual CardPrototype* Clone(){
+			return new EnhanceDEFPrototype();
+		}
 };
 
 #endif //__ENHANCE_DEF_PROTOTYPE_H__
