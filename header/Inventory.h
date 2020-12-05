@@ -27,6 +27,16 @@ class Inventory
             std::invalid_argument ia("Invalid argument. Unable to find a weapon named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
+        
+        Item* findArmor(std::string name)
+        {
+            for (int i = 0; i < this->armor.size(); ++i)
+                if (this->armor.at(i)->getName() == name)
+                    return this->armor.at(i);
+            
+            std::invalid_argument ia("Invalid argument. Unable to find armor named \"" + name + "\" inside of this inventory.");
+            throw ia;
+        }
 };
 
 #endif // __INVENTORY_H__
