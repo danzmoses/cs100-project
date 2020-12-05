@@ -5,13 +5,14 @@
 #include <string>
 #include "Stats.h"
 #include "Inventory.h"
+#include "ItemFactory.h"
 
 class Entity {
     private:
         std::string name;
         int level;
-        Inventory* inventory;
-        Inventory* equipped;
+        Inventory inventory;
+        Inventory equipped;
 
 
     public:
@@ -45,25 +46,25 @@ class Entity {
         
     std::string getName() { return this->name; }
     int getLevel() { return this->level; }
-    Inventory* getInventory() { this->inventory; }
-    Inventory* getEquipped() { this->equipped; }
+    Inventory getInventory() { return this->inventory; }
+    Inventory getEquipped() { return this->equipped; }
 
     void setName(std::string name) { this->name = name; }
     void setLevel(int level){ this->level = level; }
     void restoreHP() { combatStats->HP = combatStats->maxHP; }
-    void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory->addWeapon(wf->createItem(name)); }
-    void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory->addArmor(af->createItem(name)); }
+    void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory.addWeapon(wf->createItem(name)); }
+    void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory.addArmor(af->createItem(name)); }
 
     void equipWeapon(std::string name)
     {
-        for (int i = 0; i < this->inventory->getWeapons().size(); ++i)
+        for (int i = 0; i < this->inventory.getWeapons().size(); ++i)
         {
-            if (this->inventory->getWeapons().at(i)->getName() == name)
+            if (this->inventory.getWeapons().at(i)->getName() == name)
             {
-                if (this->equipped->getWeapons().size() >= 1)
+                if (this->equipped.getWeapons().size() >= 1)
                 {
-                    this->equipped->getWeapons().clear();
-                    this->equipped->getWeapons().push_back(this->inventory->getWeapons().at(i));
+                    this->equipped.getWeapons().clear();
+                    this->equipped.getWeapons().push_back(this->inventory.getWeapons().at(i));
                     return;
                 }
             }
