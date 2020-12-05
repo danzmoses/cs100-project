@@ -2,9 +2,10 @@
 #define __CARD_FACTORY_H__
 
 #include "Card.h"
-//#include "prototypes/cards/EnhanceATKPrototype.h"
-//#include "prototypes/cards/EnhanceDEFPrototype.h"
-//#include "prototypes/cards/SmallHealPrototype.h"
+#include "prototypes/cards/EnhanceATKPrototype.h"
+#include "prototypes/cards/EnhanceDEFPrototype.h"
+#include "prototypes/cards/SmallHealPrototype.h"
+#include "prototypes/cards/DealDamagePrototype.h"
 #include <vector>
 #include <stdexcept>
 
