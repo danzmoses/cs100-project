@@ -4,11 +4,15 @@
 #include <iostream>
 #include <string>
 #include "Stats.h"
+#include "Inventory.h"
 
 class Entity {
     private:
         std::string name;
         int level;
+        Inventory* inventory;
+        Inventory* equipped;
+
 
     public:
 	Stats *baseStats = new Stats();
@@ -41,10 +45,15 @@ class Entity {
         
     std::string getName() { return this->name; }
     int getLevel() { return this->level; }
+    Inventory* getInventory() { this->inventory; }
+    Inventory* getEquipped() { this->equipped; }
 
     void setName(std::string name) { this->name = name; }
     void setLevel(int level){ this->level = level; }
     void restoreHP() { combatStats->HP = combatStats->maxHP; }
+
+
+
 };
 
 #endif // __ENTITY__
