@@ -17,6 +17,16 @@ class Inventory
 
         std::vector<Item*> getWeapons() { return weapons; }
         std::vector<Item*> getArmor() { return armor; }
+
+        Item* findWeapon(std::string name)
+        {
+            for (int i = 0; i < this->weapons.size(); ++i)
+                if (this->weapons.at(i)->getName() == name)
+                    return this->weapons.at(i);
+            
+            std::invalid_argument ia("Invalid argument. Unable to find a weapon named \"" + name + "\" inside of this inventory.");
+            throw ia;
+        }
 };
 
 #endif // __INVENTORY_H__
