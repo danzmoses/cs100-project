@@ -3,6 +3,7 @@
 #include "ItemFactory.h"
 #include "prototypes/weapons/WoodenSwordPrototype.h"
 #include "prototypes/weapons/StoneSwordPrototype.h"
+#include "prototypes/weapons/IronSwordPrototype.h"
 #include <vector>
 #include <stdexcept>
 
@@ -15,6 +16,7 @@ class WeaponFactory : public ItemFactory {
         {
             this->weaponPrototypes.push_back(new WoodenSwordPrototype());
             this->weaponPrototypes.push_back(new StoneSwordPrototype());
+            this->weaponPrototypes.push_back(new IronSwordPrototype());
         }
 
         virtual Item* createItem(std::string name)
