@@ -51,7 +51,10 @@ class Entity {
     void setName(std::string name) { this->name = name; }
     void setLevel(int level){ this->level = level; }
     void restoreHP() { combatStats->HP = combatStats->maxHP; }
+    void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory->addWeapon(wf->createItem(name)); }
+    void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory->addArmor(af->createItem(name)); }
 
+    
 
 
 };
