@@ -16,7 +16,7 @@ class Card{
 			description = "Default description of card";
 		}
 		
-		Card(std::name){
+		Card(std::string name){
 			this->name = name;
 			this->cost = 50;
 			this->description = "This card can...";

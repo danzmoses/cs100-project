@@ -19,7 +19,7 @@ class CardFactory{
 			this->cardPrototypes.push_back(new SmallHealPrototype()); 
 		}
 
-		CardPrototype* createCard(std::string name){
+		Card* createCard(std::string name){
 			for(int i = 0; i < cardPrototypes.size(); i++){
 				if(cardPrototypes.at(i)->getName() == name){
 					return cardPrototypes.at(i)->Clone();
