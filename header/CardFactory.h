@@ -19,7 +19,13 @@ class CardFactory{
 		}
 
 		CardPrototype* createCard(std::string name){
-			
+			for(int i = 0; i < cardPrototypes.size(); i++){
+				if(cardPrototypes.at(i)->getName() == name){
+					return cardPrototypes.at(i)->Clone();
+				}
+			}
+			std::invalid_argument ia("Invalid argument. Couldn't find \"" + name + '\"' );
+			throw ia;	
 		}
 };
 
