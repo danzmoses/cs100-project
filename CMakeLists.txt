@@ -9,7 +9,7 @@ ADD_EXECUTABLE(test
     test.cpp
     header/Entity_test.h
     header/Item_test.h
-    header/battle/attack_strategy_tests.cpp
+    header/battle/attack_strategy_tests.h
 )
 
 ADD_EXECUTABLE(main

@@ -1,3 +1,6 @@
+#ifndef __ATTACK_STRATEGY_TESTS_H__ 
+#define __ATTACK_STRATEGY_TESTS_H__
+
 #include "gtest/gtest.h"
 #include "LightAttackStrategy.h"
 #include "NormalAttackStrategy.h"
@@ -27,3 +30,28 @@ TEST(AttackStrategyTests, LightAttackStrategyPlayerDealsDamage)
     enemy->combatStats->HP -= damage_done;
     EXPECT_EQ(enemy->combatStats->HP, 4);
 }
+
+TEST(AttackStrategyTests, LightAttackStrategyPlayerDealsNoDamage)
+{
+    Entity* player = new Player;
+    EnemyFactory ef;
+    Entity* enemy = ef.createEnemy("Green Slime");
+
+    player->combatStats->HP = 5;        // player HP = 5
+    player->combatStats->ATK = 1;       // player ATK = 1
+    player->combatStats->DEF = 1;       // player DEF = 1
+
+    enemy->combatStats->HP = 5;         // enemy HP = 5
+    enemy->combatStats->ATK = 1;        // enemy ATK = 1
+    enemy->combatStats->DEF = 1;        // enemy DEF = 1
+
+    // LightAttackStrategy: damage_done = attacker->ATK - defender->DEF = 1 - 1 = 0
+    AttackStrategy* strategy = new LightAttackStrategy();
+    int damage_done = strategy->attack(player, enemy);
+    EXPECT_EQ(damage_done, 0);
+    // When applied to enemy, enemy->HP -= damage_done = 5 - 0 = 5
+    enemy->combatStats->HP -= damage_done;
+    EXPECT_EQ(enemy->combatStats->HP, 5);
+}
+
+#endif // __ATTACK_STRATEGY_TESTS_H__
