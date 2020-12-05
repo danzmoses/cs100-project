@@ -4,17 +4,17 @@
 #include "Item.h"
 #include <vector>
 
-class Inventory 
+class Inventory
 {
     private:
         std::vector<Item*> weapons;
         std::vector<Item*> armor;
-    
+
     public:
         Inventory() {}
         void addWeapon(Item* w) { this->weapons.push_back(w); }
         void addArmor(Item* a) { this->armor.push_back(a); }
-
+        
         std::vector<Item*> getWeapons() { return weapons; }
         std::vector<Item*> getArmor() { return armor; }
 
@@ -27,7 +27,7 @@ class Inventory
             std::invalid_argument ia("Invalid argument. Unable to find a weapon named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
-        
+
         Item* findArmor(std::string name)
         {
             for (int i = 0; i < this->armor.size(); ++i)
@@ -38,5 +38,6 @@ class Inventory
             throw ia;
         }
 };
+
 
 #endif // __INVENTORY_H__
