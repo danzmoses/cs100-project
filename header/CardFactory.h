@@ -17,6 +17,7 @@ class CardFactory{
 			this->cardPrototypes.push_back(new EnhanceATKPrototype());
 			this->cardPrototypes.push_back(new EnhanceDEFPrototype());
 			this->cardPrototypes.push_back(new SmallHealPrototype()); 
+			this->cardPrototypes.push_back(new DealDamagePrototype());
 		}
 
 		Card* createCard(std::string name){
