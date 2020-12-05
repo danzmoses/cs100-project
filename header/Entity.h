@@ -63,7 +63,21 @@ class Entity
         void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory.addWeapon(wf->createItem(name)); }
         void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory.addArmor(af->createItem(name)); }
         
-
+        void equipWeapon(std::string name)
+        {
+            for (int i = 0; i < this->inventory.getWeapons().size(); ++i)
+            {
+                if (this->inventory.getWeapons().at(i)->getName() == name)
+                {
+                    if (this->equipped.getWeapons().size() >= 1)
+                        this->equipped.getWeapons().clear();
+                    this->equipped.addWeapon(this->inventory.getWeapons().at(i));
+                    return;
+                }
+            }
+            std::invalid_argument ia("Invalid argument. Unable to find a weapon named \"" + name + "\" inside of this inventory.");
+            throw ia;
+        }
 };
 
 #endif // __ENTITY__
