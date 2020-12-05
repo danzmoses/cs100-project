@@ -78,6 +78,23 @@ class Entity
             std::invalid_argument ia("Invalid argument. Unable to find a weapon named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
+        
+        void equipArmor(std::string name)
+        {
+            for (int i = 0; i < this->inventory.getArmor().size(); ++i)
+            {
+                if (this->inventory.getArmor().at(i)->getName() == name)
+                {
+                    if (this->equipped.getArmor().size() >= 1)
+                        this->equipped.getArmor().clear();
+                    this->equipped.addArmor(this->inventory.getArmor().at(i));
+                    return;
+                }
+            }
+            std::invalid_argument ia("Invalid argument. Unable to find armor named \"" + name + "\" inside of this inventory.");
+            throw ia;
+        }
+        
 };
 
 #endif // __ENTITY__
