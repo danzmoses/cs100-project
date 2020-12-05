@@ -11,7 +11,16 @@ class EnhanceATKPrototype : public CardPrototype{
 			this->setDescription("This card enhances ATK by 1");
 		}
 
+		EnhanceATKPrototype(std::string name) : CardPrototype(name){
+			this->setCost(75);
+			this->setDescription("This card enhances ATK by 1");
+		}
 
+		virtual CardPrototype* Clone(){
+			return new EnhanceATKPrototype();
+		}
+
+		
 };
 
 #endif //__ENHANCE_ATK_PROTOTYPE_H__
