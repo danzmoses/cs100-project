@@ -4,6 +4,11 @@
 #include "Item.h"
 #include <vector>
 
-class Inventory {};
+class Inventory 
+{
+    private:
+        std::vector<Item*> weapons;
+        std::vector<Item*> armor;
+};
 
 #endif // __INVENTORY_H__
