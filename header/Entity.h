@@ -60,6 +60,8 @@ class Entity
 
         // __PUBLIC_FUNCTIONS__
         void restoreHP() { combatStats->HP = combatStats->maxHP; }
+        void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory.addWeapon(wf->createItem(name)); }
+        void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory.addArmor(af->createItem(name)); }
         
 
 };
