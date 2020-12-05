@@ -4,5 +4,6 @@
 #include "Item.h"
 #include <vector>
 
+class Inventory {};
 
 #endif // __INVENTORY_H__
