@@ -120,4 +120,29 @@ TEST(AttackStrategyTests, LightAttackStrategyEnemyNoDamage)
     player->combatStats->HP -= damage_done;
     EXPECT_EQ(player->combatStats->HP, 5);
 }
+
+TEST(AttackStrategyTests, LightAttackStrategyEnemyNegativeDamage)
+{
+    Entity* player = new Player;
+    EnemyFactory ef;
+    Entity* enemy = ef.createEnemy("Green Slime");
+
+    player->combatStats->HP = 5;        // player HP = 5
+    player->combatStats->ATK = 1;       // player ATK = 1
+    player->combatStats->DEF = 5;       // player DEF = 5
+
+    enemy->combatStats->HP = 5;         // enemy HP = 5
+    enemy->combatStats->ATK = 1;        // enemy ATK = 1
+    enemy->combatStats->DEF = 5;        // enemy DEF = 5
+
+    // LightAttackStrategy: damage_done = attacker->ATK - defender->DEF = 1 - 5 = -4 (if negative, damage = 0)
+    AttackStrategy* strategy = new LightAttackStrategy();
+    int damage_done = strategy->attack(enemy, player);
+    EXPECT_EQ(damage_done, 0);
+    player->combatStats->HP -= damage_done;
+    EXPECT_EQ(player->combatStats->HP, 5);
+}
+
+
+
 #endif // __ATTACK_STRATEGY_TESTS_H__
