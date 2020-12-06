@@ -63,7 +63,7 @@ class Entity
         void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory.addWeapon(wf->createItem(name)); }
         void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory.addArmor(af->createItem(name)); }
         
-        void removeItemFromInventory(std::string name)
+        void removeItemFromInventory(std::string name) // if name of Item* is in equipped, this removes that Item* as well
         {
             this->inventory.removeItem(name);
             if (this->equipped.getArmor().at(0)->getName() == name || this->equipped.getWeapons().at(0)->getName() == name)
