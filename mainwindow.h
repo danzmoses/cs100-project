@@ -47,9 +47,12 @@ private slots:
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
 
+    void selectInventoryItemType();
+
     // switch between menu pages
     void switchToMainMenu();
     void switchToBattleMenu();
+    void switchToEquipmentMenu();
 };
 
 #endif // MAINWINDOW_H

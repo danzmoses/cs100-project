@@ -786,7 +786,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_3">
+          <widget class="QPushButton" name="changeEquipmentButton">
            <property name="font">
             <font>
              <pointsize>28</pointsize>
@@ -3681,7 +3681,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_36">
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_45">
+            <widget class="QLabel" name="viewInventoryItemType">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
@@ -3967,7 +3967,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_7">
            <item>
-            <widget class="QRadioButton" name="radioButton_5">
+            <widget class="QRadioButton" name="viewInventoryWeaponsRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -3976,10 +3976,13 @@
              <property name="text">
               <string>Weapons</string>
              </property>
+             <property name="checked">
+              <bool>true</bool>
+             </property>
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_4">
+            <widget class="QRadioButton" name="viewInventoryArmorRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -3995,7 +3998,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_6">
            <item>
-            <widget class="QRadioButton" name="radioButton_7">
+            <widget class="QRadioButton" name="viewInventoryBootsRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4007,7 +4010,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="radioButton_6">
+            <widget class="QRadioButton" name="viewInventoryCardsRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4095,7 +4098,7 @@
         </property>
         <property name="font">
          <font>
-          <pointsize>20</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="plainText">

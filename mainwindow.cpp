@@ -15,6 +15,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
     connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
     connect(ui->returnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(endArea()));
+    connect(ui->changeEquipmentButton, SIGNAL(clicked(bool)), this, SLOT(switchToEquipmentMenu()));
+
+    // switch inventory item type
+    connect(ui->viewInventoryWeaponsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
+    connect(ui->viewInventoryArmorRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
+    connect(ui->viewInventoryBootsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
+    connect(ui->viewInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
 }
 
 MainWindow::~MainWindow()
@@ -160,6 +167,19 @@ void MainWindow::endArea()
     switchToMainMenu();
 }
 
+void MainWindow::selectInventoryItemType()
+{
+    if (ui->viewInventoryWeaponsRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Weapons");
+    else if (ui->viewInventoryArmorRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Armor");
+    else if (ui->viewInventoryBootsRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Boots");
+    else if (ui->viewInventoryCardsRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Cards");
+
+}
+
 void MainWindow::switchToMainMenu()
 {
     ui->menu_pages->setCurrentIndex(1);
@@ -168,4 +188,9 @@ void MainWindow::switchToMainMenu()
 void MainWindow::switchToBattleMenu()
 {
     ui->menu_pages->setCurrentIndex(2);
+}
+
+void MainWindow::switchToEquipmentMenu()
+{
+    ui->menu_pages->setCurrentIndex(4);
 }
