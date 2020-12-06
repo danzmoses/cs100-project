@@ -66,8 +66,14 @@ class Entity
         void removeItemFromInventory(std::string name) // if name of Item* is in equipped, this removes that Item* as well
         {
             this->inventory.removeItem(name);
-            if (this->equipped.getArmor().at(0)->getName() == name || this->equipped.getWeapons().at(0)->getName() == name)
-                this->equipped.removeItem(name);
+
+            if (!this->equipped.getArmor().empty())
+                if (this->equipped.getArmor().at(0)->getName() == name)
+                    this->equipped.removeItem(name);
+
+            if (!this->equipped.getWeapons().empty())
+                if (this->equipped.getWeapons().at(0)->getName() == name)
+                    this->equipped.removeItem(name);
         }
 
         void equipWeapon(std::string name)
