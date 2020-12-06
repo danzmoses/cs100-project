@@ -34,8 +34,6 @@ private:
     EnemyFactory ef;
     std::vector<Enemy*> area_enemies;
 
-    int count = 0;
-
 private slots:
 
     // functions

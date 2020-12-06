@@ -82,10 +82,16 @@ void MainWindow::initializePlayer()
 
 void MainWindow::enterArea()
 {
-    if (count == 0)
-        area_enemies.push_back(ef.createEnemy("Green Slime"));
-    else
-        area_enemies.push_back(ef.createEnemy("Goblin"));
+    for (int i = 1; i <= 10; ++i)
+    {
+        int temp = rand() % 3 + 1;
+        if (temp == 1)
+            area_enemies.push_back(ef.createEnemy("Green Slime"));
+        if (temp == 2)
+            area_enemies.push_back(ef.createEnemy("Red Slime"));
+        if (temp == 3)
+            area_enemies.push_back(ef.createEnemy("Goblin"));
+    }
     initializeBattleWithEnemy();
 
     ui->battle_menu_battle_result->clear();
@@ -138,7 +144,6 @@ void MainWindow::nextTurn()
             ui->battle_menu_battle_result->setText(enemyName + " has won!");
         else if (current_enemy->combatStats->HP <= 0)
             ui->battle_menu_battle_result->setText(playerName + " has won!");
-        ++count;
         ui->rollButton->setEnabled(false);
         ui->returnToMainMenuButton->setEnabled(true);
     }
