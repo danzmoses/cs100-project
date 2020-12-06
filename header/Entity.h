@@ -24,12 +24,12 @@ class Entity
         {
             this->name = "Entity";
             this->level = 1;
-            baseStats->HP = 10;
-            baseStats->maxHP = 10;
+            baseStats->HP = 5;
+            baseStats->maxHP = 5;
             baseStats->ATK = 1;
             baseStats->DEF = 1;
-            combatStats->HP = 10;
-            combatStats->maxHP = 10;
+            combatStats->HP = 5;
+            combatStats->maxHP = 5;
             combatStats->ATK = 1;
             combatStats->DEF = 1;
         }
@@ -38,12 +38,12 @@ class Entity
         {
             this->name= name;
             this->level = 1;
-            baseStats->HP = 10;
-            baseStats->maxHP = 10;
+            baseStats->HP = 5;
+            baseStats->maxHP = 5;
             baseStats->ATK = 1;
             baseStats->DEF = 1;
-            combatStats->HP = 10;
-            combatStats->maxHP = 10;
+            combatStats->HP = 5;
+            combatStats->maxHP = 5;
             combatStats->ATK = 1;
             combatStats->DEF = 1;
         }
@@ -62,18 +62,29 @@ class Entity
         void restoreHP() { combatStats->HP = combatStats->maxHP; }
         void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory.addWeapon(wf->createItem(name)); }
         void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory.addArmor(af->createItem(name)); }
-        
-        void removeItemFromInventory(std::string name) // if name of Item* is in equipped, this removes that Item* as well
+
+        void updateCombatStats()
         {
-            this->inventory.removeItem(name);
+            this->combatStats->ATK = this->baseStats->ATK;
+            this->combatStats->DEF = this->baseStats->DEF;
+            this->combatStats->HP = this->baseStats->HP;
+            this->combatStats->maxHP = this->baseStats->maxHP;
 
-            if (!this->equipped.getArmor().empty())
-                if (this->equipped.getArmor().at(0)->getName() == name)
-                    this->equipped.removeItem(name);
+            for (int i = 0; i < this->inventory.getArmor().size(); ++i) // add all armor combat stats to player's combat stats
+            {
+                this->combatStats->ATK += this->inventory.getArmor().at(i)->combatStats->ATK;
+                this->combatStats->DEF += this->inventory.getArmor().at(i)->combatStats->DEF;
+                this->combatStats->HP += this->inventory.getArmor().at(i)->combatStats->HP;
+                this->combatStats->maxHP += this->inventory.getArmor().at(i)->combatStats->maxHP;
+            }
 
-            if (!this->equipped.getWeapons().empty())
-                if (this->equipped.getWeapons().at(0)->getName() == name)
-                    this->equipped.removeItem(name);
+            for (int i = 0; i < this->inventory.getWeapons().size(); ++i) // add all weapons combat stats to player combat stats
+            {
+                this->combatStats->ATK += this->inventory.getWeapons().at(i)->combatStats->ATK;
+                this->combatStats->DEF += this->inventory.getWeapons().at(i)->combatStats->DEF;
+                this->combatStats->HP += this->inventory.getWeapons().at(i)->combatStats->HP;
+                this->combatStats->maxHP += this->inventory.getWeapons().at(i)->combatStats->maxHP;
+            }            
         }
 
         void equipWeapon(std::string name)
@@ -86,6 +97,8 @@ class Entity
                         this->equipped.modifyWeaponItem(0, this->inventory.getWeapons().at(i));
                     else
                         this->equipped.addWeapon(this->inventory.getWeapons().at(i));
+                    // call updateCombatStats helper function
+                    updateCombatStats();
                     return;
                 }
             }
@@ -101,9 +114,10 @@ class Entity
                 {
                     if (this->equipped.getArmor().size() >= 1)
                         this->equipped.modifyArmorItem(0, this->inventory.getArmor().at(i));
-                        // this->equipped.getArmor().at(0) = this->inventory.getArmor().at(i);
                     else
                         this->equipped.addArmor(this->inventory.getArmor().at(i));
+                    // call updateCombatStats helper function
+                    updateCombatStats();
                     return;
                 }
             }
@@ -111,6 +125,20 @@ class Entity
             throw ia;
         }
         
+        void removeItemFromInventory(std::string name) // if name of Item* is in equipped, this removes that Item* as well
+        {
+            this->inventory.removeItem(name);
+
+            if (!this->equipped.getArmor().empty())
+                if (this->equipped.getArmor().at(0)->getName() == name)
+                    this->equipped.removeItem(name);
+
+            if (!this->equipped.getWeapons().empty())
+                if (this->equipped.getWeapons().at(0)->getName() == name)
+                    this->equipped.removeItem(name);
+
+            updateCombatStats();
+        }
 };
 
 #endif // __ENTITY__
