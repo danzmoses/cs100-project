@@ -105,6 +105,7 @@ void MainWindow::enterArea()
     }
     initializeBattleWithEnemy();
 
+    ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
     ui->battle_menu_battle_result->clear();
     ui->battle_menu_roll_difference->clear();
     ui->battle_menu_turn_result->clear();
@@ -116,17 +117,21 @@ void MainWindow::enterArea()
 void MainWindow::nextBattle()
 {
     ++areaEnemiesCount;
+    ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
+    area_enemies.pop_back();
+
     if (area_enemies.size() > 0)
-    {
-        area_enemies.pop_back();
         initializeBattleWithEnemy();
-        ui->nextBattleButton->setEnabled(false);
+    else
+    {
+        ui->battle_menu_battle_result->setText("You defeated all ten enemies!");
+        ui->returnToMainMenuButton->setEnabled(true);
     }
+    ui->nextBattleButton->setEnabled(false);
 }
 
 void MainWindow::initializeBattleWithEnemy()
 {
-    ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
     ui->rollButton->setEnabled(true);
     ui->returnToMainMenuButton->setEnabled(false);
     if (battle != nullptr)
@@ -170,16 +175,8 @@ void MainWindow::nextTurn()
         }
         else if (current_enemy->combatStats->HP <= 0)
         {
-            if (area_enemies.size() > 1)
-            {
-                ui->battle_menu_battle_result->setText(playerName + " has won!");
-                ui->nextBattleButton->setEnabled(true);
-            }
-            else
-            {
-                ui->battle_menu_battle_result->setText("You defeated all ten enemies!");
-                ui->returnToMainMenuButton->setEnabled(true);
-            }
+            ui->battle_menu_battle_result->setText(playerName + " has won!");
+            ui->nextBattleButton->setEnabled(true);
         }
         ui->rollButton->setEnabled(false);
     }
