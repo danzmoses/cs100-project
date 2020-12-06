@@ -63,6 +63,13 @@ class Entity
         void addWeaponToInventory(std::string name, ItemFactory* wf) { this->inventory.addWeapon(wf->createItem(name)); }
         void addArmorToInventory(std::string name, ItemFactory* af) { this->inventory.addArmor(af->createItem(name)); }
         
+        void removeItemFromInventory(std::string name)
+        {
+            this->inventory.removeItem(name);
+            if (this->equipped.getArmor().at(0)->getName() == name || this->equipped.getWeapons().at(0)->getName() == name)
+                this->equipped.removeItem(name);
+        }
+
         void equipWeapon(std::string name)
         {
             for (int i = 0; i < this->inventory.getWeapons().size(); ++i)
@@ -70,8 +77,9 @@ class Entity
                 if (this->inventory.getWeapons().at(i)->getName() == name)
                 {
                     if (this->equipped.getWeapons().size() >= 1)
-                        this->equipped.getWeapons().clear();
-                    this->equipped.addWeapon(this->inventory.getWeapons().at(i));
+                        this->equipped.modifyWeaponItem(0, this->inventory.getWeapons().at(i));
+                    else
+                        this->equipped.addWeapon(this->inventory.getWeapons().at(i));
                     return;
                 }
             }
@@ -86,8 +94,10 @@ class Entity
                 if (this->inventory.getArmor().at(i)->getName() == name)
                 {
                     if (this->equipped.getArmor().size() >= 1)
-                        this->equipped.getArmor().clear();
-                    this->equipped.addArmor(this->inventory.getArmor().at(i));
+                        this->equipped.modifyArmorItem(0, this->inventory.getArmor().at(i));
+                        // this->equipped.getArmor().at(0) = this->inventory.getArmor().at(i);
+                    else
+                        this->equipped.addArmor(this->inventory.getArmor().at(i));
                     return;
                 }
             }
