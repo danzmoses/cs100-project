@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
     connect(ui->returnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(endArea()));
     connect(ui->changeEquipmentButton, SIGNAL(clicked(bool)), this, SLOT(switchToEquipmentMenu()));
+    connect(ui->nextBattleButton, SIGNAL(clicked(bool)), this, SLOT(nextBattle()));
 
     // switch inventory item type
     connect(ui->viewInventoryWeaponsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
@@ -91,6 +92,7 @@ void MainWindow::initializePlayer()
 
 void MainWindow::enterArea()
 {
+    areaEnemiesCount = 0;
     for (int i = 1; i <= 10; ++i)
     {
         int temp = rand() % 3 + 1;
@@ -111,8 +113,20 @@ void MainWindow::enterArea()
     switchToBattleMenu();
 }
 
+void MainWindow::nextBattle()
+{
+    ++areaEnemiesCount;
+    if (area_enemies.size() > 0)
+    {
+        area_enemies.pop_back();
+        initializeBattleWithEnemy();
+        ui->nextBattleButton->setEnabled(false);
+    }
+}
+
 void MainWindow::initializeBattleWithEnemy()
 {
+    ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
     ui->rollButton->setEnabled(true);
     ui->returnToMainMenuButton->setEnabled(false);
     if (battle != nullptr)
@@ -150,13 +164,25 @@ void MainWindow::nextTurn()
     if (player->combatStats->HP <= 0 || current_enemy->combatStats->HP <= 0)
     {
         if (player->combatStats->HP <= 0)
+        {
             ui->battle_menu_battle_result->setText(enemyName + " has won!");
+            ui->returnToMainMenuButton->setEnabled(true);
+        }
         else if (current_enemy->combatStats->HP <= 0)
-            ui->battle_menu_battle_result->setText(playerName + " has won!");
+        {
+            if (area_enemies.size() > 1)
+            {
+                ui->battle_menu_battle_result->setText(playerName + " has won!");
+                ui->nextBattleButton->setEnabled(true);
+            }
+            else
+            {
+                ui->battle_menu_battle_result->setText("You defeated all ten enemies!");
+                ui->returnToMainMenuButton->setEnabled(true);
+            }
+        }
         ui->rollButton->setEnabled(false);
-        ui->returnToMainMenuButton->setEnabled(true);
     }
-
     update_battle_menu_player_stats();
     update_battle_menu_enemy_stats();
 }

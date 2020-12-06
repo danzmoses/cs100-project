@@ -24,7 +24,7 @@
     <item>
      <widget class="QStackedWidget" name="menu_pages">
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="start_menu_page">
        <layout class="QVBoxLayout" name="verticalLayout_7">
@@ -1575,14 +1575,14 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="start_menu_title_label_10">
+          <widget class="QLabel" name="enemiesDefeatedLabel">
            <property name="font">
             <font>
              <pointsize>20</pointsize>
             </font>
            </property>
            <property name="text">
-            <string>Area 1 Boss: ???</string>
+            <string>Enemies Defeated: 0/10</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignCenter</set>
@@ -2559,7 +2559,7 @@
          <string>Deal 5 damage to the enemy</string>
         </property>
        </widget>
-       <widget class="QPushButton" name="returnToMainMenuButton_2">
+       <widget class="QPushButton" name="nextBattleButton">
         <property name="enabled">
          <bool>false</bool>
         </property>
