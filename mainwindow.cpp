@@ -62,11 +62,13 @@ void MainWindow::update_battle_menu_enemy_stats()
     QString level = QString::number(current_enemy->getLevel());
     QString atk = QString::number(current_enemy->combatStats->ATK);
     QString def = QString::number(current_enemy->combatStats->DEF);
+    QString desc = QString::fromStdString(current_enemy->getDescription());
 
     ui->battle_menu_enemy_name_and_level->setText(name + " (Level " + level + ")");
     ui->battle_menu_enemy_health->setText("Health: " + hp + '/' + maxHP);
     ui->battle_menu_enemy_atk->setText("ATK: " + atk);
     ui->battle_menu_enemy_def->setText("DEF: " + def);
+    ui->battle_menu_enemy_desc->setPlainText(desc);
 }
 
 void MainWindow::initializePlayer()
