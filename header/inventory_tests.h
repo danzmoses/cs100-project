@@ -120,6 +120,11 @@ TEST(InventoryTests, LeatherArmorTest)
     EXPECT_EQ(player->getInventory().getItem("Leather Armor")->getName(), "Leather Armor");
     EXPECT_EQ(player->getInventory().getItem("Leather Armor")->getCost(), 50);
     EXPECT_EQ(player->getInventory().getItem("Leather Armor")->baseStats->DEF, 1);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
     
     EXPECT_EQ(player->getEquipped().getArmor().size(), 0);
 
@@ -129,11 +134,22 @@ TEST(InventoryTests, LeatherArmorTest)
     EXPECT_EQ(player->getEquipped().getItem("Leather Armor")->getName(), "Leather Armor");
     EXPECT_EQ(player->getEquipped().getItem("Leather Armor")->getCost(), 50);
     EXPECT_EQ(player->getEquipped().getItem("Leather Armor")->baseStats->DEF, 1);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 2);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 
     player->removeItemFromInventory("Leather Armor");
 
     EXPECT_EQ(player->getInventory().getArmor().size(), 0);
     EXPECT_EQ(player->getEquipped().getArmor().size(), 0);
+
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 }
 
 TEST(InventoryTests, IronArmorTest)
@@ -149,6 +165,11 @@ TEST(InventoryTests, IronArmorTest)
     EXPECT_EQ(player->getInventory().getItem("Iron Armor")->getName(), "Iron Armor");
     EXPECT_EQ(player->getInventory().getItem("Iron Armor")->getCost(), 450);
     EXPECT_EQ(player->getInventory().getItem("Iron Armor")->baseStats->DEF, 2);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
     
     EXPECT_EQ(player->getEquipped().getArmor().size(), 0);
 
@@ -158,11 +179,21 @@ TEST(InventoryTests, IronArmorTest)
     EXPECT_EQ(player->getEquipped().getItem("Iron Armor")->getName(), "Iron Armor");
     EXPECT_EQ(player->getEquipped().getItem("Iron Armor")->getCost(), 450);
     EXPECT_EQ(player->getEquipped().getItem("Iron Armor")->baseStats->DEF, 2);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 3);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 
     player->removeItemFromInventory("Iron Armor");
 
     EXPECT_EQ(player->getInventory().getArmor().size(), 0);
     EXPECT_EQ(player->getEquipped().getArmor().size(), 0);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 }
 
 TEST(InventoryTests, WoodenSwordTest)
@@ -178,6 +209,11 @@ TEST(InventoryTests, WoodenSwordTest)
     EXPECT_EQ(player->getInventory().getItem("Wooden Sword")->getName(), "Wooden Sword");
     EXPECT_EQ(player->getInventory().getItem("Wooden Sword")->getCost(), 25);
     EXPECT_EQ(player->getInventory().getItem("Wooden Sword")->baseStats->ATK, 1);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
     
     EXPECT_EQ(player->getEquipped().getWeapons().size(), 0);
 
@@ -187,11 +223,21 @@ TEST(InventoryTests, WoodenSwordTest)
     EXPECT_EQ(player->getEquipped().getItem("Wooden Sword")->getName(), "Wooden Sword");
     EXPECT_EQ(player->getEquipped().getItem("Wooden Sword")->getCost(), 25);
     EXPECT_EQ(player->getEquipped().getItem("Wooden Sword")->baseStats->ATK, 1);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 2);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 
     player->removeItemFromInventory("Wooden Sword");
 
     EXPECT_EQ(player->getInventory().getWeapons().size(), 0);
     EXPECT_EQ(player->getEquipped().getWeapons().size(), 0);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 }
 
 TEST(InventoryTests, StoneSwordTest)
@@ -207,6 +253,11 @@ TEST(InventoryTests, StoneSwordTest)
     EXPECT_EQ(player->getInventory().getItem("Stone Sword")->getName(), "Stone Sword");
     EXPECT_EQ(player->getInventory().getItem("Stone Sword")->getCost(), 100);
     EXPECT_EQ(player->getInventory().getItem("Stone Sword")->baseStats->ATK, 2);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
     
     EXPECT_EQ(player->getEquipped().getWeapons().size(), 0);
 
@@ -216,11 +267,21 @@ TEST(InventoryTests, StoneSwordTest)
     EXPECT_EQ(player->getEquipped().getItem("Stone Sword")->getName(), "Stone Sword");
     EXPECT_EQ(player->getEquipped().getItem("Stone Sword")->getCost(), 100);
     EXPECT_EQ(player->getEquipped().getItem("Stone Sword")->baseStats->ATK, 2);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 3);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 
     player->removeItemFromInventory("Stone Sword");
 
     EXPECT_EQ(player->getInventory().getWeapons().size(), 0);
     EXPECT_EQ(player->getEquipped().getWeapons().size(), 0);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 }
 
 TEST(InventoryTests, IronSwordTest)
@@ -236,6 +297,11 @@ TEST(InventoryTests, IronSwordTest)
     EXPECT_EQ(player->getInventory().getItem("Iron Sword")->getName(), "Iron Sword");
     EXPECT_EQ(player->getInventory().getItem("Iron Sword")->getCost(), 500);
     EXPECT_EQ(player->getInventory().getItem("Iron Sword")->baseStats->ATK, 3);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
     
     EXPECT_EQ(player->getEquipped().getWeapons().size(), 0);
 
@@ -245,11 +311,21 @@ TEST(InventoryTests, IronSwordTest)
     EXPECT_EQ(player->getEquipped().getItem("Iron Sword")->getName(), "Iron Sword");
     EXPECT_EQ(player->getEquipped().getItem("Iron Sword")->getCost(), 500);
     EXPECT_EQ(player->getEquipped().getItem("Iron Sword")->baseStats->ATK, 3);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 4);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 
     player->removeItemFromInventory("Iron Sword");
 
     EXPECT_EQ(player->getInventory().getWeapons().size(), 0);
     EXPECT_EQ(player->getEquipped().getWeapons().size(), 0);
+    // Check player's combat stats
+    EXPECT_EQ(player->combatStats->ATK, 1);
+    EXPECT_EQ(player->combatStats->DEF, 1);
+    EXPECT_EQ(player->combatStats->HP, 5);
+    EXPECT_EQ(player->combatStats->maxHP, 5);
 }
 
 TEST(InventoryTests, TwoArmorTest)
