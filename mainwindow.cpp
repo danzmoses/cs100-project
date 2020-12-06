@@ -177,7 +177,6 @@ void MainWindow::selectInventoryItemType()
         ui->viewInventoryItemType->setText("Boots");
     else if (ui->viewInventoryCardsRadioButton->isChecked())
         ui->viewInventoryItemType->setText("Cards");
-
 }
 
 void MainWindow::switchToMainMenu()
