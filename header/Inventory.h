@@ -15,8 +15,8 @@ class Inventory
         void addWeapon(Item* w) { this->weapons.push_back(w); }
         void addArmor(Item* a) { this->armor.push_back(a); }
 
-        void modifyWeaponItem(int index, Item* item) { weapons.at(index) = item; }
-        void modifyArmorItem(int index, Item* item) { armor.at(index) = item; }
+        void modifyWeaponItem(int index, Item* item) { weapons.at(index) = item; } // used to reroute pointers in weapons
+        void modifyArmorItem(int index, Item* item) { armor.at(index) = item; } // used to reroute pointers in armor
         
         std::vector<Item*> getWeapons() { return weapons; }
         std::vector<Item*> getArmor() { return armor; }
