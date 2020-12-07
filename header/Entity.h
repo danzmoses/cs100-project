@@ -131,13 +131,17 @@ class Entity
 
             if (!this->equipped.getArmor().empty())
                 if (this->equipped.getArmor().at(0)->getName() == name)
+                {
                     this->equipped.removeItem(name);
-
+                    updateCombatStats();
+                }
+            
             if (!this->equipped.getWeapons().empty())
                 if (this->equipped.getWeapons().at(0)->getName() == name)
+                {
                     this->equipped.removeItem(name);
-
-            updateCombatStats();
+                    updateCombatStats();
+                }
         }
 };
 
