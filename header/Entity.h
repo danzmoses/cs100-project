@@ -21,27 +21,19 @@ class Entity {
     Entity(){
         this->name = "Entity";
         this->level = 1;
-        baseStats->HP = 10;
-        baseStats->maxHP = 10;
-        baseStats->ATK = 1;
-        baseStats->DEF = 1;
-        combatStats->HP = 10;
-        combatStats->maxHP = 10;
-        combatStats->ATK = 1;
-        combatStats->DEF = 1;
+        baseStats->HP = combatStats->HP = 10;
+        baseStats->maxHP = combatStats-> maxHP = 10;
+        baseStats->ATK = combatStats->ATK = 1;
+        baseStats->DEF = combatStats->DEF = 1;
 	}
 
     Entity(std::string name){
         this->name= name;
         this->level = 1;
-        baseStats->HP = 10;
-        baseStats->maxHP = 10;
-        baseStats->ATK = 1;
-        baseStats->DEF = 1;
-        combatStats->HP = 10;
-        combatStats->maxHP = 10;
-        combatStats->ATK = 1;
-        combatStats->DEF = 1;
+        baseStats->HP = combatStats->HP = 10;
+        baseStats->maxHP = combatStats-> maxHP = 10;
+        baseStats->ATK = combatStats->ATK = 1;
+        baseStats->DEF = combatStats->DEF = 1;
     }
         
     std::string getName() { return this->name; }
