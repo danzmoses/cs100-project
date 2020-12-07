@@ -36,11 +36,26 @@ TEST(CardStrategyTests, EnhanceDEFStrategy){
 
 	EXPECT_EQ(player->combatStats->DEF, 1);
 
-	CardStrategy *cs = new EnhaceDEFStrategy();
+	CardStrategy *cs = new EnhanceDEFStrategy();
 
 	cs->use(player, enemy);
 
 	EXPECT_EQ(player->combatStats->DEF, 2);	
+}
+
+TEST(CardStrategyTests, EnhanceATKStrategy){
+	Player *player = new Player("Hero");
+
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Red Slime");
+
+	EXPECT_EQ(player->combatStats->ATK, 1);
+
+	CardStrategy *cs = new EnhanceATKStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(player->combatStats->ATK, 2);
 }
 
 #endif //__CARD_STRATEGY_TESTS_H__
