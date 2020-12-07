@@ -58,4 +58,19 @@ TEST(CardStrategyTests, EnhanceATKStrategy){
 	EXPECT_EQ(player->combatStats->ATK, 2);
 }
 
+TEST(CardStrategyTests, DealDamageStrategy){
+	Player *player = new Player("Hero");
+
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Skeleton");
+
+	EXPECT_EQ(enemy->combatStats->HP, 5);
+
+	CardStrategy *cs = new DealDamageStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(player->combatStats->HP, 4);
+}
+
 #endif //__CARD_STRATEGY_TESTS_H__
