@@ -70,7 +70,7 @@ TEST(CardStrategyTests, DealDamageStrategy){
 
 	cs->use(player, enemy);
 
-	EXPECT_EQ(player->combatStats->HP, 4);
+	EXPECT_EQ(enemy->combatStats->HP, 4);
 }
 
 #endif //__CARD_STRATEGY_TESTS_H__
