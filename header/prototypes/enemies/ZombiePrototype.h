@@ -10,6 +10,7 @@ class ZombiePrototype : public EnemyPrototype
 			setName("Zombie");
 			setLevel(1);
 			setDescription("brains...");
+			setEXPMult(2);
 			baseStats->HP = 5; 
 			baseStats->maxHP = 5;
 			baseStats->ATK = 3; 

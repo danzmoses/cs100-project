@@ -9,7 +9,7 @@ class RedSlimePrototype : public SlimePrototype
         RedSlimePrototype() : SlimePrototype() { 
             setName("Red Slime");
             setLevel(1);
-            setDescription(getDescription() + "It looks aggressive."); 
+            setDescription(getDescription() + "It looks aggressive.");
             baseStats->HP += 1;
             baseStats->maxHP += 1;
             combatStats->HP += 1;
