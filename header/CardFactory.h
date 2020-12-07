@@ -5,6 +5,7 @@
 #include "prototypes/cards/EnhanceATKPrototype.h"
 #include "prototypes/cards/EnhanceDEFPrototype.h"
 #include "prototypes/cards/SmallHealPrototype.h"
+#include "prototypes/cards/BigHealPrototype.h"
 #include "prototypes/cards/DealDamagePrototype.h"
 #include <vector>
 #include <stdexcept>
@@ -17,6 +18,7 @@ class CardFactory{
 			this->cardPrototypes.push_back(new EnhanceATKPrototype());
 			this->cardPrototypes.push_back(new EnhanceDEFPrototype());
 			this->cardPrototypes.push_back(new SmallHealPrototype()); 
+			this->cardPrototypes.push_back(new BigHealPrototype());
 			this->cardPrototypes.push_back(new DealDamagePrototype());
 		}
 
