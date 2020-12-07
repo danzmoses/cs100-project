@@ -5,6 +5,7 @@
 #include "../Player.h"
 #include "../EnemyFactory.h"
 #include "SmallHealStrategy.h"
+#include "BigHealStrategy.h"
 #include "EnhanceDEFStrategy.h"
 #include "EnhanceATKStrategy.h"
 #include "DealDamageStrategy.h"
@@ -90,6 +91,130 @@ TEST(CardStrategyTests, MaxHPChangesSmallHealStrategy){
 
 	EXPECT_EQ(player->combatStats->HP, 13);
 	EXPECT_EQ(player->combatStats->maxHP, 13);
+}
+
+TEST(CardStrategyTests, EqualToMaxHPBigHealStrategy){
+        Player *player = new Player("Hero");
+
+        EnemyFactory *ef = new EnemyFactory();
+        Enemy *enemy = ef->createEnemy("Green Slime");
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+
+        player->combatStats->HP = 6;
+
+        EXPECT_EQ(player->combatStats->HP, 6);
+
+        CardStrategy *cs = new BigHealStrategy();
+
+        cs->use(player, enemy);
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+}
+
+TEST(CardStrategyTests, GreaterThanMaxHPBigHealStrategy){
+        Player *player = new Player("Hero");
+
+        EnemyFactory *ef = new EnemyFactory();
+        Enemy *enemy = ef->createEnemy("Green Slime");
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+
+        player->combatStats->HP = 9;
+
+        EXPECT_EQ(player->combatStats->HP, 9);
+
+        CardStrategy *cs = new BigHealStrategy();
+
+        cs->use(player, enemy);
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+}
+
+TEST(CardStrategyTests, SmallerThanMaxHPBigHealStrategy){
+        Player *player = new Player("Hero");
+
+        EnemyFactory *ef = new EnemyFactory();
+        Enemy *enemy = ef->createEnemy("Green Slime");
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+
+        player->combatStats->HP = 4;
+
+        EXPECT_EQ(player->combatStats->HP, 4);
+
+        CardStrategy *cs = new BigHealStrategy();
+
+        cs->use(player, enemy);
+
+        EXPECT_EQ(player->combatStats->HP, 6);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+}
+
+TEST(CardStrategyTests, MaxHPChangesBigHealStrategy){
+        Player *player = new Player("Hero");
+
+        EnemyFactory *ef = new EnemyFactory();
+        Enemy *enemy = ef->createEnemy("Green Slime");
+                                                                                                                                EXPECT_EQ(player->combatStats->HP, 10);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+
+        player->combatStats->maxHP = 17;
+
+        EXPECT_EQ(player->combatStats->maxHP, 17);
+
+        CardStrategy *cs = new BigHealStrategy();
+                                                                     
+        cs->use(player, enemy);
+                                                                                         
+        EXPECT_EQ(player->combatStats->HP, 16);
+	EXPECT_EQ(player->combatStats->maxHP, 17);
+}
+
+TEST(CardStrategyTests, MaxHPChangesBigHealStrategyTest2){
+        Player *player = new Player("Hero");
+
+        EnemyFactory *ef = new EnemyFactory();
+        Enemy *enemy = ef->createEnemy("Green Slime");
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+
+        player->combatStats->maxHP = 15;
+
+        EXPECT_EQ(player->combatStats->maxHP, 15);
+
+        CardStrategy *cs = new BigHealStrategy();
+
+        cs->use(player, enemy);
+
+        EXPECT_EQ(player->combatStats->HP, 15);
+	EXPECT_EQ(player->combatStats->maxHP, 15);
+}
+
+TEST(CardStrategyTests, MaxHPChangesBigHealStrategyTest3){
+        Player *player = new Player("Hero");
+
+        EnemyFactory *ef = new EnemyFactory();
+        Enemy *enemy = ef->createEnemy("Green Slime");
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+        EXPECT_EQ(player->combatStats->maxHP, 10);
+
+        player->combatStats->maxHP = 16;
+
+        EXPECT_EQ(player->combatStats->maxHP, 16);
+
+        CardStrategy *cs = new BigHealStrategy();
+
+        cs->use(player, enemy);
+
+        EXPECT_EQ(player->combatStats->HP, 16);
+	EXPECT_EQ(player->combatStats->maxHP, 16);
 }
 
 TEST(CardStrategyTests, EnhanceDEFStrategy){
