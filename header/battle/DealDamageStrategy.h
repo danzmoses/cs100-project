@@ -15,7 +15,7 @@ class DealDamageStrategy : public CardStrategy{
                         if(defender->combatStats->HP - round(thirtyPercentHP) > 0){
                                 defender->combatStats->HP -= round(thirtyPercentHP);
                         }
-                        else if(attacker->combatStats->HP - round(fourtyPercentHP) <= 0){
+                        else if(attacker->combatStats->HP - round(thirtyPercentHP) <= 0){
                                 defender->combatStats->HP = 0;
                         }
 		}
