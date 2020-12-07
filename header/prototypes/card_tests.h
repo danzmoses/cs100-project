@@ -22,6 +22,23 @@ TEST(CardPrototypeTest, SmallHealPrototype){
 	EXPECT_EQ(c->getDescription(), "New card description"); 			
 }
 
+TEST(CardPrototypeTest, BigHealPrototype){
+	CardFactory *cf = new CardFactory();
+	Card *c = cf->createCard("Big Heal");
+
+	EXPECT_EQ(c->getName(), "Big Heal");
+	EXPECT_EQ(c->getCost(), 75);
+	EXPECT_EQ(c->getDescription(), "This card raises the card user's HP by 60% their current HP (rounded to the nearest whole number)");
+
+	c->setName("New card name");
+	c->setCost(175);
+	c->setDescription("New card description");
+
+	EXPECT_EQ(c->getName(), "New card name");
+	EXPECT_EQ(c->getCost(), 175);
+	EXPECT_EQ(c->getDescription(), "New card description");
+}
+
 TEST(CardPrototypeTest, DealDamagePrototype){
 	CardFactory *cf = new CardFactory();
 	Card *c = cf->createCard("Deal Damage");
