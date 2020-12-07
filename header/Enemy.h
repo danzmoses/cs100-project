@@ -6,6 +6,7 @@
 class Enemy : public Entity{
 	private:
 		std::string description;
+		int EXPMult;
 	public:
 		Enemy() : Entity(), description("this is an enemy"){}
 		
@@ -16,9 +17,13 @@ class Enemy : public Entity{
 			return description;
 		}
 
+		int getEXPMult() { return EXPMult; }
+
 		void setDescription(std::string description){
 			this->description = description;
 		}
+
+		void setEXPMult(int EXPMult) { this->EXPMult = EXPMult; }
 
 };
 
