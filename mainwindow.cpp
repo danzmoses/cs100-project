@@ -144,11 +144,6 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-
-    player->addWeaponToInventory("Wooden Sword", weaponFactory);
-    player->equipWeapon("Wooden Sword");
-    player->addArmorToInventory("Leather Armor", armorFactory);
-    player->equipArmor("Leather Armor");
     update_main_menu_player_stats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
