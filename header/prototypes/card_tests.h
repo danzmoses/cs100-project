@@ -28,7 +28,7 @@ TEST(CardPrototypeTest, DealDamagePrototype){
 
 	EXPECT_EQ(c->getName(), "Deal Damage");
 	EXPECT_EQ(c->getCost(), 85);
-	EXPECT_EQ(c->getDescription(), "This card decreases the enemy's HP by 1");
+	EXPECT_EQ(c->getDescription(), "This card decreases HP by 30% the opponent's current HP");
 
 	c->setName("New card name");
 	c->setCost(185);

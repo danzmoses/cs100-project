@@ -8,12 +8,12 @@ class DealDamagePrototype : public CardPrototype{
 		DealDamagePrototype() : CardPrototype(){
 			this->setName("Deal Damage");
 			this->setCost(85);
-			this->setDescription("This card decreases the enemy's HP by 1");
+			this->setDescription("This card decreases HP by 30% the opponent's current HP");
 		}
 
 		DealDamagePrototype(std::string name) : CardPrototype(name){
 			this->setCost(85);
-			this->setDescription("This card decreases the enemy's HP by 1");
+			this->setDescription("This card decreases HP by 30% the opponent's current HP");
 		}
 
 		virtual CardPrototype* Clone(){
