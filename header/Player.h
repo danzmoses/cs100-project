@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include <stdexcept>
+#include <cmath>
 
 class Player : public Entity{
 	private:
@@ -46,23 +47,32 @@ class Player : public Entity{
 	} 
 
 	//in battle or after battle, if(this->EXP >= maxEXP){ player->levelUp(); }
-	void levelUp(){
+	void levelUp()
+	{
 		int additionalEXP = 0;
 		int numLevels = 0;
-			//bc player's curr EXP could be more than double MaxEXP
-			//each time a multiple of maxEXP is met = level up by 1
-			while(this->EXP >= maxEXP){
-				additionalEXP = this->EXP - maxEXP;
-				this->EXP = additionalEXP;
-				numLevels++;
-			}
-			this->setEXP(additionalEXP); 
-            		this->setLevel(this->getLevel() + numLevels);
-			combatStats->ATK += 1;
-			combatStats->DEF += 1;
-			combatStats->maxHP += 5; 
-			//every time player levels up (no matter how many levels) maxHP increases only once
-			//we can always remove the part where maxHP increases if it becomes a problem/too advantageous in battle
+		//bc player's curr EXP could be more than double MaxEXP
+		//each time a multiple of maxEXP is met = level up by 1
+		while(this->EXP >= maxEXP){
+			additionalEXP = this->EXP - maxEXP;
+			this->EXP = additionalEXP;
+			numLevels++;
+		}
+		this->setEXP(additionalEXP); 
+		this->setLevel(this->getLevel() + numLevels);
+		
+		int random = 0;
+		int pts = 1; // change pts based on the player's lvl.
+		for (int i = 0; i < numLevels + pts; ++i)
+		{
+			random = rand() % 3;
+			if (random == 0)
+				baseStats->ATK += 1;
+			else if (random == 1)
+				baseStats->DEF += 1;
+			else if (random == 2)
+				baseStats->maxHP += 2;
+		}
 	}		
 			
 };
