@@ -15,6 +15,14 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
     connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
     connect(ui->returnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(endArea()));
+    connect(ui->changeEquipmentButton, SIGNAL(clicked(bool)), this, SLOT(switchToEquipmentMenu()));
+    connect(ui->nextBattleButton, SIGNAL(clicked(bool)), this, SLOT(nextBattle()));
+
+    // switch inventory item type
+    connect(ui->viewInventoryWeaponsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
+    connect(ui->viewInventoryArmorRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
+    connect(ui->viewInventoryBootsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
+    connect(ui->viewInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
 }
 
 MainWindow::~MainWindow()
@@ -62,11 +70,13 @@ void MainWindow::update_battle_menu_enemy_stats()
     QString level = QString::number(current_enemy->getLevel());
     QString atk = QString::number(current_enemy->combatStats->ATK);
     QString def = QString::number(current_enemy->combatStats->DEF);
+    QString desc = QString::fromStdString(current_enemy->getDescription());
 
     ui->battle_menu_enemy_name_and_level->setText(name + " (Level " + level + ")");
     ui->battle_menu_enemy_health->setText("Health: " + hp + '/' + maxHP);
     ui->battle_menu_enemy_atk->setText("ATK: " + atk);
     ui->battle_menu_enemy_def->setText("DEF: " + def);
+    ui->battle_menu_enemy_desc->setPlainText(desc);
 }
 
 void MainWindow::initializePlayer()
@@ -82,18 +92,42 @@ void MainWindow::initializePlayer()
 
 void MainWindow::enterArea()
 {
-    if (count == 0)
-        area_enemies.push_back(ef.createEnemy("Green Slime"));
-    else
-        area_enemies.push_back(ef.createEnemy("Goblin"));
+    areaEnemiesCount = 0;
+    for (int i = 1; i <= 10; ++i)
+    {
+        int temp = rand() % 3 + 1;
+        if (temp == 1)
+            area_enemies.push_back(ef.createEnemy("Green Slime"));
+        if (temp == 2)
+            area_enemies.push_back(ef.createEnemy("Red Slime"));
+        if (temp == 3)
+            area_enemies.push_back(ef.createEnemy("Goblin"));
+    }
     initializeBattleWithEnemy();
 
+    ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
     ui->battle_menu_battle_result->clear();
     ui->battle_menu_roll_difference->clear();
     ui->battle_menu_turn_result->clear();
     ui->battle_menu_enemy_roll->clear();
     ui->battle_menu_player_roll->clear();
     switchToBattleMenu();
+}
+
+void MainWindow::nextBattle()
+{
+    ++areaEnemiesCount;
+    ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
+    area_enemies.pop_back();
+
+    if (area_enemies.size() > 0)
+        initializeBattleWithEnemy();
+    else
+    {
+        ui->battle_menu_battle_result->setText("You defeated all ten enemies!");
+        ui->returnToMainMenuButton->setEnabled(true);
+    }
+    ui->nextBattleButton->setEnabled(false);
 }
 
 void MainWindow::initializeBattleWithEnemy()
@@ -135,14 +169,17 @@ void MainWindow::nextTurn()
     if (player->combatStats->HP <= 0 || current_enemy->combatStats->HP <= 0)
     {
         if (player->combatStats->HP <= 0)
+        {
             ui->battle_menu_battle_result->setText(enemyName + " has won!");
+            ui->returnToMainMenuButton->setEnabled(true);
+        }
         else if (current_enemy->combatStats->HP <= 0)
+        {
             ui->battle_menu_battle_result->setText(playerName + " has won!");
-        ++count;
+            ui->nextBattleButton->setEnabled(true);
+        }
         ui->rollButton->setEnabled(false);
-        ui->returnToMainMenuButton->setEnabled(true);
     }
-
     update_battle_menu_player_stats();
     update_battle_menu_enemy_stats();
 }
@@ -153,6 +190,18 @@ void MainWindow::endArea()
     switchToMainMenu();
 }
 
+void MainWindow::selectInventoryItemType()
+{
+    if (ui->viewInventoryWeaponsRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Weapons");
+    else if (ui->viewInventoryArmorRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Armor");
+    else if (ui->viewInventoryBootsRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Boots");
+    else if (ui->viewInventoryCardsRadioButton->isChecked())
+        ui->viewInventoryItemType->setText("Cards");
+}
+
 void MainWindow::switchToMainMenu()
 {
     ui->menu_pages->setCurrentIndex(1);
@@ -161,4 +210,9 @@ void MainWindow::switchToMainMenu()
 void MainWindow::switchToBattleMenu()
 {
     ui->menu_pages->setCurrentIndex(2);
+}
+
+void MainWindow::switchToEquipmentMenu()
+{
+    ui->menu_pages->setCurrentIndex(4);
 }

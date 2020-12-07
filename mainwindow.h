@@ -33,8 +33,7 @@ private:
     Battle* battle = nullptr;
     EnemyFactory ef;
     std::vector<Enemy*> area_enemies;
-
-    int count = 0;
+    int areaEnemiesCount;
 
 private slots:
 
@@ -43,15 +42,19 @@ private slots:
     void enterArea();
     void initializeBattleWithEnemy();
     void nextTurn();
+    void nextBattle();
     void endArea();
 
     void update_main_menu_player_stats();
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
 
+    void selectInventoryItemType();
+
     // switch between menu pages
     void switchToMainMenu();
     void switchToBattleMenu();
+    void switchToEquipmentMenu();
 };
 
 #endif // MAINWINDOW_H
