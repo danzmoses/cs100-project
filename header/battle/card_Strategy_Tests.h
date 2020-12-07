@@ -122,7 +122,7 @@ TEST(CardStrategyTests, EnhanceATKStrategy){
 	EXPECT_EQ(player->combatStats->ATK, 2);
 }
 
-TEST(CardStrategyTests, GreaterThanZeroDealDamageStrategy){
+TEST(CardStrategyTests, HPGreaterThanZeroDealDamageStrategy){
 	Player *player = new Player("Hero");
 
 	EnemyFactory *ef = new EnemyFactory();
@@ -137,5 +137,41 @@ TEST(CardStrategyTests, GreaterThanZeroDealDamageStrategy){
 	EXPECT_EQ(enemy->combatStats->HP, 3);
 }
 
+TEST(CardStrategyTests, HPOf1DealDamageStrategy){
+	Player *player = new Player("Hero");
+
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Green Slime");
+
+	EXPECT_EQ(enemy->combatStats->HP, 2);
+	enemy->combatStats->HP = 1;
+	
+	EXPECT_EQ(enemy->combatStats->HP, 1);
+
+	CardStrategy *cs = new DealDamageStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(enemy->combatStats->HP, 1); 
+}
+
+TEST(CardStrategyTests, HPEqualToZeroDealDamageStrategy){
+	Player *player = new Player("Hero");
+	
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Green Slime");
+
+	EXPECT_EQ(enemy->combatStats->HP, 2);
+	enemy->combatStats->HP = 0;
+
+	EXPECT_EQ(enemy->combatStats->HP, 0);
+
+	CardStrategy *cs = new DealDamageStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(enemy->combatStats->HP, 0);
+
+}
 
 #endif //__CARD_STRATEGY_TESTS_H__
