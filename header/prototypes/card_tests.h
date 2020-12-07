@@ -11,7 +11,7 @@ TEST(CardPrototypeTest, SmallHealPrototype){
 
 	EXPECT_EQ(c->getName(), "Small Heal");
 	EXPECT_EQ(c->getCost(), 65);
-	EXPECT_EQ(c->getDescription(), "This card raises HP by 2"); 
+	EXPECT_EQ(c->getDescription(), "This card raises HP by 40% the user's current HP"); 
 
 	c->setName("New card name");
 	c->setCost(165);
