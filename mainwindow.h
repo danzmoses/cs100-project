@@ -51,12 +51,14 @@ private slots:
     void update_main_menu_player_stats();
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
+    void updateShopMenuPlayerStats();
 
     void selectInventoryItemType();
 
     // switch between menu pages
     void switchToMainMenu();
     void switchToBattleMenu();
+    void switchToShopMenu();
     void switchToEquipmentMenu();
 };
 

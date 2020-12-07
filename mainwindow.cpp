@@ -16,6 +16,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
     connect(ui->returnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(endArea()));
     connect(ui->changeEquipmentButton, SIGNAL(clicked(bool)), this, SLOT(switchToEquipmentMenu()));
+    connect(ui->equipmentReturnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
+    connect(ui->goToShopButton, SIGNAL(clicked(bool)), this, SLOT(switchToShopMenu()));
+    connect(ui->shopReturnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
     connect(ui->nextBattleButton, SIGNAL(clicked(bool)), this, SLOT(nextBattle()));
 
     // switch inventory item type
@@ -90,6 +93,27 @@ void MainWindow::update_battle_menu_enemy_stats()
     ui->battle_menu_enemy_desc->setPlainText(desc);
 }
 
+void MainWindow::updateShopMenuPlayerStats()
+{
+    ui->shopMenuName->setText("Name: " + QString::fromStdString(player->getName()));
+    ui->shopMenuLevel->setText("Level: " + QString::number(player->getLevel()));
+    ui->shopMenuEXP->setText("EXP: " + QString::number(player->getEXP()) + '/' + QString::number(player->getMaxEXP()));
+    ui->shopMenuHP->setText("Health: " + QString::number(player->combatStats->HP) + '/' + QString::number(player->combatStats->maxHP));
+    ui->shopMenuATK->setText("ATK: " + QString::number(player->combatStats->ATK));
+    ui->shopMenuDEF->setText("DEF: " + QString::number(player->combatStats->DEF));
+
+    Inventory equipped = player->getEquipped();
+    if (!equipped.getWeapons().empty())
+        ui->shopMenuCurrentWeapon->setText("Weapon: " + QString::fromStdString(equipped.getWeapons().at(0)->getName()));
+    else
+        ui->shopMenuCurrentWeapon->setText("Weapon: <None>");
+
+    if (!equipped.getArmor().empty())
+        ui->shopMenuCurrentArmor->setText("Armor: " + QString::fromStdString(equipped.getArmor().at(0)->getName()));
+    else
+        ui->shopMenuCurrentArmor->setText("Armor: <None>");
+}
+
 void MainWindow::initializePlayer()
 {
     std::string name = ui->enter_name_lineedit->text().toStdString();
@@ -97,7 +121,17 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
+
+    itemFactory = new WeaponFactory();
+    player->addWeaponToInventory("Wooden Sword", itemFactory);
+    player->equipWeapon("Wooden Sword");
+    delete itemFactory;
+    itemFactory = new ArmorFactory();
+    player->addArmorToInventory("Leather Armor", itemFactory);
+    player->equipArmor("Leather Armor");
+    delete itemFactory;
     update_main_menu_player_stats();
+    updateShopMenuPlayerStats();
     switchToMainMenu();
 }
 
@@ -221,6 +255,11 @@ void MainWindow::switchToMainMenu()
 void MainWindow::switchToBattleMenu()
 {
     ui->menu_pages->setCurrentIndex(2);
+}
+
+void MainWindow::switchToShopMenu()
+{
+    ui->menu_pages->setCurrentIndex(3);
 }
 
 void MainWindow::switchToEquipmentMenu()
