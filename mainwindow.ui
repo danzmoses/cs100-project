@@ -541,31 +541,19 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_5">
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_23">
+            <widget class="QLabel" name="mainMenuWeaponLabel">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
               </font>
              </property>
              <property name="text">
-              <string>Sword: Wooden</string>
+              <string>Weapon: &lt;None&gt;</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_26">
-             <property name="font">
-              <font>
-               <pointsize>20</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Shield: Wooden</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="start_menu_goal_label_27">
+            <widget class="QLabel" name="mainMenuArmorLabel">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
@@ -577,7 +565,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_28">
+            <widget class="QLabel" name="mainMenuBootsLabel">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
@@ -836,7 +824,7 @@
           </spacer>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_4">
+          <widget class="QPushButton" name="goToShopButton">
            <property name="font">
             <font>
              <pointsize>28</pointsize>
@@ -3084,31 +3072,19 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_43">
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_45">
+            <widget class="QLabel" name="shopMenuCurrentWeapon">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
               </font>
              </property>
              <property name="text">
-              <string>Sword: Wooden</string>
+              <string>Weapon: &lt;None&gt;</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_47">
-             <property name="font">
-              <font>
-               <pointsize>20</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Shield: Wooden</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="start_menu_goal_label_48">
+            <widget class="QLabel" name="shopMenuCurrentArmor">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
@@ -3120,7 +3096,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_49">
+            <widget class="QLabel" name="shopMenuCurrentBoots">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
@@ -3528,7 +3504,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_48">
            <item>
-            <widget class="QLabel" name="main_menu_name_3">
+            <widget class="QLabel" name="shopMenuName">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -3540,7 +3516,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_level_3">
+            <widget class="QLabel" name="shopMenuLevel">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -3552,7 +3528,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_exp_3">
+            <widget class="QLabel" name="shopMenuEXP">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -3564,7 +3540,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_health_3">
+            <widget class="QLabel" name="shopMenuHP">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -3576,7 +3552,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_attack_3">
+            <widget class="QLabel" name="shopMenuATK">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -3588,7 +3564,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_defense_3">
+            <widget class="QLabel" name="shopMenuDEF">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4340,7 +4316,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_27">
            <item>
-            <widget class="QLabel" name="main_menu_name_2">
+            <widget class="QLabel" name="equipmentMenuName">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4352,7 +4328,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_level_2">
+            <widget class="QLabel" name="equipmentMenuLevel">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4364,7 +4340,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_exp_2">
+            <widget class="QLabel" name="equipmentMenuEXP">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4376,7 +4352,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_health_2">
+            <widget class="QLabel" name="equipmentMenuHP">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4388,7 +4364,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_attack_2">
+            <widget class="QLabel" name="equipmentMenuATK">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4400,7 +4376,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="main_menu_defense_2">
+            <widget class="QLabel" name="equipmentMenuDEF">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -4671,31 +4647,19 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_33">
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_41">
+            <widget class="QLabel" name="equipmentMenuCurrentWeapon">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
               </font>
              </property>
              <property name="text">
-              <string>Sword: Wooden</string>
+              <string>Weapon: &lt;None&gt;</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_42">
-             <property name="font">
-              <font>
-               <pointsize>20</pointsize>
-              </font>
-             </property>
-             <property name="text">
-              <string>Shield: Wooden</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLabel" name="start_menu_goal_label_43">
+            <widget class="QLabel" name="equipmentMenuCurrentArmor">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
@@ -4707,7 +4671,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="start_menu_goal_label_44">
+            <widget class="QLabel" name="equipmentMenuCurrentBoots">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
