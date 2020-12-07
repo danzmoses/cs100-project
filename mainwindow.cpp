@@ -42,6 +42,17 @@ void MainWindow::update_main_menu_player_stats()
     ui->main_menu_health->setText("Health: " + QString::number(player->combatStats->HP) + '/' + QString::number(player->combatStats->maxHP));
     ui->main_menu_attack->setText("ATK: " + QString::number(player->combatStats->ATK));
     ui->main_menu_defense->setText("DEF: " + QString::number(player->combatStats->DEF));
+
+    Inventory equipped = player->getEquipped();
+    if (!equipped.getWeapons().empty())
+        ui->mainMenuWeaponLabel->setText("Weapon: " + QString::fromStdString(equipped.getWeapons().at(0)->getName()));
+    else
+        ui->mainMenuWeaponLabel->setText("Weapon: <None>");
+
+    if (!equipped.getArmor().empty())
+        ui->mainMenuArmorLabel->setText("Armor: " + QString::fromStdString(equipped.getArmor().at(0)->getName()));
+    else
+        ui->mainMenuArmorLabel->setText("Armor: <None>");
 }
 
 void MainWindow::update_battle_menu_player_stats()

@@ -13,6 +13,8 @@
 #include "header/Enemy.h"
 #include "header/EnemyFactory.h"
 #include "header/battle/Battle.h"
+#include "header/WeaponFactory.h"
+#include "header/ArmorFactory.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,6 +34,7 @@ private:
     Enemy* current_enemy = nullptr;
     Battle* battle = nullptr;
     EnemyFactory ef;
+    ItemFactory* itemFactory;
     std::vector<Enemy*> area_enemies;
     int areaEnemiesCount;
 
