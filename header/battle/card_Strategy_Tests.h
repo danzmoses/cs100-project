@@ -9,7 +9,7 @@
 #include "EnhanceATKStrategy.h"
 #include "DealDamageStrategy.h"
 
-TEST(CardStrategyTests, SmallHealStrategy){
+/*TEST(CardStrategyTests, SmallHealStrategy){
 	Player *player = new Player("Hero");
 
 	EnemyFactory *ef = new EnemyFactory();
@@ -26,6 +26,68 @@ TEST(CardStrategyTests, SmallHealStrategy){
 	cs->use(player, enemy);
 
 	EXPECT_EQ(player->combatStats->HP, 9);
+}*/
+
+TEST(CardStrategyTests, EqualToMaxHPSmallHealStrategy){
+	Player *player = new Player("Hero");
+
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Green Slime");
+
+	EXPECT_EQ(player->combatStats->HP, 10);
+	EXPECT_EQ(player->combatStats->maxHP, 10);
+
+	player->combatStats->HP = 7;
+
+	EXPECT_EQ(player->combatStats->HP, 7);
+
+	CardStrategy *cs = new SmallHealStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(player->combatStats->HP, 10);
+	EXPECT_EQ(player->combatStats->maxHP, 10);
+}
+
+TEST(CardStrategyTests, GreaterThanMaxHPSmallHealStrategy){
+        Player *player = new Player("Hero");
+
+        EnemyFactory *ef = new EnemyFactory();
+        Enemy *enemy = ef->createEnemy("Green Slime");
+
+        EXPECT_EQ(player->combatStats->HP, 10);
+	EXPECT_EQ(player->combatStats->maxHP, 10);
+
+        player->combatStats->HP = 9;
+
+	EXPECT_EQ(player->combatStats->HP, 9);
+
+	CardStrategy *cs = new SmallHealStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(player->combatStats->HP, 10);
+	EXPECT_EQ(player->combatStats->maxHP, 10);
+} 
+
+TEST(CardStrategyTests, SmallerThanMaxHPSmallHealStrategy){
+	Player *player = new Player("Hero");
+
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Green Slime");
+
+	EXPECT_EQ(player->combatStats->HP, 10);
+
+	player->combatStats->HP = 6;
+
+	EXPECT_EQ(player->combatStats->HP, 6);
+
+	CardStrategy *cs = new SmallHealStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(player->combatStats->HP, 8);
+	EXPECT_EQ(player->combatStats->maxHP, 10);
 }
 
 TEST(CardStrategyTests, EnhanceDEFStrategy){
