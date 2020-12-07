@@ -34,7 +34,8 @@ private:
     Enemy* current_enemy = nullptr;
     Battle* battle = nullptr;
     EnemyFactory ef;
-    ItemFactory* itemFactory;
+    ItemFactory* weaponFactory = new WeaponFactory;
+    ItemFactory* armorFactory = new ArmorFactory;
     std::vector<Enemy*> area_enemies;
     int areaEnemiesCount;
 
@@ -51,6 +52,7 @@ private slots:
     void update_main_menu_player_stats();
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
+    void updateEquipmentMenuPlayerStats();
     void updateShopMenuPlayerStats();
 
     void selectInventoryItemType();
