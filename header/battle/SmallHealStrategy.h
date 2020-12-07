@@ -2,13 +2,21 @@
 #define __SMALL_HEAL_STRATEGY_H__
 
 #include "CardStrategy.h"
+#include <iostream> 
+#include <cmath>
 
 class SmallHealStrategy : public CardStrategy{
 	public:
 		SmallHealStrategy(){};
 
 		virtual void use(Entity *attacker, Entity *defender){
-			attacker->combatStats->HP += 2;
+			double fourtyPercentHP = (2.0/5) * attacker->combatStats->HP;
+			if(attacker->combatStats->HP + round(fourtyPercentHP) < attacker->combatStats->maxHP){
+				attacker->combatStats->HP += round(fourtyPercentHP);
+			} 
+			else if(attacker->combatStats->HP + round(fourtyPercentHP) >= attacker->combatStats->maxHP){
+				attacker->combatStats->HP = attacker->combatStats->maxHP;
+			} 
 		}
 };
 
