@@ -8,12 +8,12 @@ class SmallHealPrototype : public CardPrototype{
 		SmallHealPrototype() : CardPrototype(){
 			this->setName("Small Heal"); 
 			this->setCost(65);
-			this->setDescription("This card raises HP by 40% the user's current HP");
+			this->setDescription("This card raises the card user's HP by 40% their current HP (rounded to the nearest whole number)");
 		}
 
 		SmallHealPrototype(std::string name) : CardPrototype(name){
 			this->setCost(65);
-			this->setDescription("This card raises HP by 40% the user's current HP"); 
+			this->setDescription("This card raises the card user's HP by 40% their current HP (rounded to the nearest whole number)"); 
 		}
 
 		virtual CardPrototype* Clone(){
