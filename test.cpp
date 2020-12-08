@@ -5,6 +5,8 @@
 #include "header/prototypes/prototype_tests.h"
 #include "header/prototypes/card_tests.h"
 #include "header/battle/card_Strategy_Tests.h"
+#include "header/inventory_tests.h"
+#include "header/battle/attack_strategy_tests.h"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
