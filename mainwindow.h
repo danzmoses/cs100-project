@@ -13,6 +13,8 @@
 #include "header/Enemy.h"
 #include "header/EnemyFactory.h"
 #include "header/battle/Battle.h"
+#include "header/WeaponFactory.h"
+#include "header/ArmorFactory.h"
 
 namespace Ui {
 class MainWindow;
@@ -32,9 +34,10 @@ private:
     Enemy* current_enemy = nullptr;
     Battle* battle = nullptr;
     EnemyFactory ef;
+    ItemFactory* weaponFactory = new WeaponFactory;
+    ItemFactory* armorFactory = new ArmorFactory;
     std::vector<Enemy*> area_enemies;
-
-    int count = 0;
+    int areaEnemiesCount;
 
 private slots:
 
@@ -43,15 +46,22 @@ private slots:
     void enterArea();
     void initializeBattleWithEnemy();
     void nextTurn();
+    void nextBattle();
     void endArea();
 
     void update_main_menu_player_stats();
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
+    void updateEquipmentMenuPlayerStats();
+    void updateShopMenuPlayerStats();
+
+    void selectInventoryItemType();
 
     // switch between menu pages
     void switchToMainMenu();
     void switchToBattleMenu();
+    void switchToShopMenu();
+    void switchToEquipmentMenu();
 };
 
 #endif // MAINWINDOW_H
