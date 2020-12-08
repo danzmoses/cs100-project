@@ -70,21 +70,23 @@ class Entity
             this->combatStats->HP = this->baseStats->HP;
             this->combatStats->maxHP = this->baseStats->maxHP;
 
-            for (int i = 0; i < this->inventory.getArmor().size(); ++i) // add all armor combat stats to player's combat stats
+            for (int i = 0; i < this->equipped.getWeapons().size(); ++i) // add equipped weapon combat stats to player combat stats
             {
-                this->combatStats->ATK += this->inventory.getArmor().at(i)->combatStats->ATK;
-                this->combatStats->DEF += this->inventory.getArmor().at(i)->combatStats->DEF;
-                this->combatStats->HP += this->inventory.getArmor().at(i)->combatStats->HP;
-                this->combatStats->maxHP += this->inventory.getArmor().at(i)->combatStats->maxHP;
+                this->combatStats->ATK += this->equipped.getWeapons().at(i)->combatStats->ATK;
+                this->combatStats->DEF += this->equipped.getWeapons().at(i)->combatStats->DEF;
+                this->combatStats->HP += this->equipped.getWeapons().at(i)->combatStats->HP;
+                this->combatStats->maxHP += this->equipped.getWeapons().at(i)->combatStats->maxHP;
             }
 
-            for (int i = 0; i < this->inventory.getWeapons().size(); ++i) // add all weapons combat stats to player combat stats
+            for (int i = 0; i < this->equipped.getArmor().size(); ++i) // add all armor combat stats to player's combat stats
             {
-                this->combatStats->ATK += this->inventory.getWeapons().at(i)->combatStats->ATK;
-                this->combatStats->DEF += this->inventory.getWeapons().at(i)->combatStats->DEF;
-                this->combatStats->HP += this->inventory.getWeapons().at(i)->combatStats->HP;
-                this->combatStats->maxHP += this->inventory.getWeapons().at(i)->combatStats->maxHP;
-            }            
+                this->combatStats->ATK += this->equipped.getArmor().at(i)->combatStats->ATK;
+                this->combatStats->DEF += this->equipped.getArmor().at(i)->combatStats->DEF;
+                this->combatStats->HP += this->equipped.getArmor().at(i)->combatStats->HP;
+                this->combatStats->maxHP += this->equipped.getArmor().at(i)->combatStats->maxHP;
+            }
+
+
         }
 
         void equipWeapon(std::string name)
