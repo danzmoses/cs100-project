@@ -26,6 +26,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->viewInventoryArmorRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
     connect(ui->viewInventoryBootsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
     connect(ui->viewInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
+
+    connect(ui->equipmentEquipButton, SIGNAL(clicked(bool)), this, SLOT(equipItem()));
 }
 
 MainWindow::~MainWindow()
@@ -136,7 +138,6 @@ void MainWindow::updateEquipmentMenuPlayerStats()
     else
         ui->equipmentMenuCurrentArmor->setText("Armor: <None>");
 
-
     Inventory inventory = player->getInventory();
     std::vector<Item*> items;
     if (ui->viewInventoryWeaponsRadioButton->isChecked())
@@ -163,8 +164,9 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-//    player->addWeaponToInventory("Wooden Sword", weaponFactory);
-//    player->addArmorToInventory("Leather Armor", armorFactory);
+    player->addWeaponToInventory("Wooden Sword", weaponFactory);
+    player->addWeaponToInventory("Stone Sword", weaponFactory);
+    player->addArmorToInventory("Leather Armor", armorFactory);
     update_main_menu_player_stats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
@@ -286,6 +288,17 @@ void MainWindow::selectInventoryItemType()
         ui->viewInventoryItemType->setText("Boots");
     else if (ui->viewInventoryCardsRadioButton->isChecked())
         ui->viewInventoryItemType->setText("Cards");
+    updateEquipmentMenuPlayerStats();
+}
+
+void MainWindow::equipItem()
+{
+    std::string selectedItem = ui->equipmentList->currentItem()->text().toStdString();
+    if (ui->viewInventoryWeaponsRadioButton->isChecked())
+        player->equipWeapon(selectedItem);
+    else if (ui->viewInventoryArmorRadioButton->isChecked())
+        player->equipArmor(selectedItem);
+    update_main_menu_player_stats();
     updateEquipmentMenuPlayerStats();
 }
 

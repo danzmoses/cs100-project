@@ -56,6 +56,7 @@ private slots:
     void updateShopMenuPlayerStats();
 
     void selectInventoryItemType();
+    void equipItem();
 
     // switch between menu pages
     void switchToMainMenu();
