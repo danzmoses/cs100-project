@@ -29,6 +29,14 @@ class ArmorFactory : public ItemFactory {
             std::invalid_argument ia("Invalid argument. Unable to find \"" + name + '\"' );
             throw ia;
         } 
+
+        virtual std::vector<Item*> getPrototypes()
+        { 
+            std::vector<Item*> armor;
+            for (int i = 0; i < armorPrototypes.size(); ++i)
+                armor.push_back(armorPrototypes.at(i));
+            return armor;
+        }
 };
 
 #endif //__ARMOR_FACTORY_H__
