@@ -56,7 +56,8 @@ HEADERS  += mainwindow.h \
     header/prototypes/prototype_tests.h \
     header/Inventory.h \
     header/inventory_tests.h \
-    header/Stats.h
+    header/Stats.h \
+    header/Shop.h
 
 FORMS    += mainwindow.ui
 

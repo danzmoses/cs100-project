@@ -118,6 +118,21 @@ void MainWindow::updateShopMenuPlayerStats()
         ui->shopMenuCurrentArmor->setText("Armor: <None>");
 }
 
+void MainWindow::updateShopMenuInventory()
+{
+    ui->shopList->clear();
+    std::vector<Item*> items;
+    if (ui->shopInventoryWeaponsRadioButton->isChecked())
+        items = shop.getShopInventory().getWeapons();
+    else if (ui->shopInventoryArmorRadioButton->isChecked())
+        items = shop.getShopInventory().getArmor();
+    if (items.empty())
+        ui->shopList->addItem("No items found");
+    else
+        for (unsigned i = 0; i < items.size(); ++i)
+            ui->shopList->addItem(QString::fromStdString(items.at(i)->getName()));
+}
+
 void MainWindow::updateEquipmentMenuPlayerStats()
 {
     ui->equipmentMenuName->setText("Name: " + QString::fromStdString(player->getName()));
@@ -150,10 +165,8 @@ void MainWindow::updateEquipmentMenuPlayerStats()
     if (items.empty())
         ui->equipmentList->addItem("No items found");
     else
-    {
         for (unsigned i = 0; i < items.size(); ++i)
             ui->equipmentList->addItem(QString::fromStdString(items.at(i)->getName()));
-    }
 
 }
 
@@ -170,6 +183,7 @@ void MainWindow::initializePlayer()
     update_main_menu_player_stats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
+    updateShopMenuInventory();
     switchToMainMenu();
 }
 
@@ -289,6 +303,19 @@ void MainWindow::selectInventoryItemType()
     else if (ui->viewInventoryCardsRadioButton->isChecked())
         ui->viewInventoryItemType->setText("Cards");
     updateEquipmentMenuPlayerStats();
+}
+
+void MainWindow::selectShopItemType()
+{
+    if (ui->shopInventoryWeaponsRadioButton->isChecked())
+        ui->shopInventoryItemType->setText("Weapons");
+    else if (ui->shopInventoryArmorRadioButton->isChecked())
+        ui->shopInventoryItemType->setText("Armor");
+    else if (ui->shopInventoryBootsRadioButton->isChecked())
+        ui->shopInventoryItemType->setText("Boots");
+    else if (ui->shopInventoryCardsRadioButton->isChecked())
+        ui->shopInventoryItemType->setText("Cards");
+    updateShopMenuInventory();
 }
 
 void MainWindow::equipItem()

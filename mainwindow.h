@@ -15,6 +15,7 @@
 #include "header/battle/Battle.h"
 #include "header/WeaponFactory.h"
 #include "header/ArmorFactory.h"
+#include "header/Shop.h"
 
 namespace Ui {
 class MainWindow;
@@ -38,6 +39,7 @@ private:
     ItemFactory* armorFactory = new ArmorFactory;
     std::vector<Enemy*> area_enemies;
     int areaEnemiesCount;
+    Shop shop;
 
 private slots:
 
@@ -54,8 +56,10 @@ private slots:
     void update_battle_menu_enemy_stats();
     void updateEquipmentMenuPlayerStats();
     void updateShopMenuPlayerStats();
+    void updateShopMenuInventory();
 
     void selectInventoryItemType();
+    void selectShopItemType();
     void equipItem();
 
     // switch between menu pages

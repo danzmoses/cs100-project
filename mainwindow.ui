@@ -2737,7 +2737,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_9">
            <item>
-            <widget class="QRadioButton" name="viewInventoryWeaponsRadioButton_2">
+            <widget class="QRadioButton" name="shopInventoryWeaponsRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2752,7 +2752,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="viewInventoryArmorRadioButton_2">
+            <widget class="QRadioButton" name="shopInventoryArmorRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2768,7 +2768,7 @@
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_10">
            <item>
-            <widget class="QRadioButton" name="viewInventoryBootsRadioButton_2">
+            <widget class="QRadioButton" name="shopInventoryBootsRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2780,7 +2780,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QRadioButton" name="viewInventoryCardsRadioButton_2">
+            <widget class="QRadioButton" name="shopInventoryCardsRadioButton">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2914,7 +2914,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_42">
            <item>
-            <widget class="QLabel" name="viewInventoryItemType_2">
+            <widget class="QLabel" name="shopInventoryItemType">
              <property name="font">
               <font>
                <pointsize>20</pointsize>
@@ -3733,7 +3733,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_50">
            <item>
-            <widget class="QComboBox" name="comboBox_4">
+            <widget class="QComboBox" name="shopList">
              <property name="palette">
               <palette>
                <active>
@@ -3776,21 +3776,6 @@
                <pointsize>20</pointsize>
               </font>
              </property>
-             <item>
-              <property name="text">
-               <string>Wooden Sword</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Stone Sword</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Iron Sword</string>
-              </property>
-             </item>
             </widget>
            </item>
           </layout>
