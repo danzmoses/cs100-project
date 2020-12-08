@@ -135,6 +135,25 @@ void MainWindow::updateEquipmentMenuPlayerStats()
         ui->equipmentMenuCurrentArmor->setText("Armor: " + QString::fromStdString(equipped.getArmor().at(0)->getName()));
     else
         ui->equipmentMenuCurrentArmor->setText("Armor: <None>");
+
+
+    Inventory inventory = player->getInventory();
+    std::vector<Item*> items;
+    if (ui->viewInventoryWeaponsRadioButton->isChecked())
+        items = inventory.getWeapons();
+    else if (ui->viewInventoryArmorRadioButton->isChecked())
+        items = inventory.getArmor();
+
+    ui->equipmentList->clear();
+
+    if (items.empty())
+        ui->equipmentList->addItem("No items found");
+    else
+    {
+        for (unsigned i = 0; i < items.size(); ++i)
+            ui->equipmentList->addItem(QString::fromStdString(items.at(i)->getName()));
+    }
+
 }
 
 void MainWindow::initializePlayer()
@@ -144,6 +163,8 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
+//    player->addWeaponToInventory("Wooden Sword", weaponFactory);
+//    player->addArmorToInventory("Leather Armor", armorFactory);
     update_main_menu_player_stats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
@@ -265,6 +286,7 @@ void MainWindow::selectInventoryItemType()
         ui->viewInventoryItemType->setText("Boots");
     else if (ui->viewInventoryCardsRadioButton->isChecked())
         ui->viewInventoryItemType->setText("Cards");
+    updateEquipmentMenuPlayerStats();
 }
 
 void MainWindow::switchToMainMenu()

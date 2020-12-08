@@ -4865,7 +4865,7 @@
          <string>Equip</string>
         </property>
        </widget>
-       <widget class="QListWidget" name="listWidget">
+       <widget class="QListWidget" name="equipmentList">
         <property name="geometry">
          <rect>
           <x>580</x>
