@@ -6,29 +6,20 @@
 
 class Player : public Entity{
 	private:
-		int gold;
 		int EXP;
 		int maxEXP;
 	public:
-    Player() : Entity(), gold(50), EXP(0), maxEXP(5) {}
+    Player() : Entity(), EXP(0), maxEXP(5) {}
 
-    Player(std::string name) : Entity(name), gold(50), EXP(0), maxEXP(5){}
+    Player(std::string name) : Entity(name), EXP(0), maxEXP(5){}
 
 	//getters and setters
-	int getGold(){
-		return this->gold;
-    }
-
 	int getEXP(){
 		return this->EXP;
 	}
 
 	int getMaxEXP(){
 		return this->maxEXP;
-	}
-
-	void setGold(int gold){
-		this->gold = gold;
 	}
 
 	void setEXP(int EXP) 
