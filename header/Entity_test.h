@@ -15,12 +15,12 @@ TEST(PlayerTests, DefaultConstructorTest){
 	
  	//inherited Entity member variables
  	//testing getters
- 	EXPECT_EQ(p->baseStats->HP, 10);
-        EXPECT_EQ(p->baseStats->maxHP, 10);
+ 	EXPECT_EQ(p->baseStats->HP, 5);
+        EXPECT_EQ(p->baseStats->maxHP, 5);
         EXPECT_EQ(p->baseStats->ATK, 1);
         EXPECT_EQ(p->baseStats->DEF, 1);
- 	EXPECT_EQ(p->combatStats->HP, 10);
- 	EXPECT_EQ(p->combatStats->maxHP, 10);
+ 	EXPECT_EQ(p->combatStats->HP, 5);
+ 	EXPECT_EQ(p->combatStats->maxHP, 5);
  	EXPECT_EQ(p->combatStats->ATK, 1);
  	EXPECT_EQ(p->combatStats->DEF, 1);		
 	
@@ -32,12 +32,12 @@ TEST(PlayerTests, DefaultConstructorTest){
 
  	//testing setters from Entity
  	p->setName("newName");
-	p->baseStats->HP = 5;
-        p->baseStats->maxHP= 9;
+	p->baseStats->HP = 9;
+        p->baseStats->maxHP= 10;
         p->baseStats->ATK = 3;
         p->baseStats->DEF = 3;
- 	p->combatStats->HP = 5;
- 	p->combatStats->maxHP= 9;
+ 	p->combatStats->HP = 9;
+ 	p->combatStats->maxHP= 10;
  	p->combatStats->ATK = 3;
  	p->combatStats->DEF = 3;
 
@@ -47,12 +47,12 @@ TEST(PlayerTests, DefaultConstructorTest){
  	p->setEXP(2);
 
  	EXPECT_EQ(p->getName(), "newName");
-	EXPECT_EQ(p->baseStats->HP, 5);
-        EXPECT_EQ(p->baseStats->maxHP, 9);
+	EXPECT_EQ(p->baseStats->HP, 9);
+        EXPECT_EQ(p->baseStats->maxHP, 10);
          EXPECT_EQ(p->baseStats->ATK, 3);
          EXPECT_EQ(p->baseStats->DEF, 3);	
-        EXPECT_EQ(p->combatStats->HP, 5);
- 	EXPECT_EQ(p->combatStats->maxHP, 9);
+        EXPECT_EQ(p->combatStats->HP, 9);
+ 	EXPECT_EQ(p->combatStats->maxHP, 10);
          EXPECT_EQ(p->combatStats->ATK, 3);
          EXPECT_EQ(p->combatStats->DEF, 3);
 
@@ -62,7 +62,7 @@ TEST(PlayerTests, DefaultConstructorTest){
 
  	//testing restoreHP() from Entity
  	p->restoreHP();
- 	EXPECT_EQ(p->combatStats->HP, 9); //maxHP is no longer 10 because it was set to 9 when setMaxHP() was tested above
+ 	EXPECT_EQ(p->combatStats->HP, 10); //maxHP is no longer 5 because it was set to 10 when setMaxHP() was tested above
 }
 
 TEST(PlayerTests, nameConstructorTest){
@@ -72,12 +72,12 @@ TEST(PlayerTests, nameConstructorTest){
  	//Entity member variables
  	//testing getters
  	EXPECT_EQ(p->getName(), "First Name");
-	EXPECT_EQ(p->baseStats->HP, 10);
-        EXPECT_EQ(p->baseStats->maxHP, 10);
+	EXPECT_EQ(p->baseStats->HP, 5);
+        EXPECT_EQ(p->baseStats->maxHP, 5);
         EXPECT_EQ(p->baseStats->ATK, 1);
         EXPECT_EQ(p->baseStats->DEF, 1);	
- 	EXPECT_EQ(p->combatStats->HP, 10);
- 	EXPECT_EQ(p->combatStats->maxHP, 10);
+ 	EXPECT_EQ(p->combatStats->HP, 5);
+ 	EXPECT_EQ(p->combatStats->maxHP, 5);
  	EXPECT_EQ(p->combatStats->ATK, 1);
  	EXPECT_EQ(p->combatStats->DEF, 1);
 	
@@ -89,11 +89,11 @@ TEST(PlayerTests, nameConstructorTest){
 	
  	//testing setters from Entity and Player
  	p->setName("Second Name");
-	p->baseStats->HP = 5;
+	p->baseStats->HP = 10;
         p->baseStats->maxHP = 15;
 	p->baseStats->ATK = 5;
 	p->baseStats->DEF = 6;
- 	p->combatStats->HP = 5;
+ 	p->combatStats->HP = 10;
  	p->combatStats->maxHP = 15;
  	p->combatStats->ATK = 5;
  	p->combatStats->DEF = 6;
@@ -103,11 +103,11 @@ TEST(PlayerTests, nameConstructorTest){
  	p->setLevel(4);
 	
  	EXPECT_EQ(p->getName(), "Second Name");
-	EXPECT_EQ(p->baseStats->HP, 5);
+	EXPECT_EQ(p->baseStats->HP, 10);
         EXPECT_EQ(p->baseStats->maxHP, 15);
         EXPECT_EQ(p->baseStats->ATK, 5);
         EXPECT_EQ(p->baseStats->DEF, 6);
- 	EXPECT_EQ(p->combatStats->HP, 5);
+ 	EXPECT_EQ(p->combatStats->HP, 10);
  	EXPECT_EQ(p->combatStats->maxHP, 15);
  	EXPECT_EQ(p->combatStats->ATK, 5);
  	EXPECT_EQ(p->combatStats->DEF, 6);
@@ -130,8 +130,8 @@ TEST(PlayerTests, levelUpTest){
  	p->combatStats->DEF = 1;
  	p->setMaxEXP(5);
  	p->setEXP(14);
-	p->baseStats->maxHP = 5;
- 	p->combatStats->maxHP = 5;
+	p->baseStats->maxHP = 10;
+ 	p->combatStats->maxHP = 10;
 
  	EXPECT_EQ(p->getLevel(), 1);
 	EXPECT_EQ(p->baseStats->ATK, 1);
@@ -140,8 +140,8 @@ TEST(PlayerTests, levelUpTest){
  	EXPECT_EQ(p->combatStats->DEF, 1);
  	EXPECT_EQ(p->getMaxEXP(), 5);
  	EXPECT_EQ(p->getEXP(), 14);
-	EXPECT_EQ(p->baseStats->maxHP, 5);
- 	EXPECT_EQ(p->combatStats->maxHP, 5);	
+	EXPECT_EQ(p->baseStats->maxHP, 10);
+ 	EXPECT_EQ(p->combatStats->maxHP, 10);	
 
  	p->levelUp();
 	
@@ -150,10 +150,10 @@ TEST(PlayerTests, levelUpTest){
  	EXPECT_EQ(p->getMaxEXP(), 5);
 	EXPECT_EQ(p->baseStats->ATK, 2);
         EXPECT_EQ(p->baseStats->DEF, 2);
-        EXPECT_EQ(p->baseStats->maxHP, 10);
+        EXPECT_EQ(p->baseStats->maxHP, 15);
  	EXPECT_EQ(p->combatStats->ATK, 2);
  	EXPECT_EQ(p->combatStats->DEF, 2);
- 	EXPECT_EQ(p->combatStats->maxHP, 10);	
+ 	EXPECT_EQ(p->combatStats->maxHP, 15);	
 }
 
 // //add tests for enemies

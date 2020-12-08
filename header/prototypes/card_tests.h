@@ -11,7 +11,7 @@ TEST(CardPrototypeTest, SmallHealPrototype){
 
 	EXPECT_EQ(c->getName(), "Small Heal");
 	EXPECT_EQ(c->getCost(), 65);
-	EXPECT_EQ(c->getDescription(), "This card raises HP by 2"); 
+	EXPECT_EQ(c->getDescription(), "This card raises the card user's HP by 40% their current HP (rounded to the nearest whole number)"); 
 
 	c->setName("New card name");
 	c->setCost(165);
@@ -22,13 +22,30 @@ TEST(CardPrototypeTest, SmallHealPrototype){
 	EXPECT_EQ(c->getDescription(), "New card description"); 			
 }
 
+TEST(CardPrototypeTest, BigHealPrototype){
+	CardFactory *cf = new CardFactory();
+	Card *c = cf->createCard("Big Heal");
+
+	EXPECT_EQ(c->getName(), "Big Heal");
+	EXPECT_EQ(c->getCost(), 75);
+	EXPECT_EQ(c->getDescription(), "This card raises the card user's HP by 60% their current HP (rounded to the nearest whole number)");
+
+	c->setName("New card name");
+	c->setCost(175);
+	c->setDescription("New card description");
+
+	EXPECT_EQ(c->getName(), "New card name");
+	EXPECT_EQ(c->getCost(), 175);
+	EXPECT_EQ(c->getDescription(), "New card description");
+}
+
 TEST(CardPrototypeTest, DealDamagePrototype){
 	CardFactory *cf = new CardFactory();
 	Card *c = cf->createCard("Deal Damage");
 
 	EXPECT_EQ(c->getName(), "Deal Damage");
 	EXPECT_EQ(c->getCost(), 85);
-	EXPECT_EQ(c->getDescription(), "This card decreases the enemy's HP by 1");
+	EXPECT_EQ(c->getDescription(), "This card decreases the opponent's HP by 30% their current HP (rounded to the nearest whole number)");
 
 	c->setName("New card name");
 	c->setCost(185);
