@@ -63,21 +63,41 @@ TEST(CardStrategyTests, SmallerThanMaxHPSmallHealStrategy){
 	EXPECT_EQ(player->combatStats->HP, 5);
 	EXPECT_EQ(player->combatStats->maxHP, 5);
 
-	player->combatStats->HP = 6;
-	player->combatStats->maxHP = 10;
+	player->combatStats->HP = 2;
 
-	EXPECT_EQ(player->combatStats->HP, 6);
-	EXPECT_EQ(player->combatStats->maxHP, 10);
+	EXPECT_EQ(player->combatStats->HP, 2);
+	EXPECT_EQ(player->combatStats->maxHP, 5);
 
 	CardStrategy *cs = new SmallHealStrategy();
 
 	cs->use(player, enemy);
 
-	EXPECT_EQ(player->combatStats->HP, 8);
-	EXPECT_EQ(player->combatStats->maxHP, 10);
+	EXPECT_EQ(player->combatStats->HP, 3);
+	EXPECT_EQ(player->combatStats->maxHP, 5);
 }
 
 TEST(CardStrategyTests, MaxHPChangesSmallHealStrategy){
+	Player *player = new Player("Hero");
+
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Green Slime");
+
+	EXPECT_EQ(player->combatStats->HP, 5);
+	EXPECT_EQ(player->combatStats->maxHP, 5);
+
+	player->combatStats->maxHP = 8;
+
+	EXPECT_EQ(player->combatStats->maxHP, 8);
+
+	CardStrategy *cs = new SmallHealStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(player->combatStats->HP, 7);
+	EXPECT_EQ(player->combatStats->maxHP, 8);		
+}
+
+TEST(CardStrategyTests, MaxHPChangesSmallHealStrategy2){
 	Player *player = new Player("Hero");
 
 	EnemyFactory *ef = new EnemyFactory();
@@ -96,6 +116,27 @@ TEST(CardStrategyTests, MaxHPChangesSmallHealStrategy){
 
 	EXPECT_EQ(player->combatStats->HP, 6);
 	EXPECT_EQ(player->combatStats->maxHP, 6);
+}
+
+TEST(CardStrategyTests, MaxHPChangesSmallHealStrategy3){
+	Player *player = new Player("Hero");
+
+	EnemyFactory *ef = new EnemyFactory();
+	Enemy *enemy = ef->createEnemy("Green Slime");
+
+	EXPECT_EQ(player->combatStats->HP, 5);
+	EXPECT_EQ(player->combatStats->maxHP, 5);
+
+	player->combatStats->maxHP = 7;
+
+	EXPECT_EQ(player->combatStats->maxHP, 7);
+
+	CardStrategy *cs = new SmallHealStrategy();
+
+	cs->use(player, enemy);
+
+	EXPECT_EQ(player->combatStats->HP, 7);
+	EXPECT_EQ(player->combatStats->maxHP, 7);
 }
 
 TEST(CardStrategyTests, EqualToMaxHPBigHealStrategy){
