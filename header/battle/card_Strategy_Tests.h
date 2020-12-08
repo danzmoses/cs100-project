@@ -42,18 +42,16 @@ TEST(CardStrategyTests, GreaterThanMaxHPSmallHealStrategy){
         EXPECT_EQ(player->combatStats->HP, 5);
 	EXPECT_EQ(player->combatStats->maxHP, 5);
 
-        player->combatStats->HP = 9;
-	player->combatStats->HP = 10;
+        player->combatStats->HP = 4;
 
-	EXPECT_EQ(player->combatStats->HP, 9);
-	EXPECT_EQ(player->combatStats->maxHP, 10);
+	EXPECT_EQ(player->combatStats->HP, 4);
 
 	CardStrategy *cs = new SmallHealStrategy();
 
 	cs->use(player, enemy);
 
-	EXPECT_EQ(player->combatStats->HP, 10);
-	EXPECT_EQ(player->combatStats->maxHP, 10);
+	EXPECT_EQ(player->combatStats->HP, 5);
+	EXPECT_EQ(player->combatStats->maxHP, 5);
 } 
 
 TEST(CardStrategyTests, SmallerThanMaxHPSmallHealStrategy){
