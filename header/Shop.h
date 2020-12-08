@@ -13,7 +13,6 @@ class Shop
         WeaponFactory* weaponFactory;
         ArmorFactory* armorFactory;
 
-
     public:
         Shop()
         {
@@ -26,20 +25,6 @@ class Shop
             for (unsigned i = 0; i < armor.size(); ++i)
                 shopInventory.addArmor(armor[i]);            
         };
-
-        // void listWeapons()
-        // {
-        //     std::vector<Item*> weapons = shopInventory.getWeapons();
-        //     for (unsigned i = 0; i < weapons.size(); ++i)
-        //         std::cout << weapons[i]->getName() << std::endl;
-        // }
-        // void listArmors()
-        // {
-        //     std::vector<Item*> armors = shopInventory.getArmor();
-        //     for (unsigned i = 0; i < armors.size(); ++i)
-        //         std::cout << armors[i]->getName() << std::endl;            
-        // }
-
         Inventory getShopInventory() { return shopInventory; }
         bool buyWeapon(Entity* player, std::string weapon)
         {
@@ -57,6 +42,22 @@ class Shop
             shopInventory.removeItem(weapon);
             return true;
         }
+        bool buyArmor(Entity* player, std::string armor)
+        {
+            Item* item = nullptr;
+            try {
+                item = shopInventory.getItem(armor);
+            } catch(const std::invalid_argument &ia) {
+                return false;
+            }
+
+            if (player->getGold() < item->getCost())
+                return false;
+            player->setGold(player->getGold() - item->getCost());
+            player->addArmorToInventory(armor, armorFactory);
+            shopInventory.removeItem(armor);
+            return true;
+        }        
 };
 
 #endif // SHOP_H
