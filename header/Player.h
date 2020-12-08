@@ -58,6 +58,9 @@ class Player : public Entity{
 			}
 			this->setEXP(additionalEXP); 
             		this->setLevel(this->getLevel() + numLevels);
+			baseStats->ATK += 1;
+			baseStats->DEF += 1;
+			baseStats->maxHP += 5;
 			combatStats->ATK += 1;
 			combatStats->DEF += 1;
 			combatStats->maxHP += 5; 
