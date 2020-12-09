@@ -5,9 +5,9 @@
 
 class CardStrategy{
 	public:
-		CardStrategy(){};
+        CardStrategy(){}
 
-		virtual void use(Entity *attacker, Entity *defender) = 0;
+        virtual void use(Entity *attacker, Entity *defender) = 0;
 
 
 };

@@ -30,7 +30,15 @@ class WeaponFactory : public ItemFactory {
             }
             std::invalid_argument ia("Invalid argument. Unable to find \"" + name + '\"' );
             throw ia;
-        } 
+        }
+
+        virtual std::vector<Item*> getPrototypes()
+        { 
+            std::vector<Item*> weapons;
+            for (int i = 0; i < weaponPrototypes.size(); ++i)
+                weapons.push_back(weaponPrototypes.at(i));
+            return weapons;
+        }
 };
 
 #endif //__WEAPON_FACTORY_H__

@@ -70,6 +70,20 @@ class Inventory
             std::invalid_argument ia("Invalid argument. Unable to find item named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
+
+        void removeCard(std::string name)
+        {
+            for (int i = 0; i < this->cards.size(); ++i)
+                if (this->cards.at(i)->getName() == name)
+                {
+                    this->cards.at(i) = nullptr;
+                    this->cards.erase(this->cards.begin() + i);
+                    return;
+                }
+
+            std::invalid_argument ia("Invalid argument. Unable to find item named \"" + name + "\" inside of this inventory.");
+            throw ia;
+        }
         
 };
 

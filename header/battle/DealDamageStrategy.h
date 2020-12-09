@@ -6,7 +6,7 @@
 
 class DealDamageStrategy : public CardStrategy{
 	public:
-		DealDamageStrategy() {};
+        DealDamageStrategy() {}
 
 		virtual void use(Entity *attacker, Entity *defender){
 			//defender->combatStats->HP -= 1;
@@ -18,7 +18,7 @@ class DealDamageStrategy : public CardStrategy{
                         else if(attacker->combatStats->HP - round(thirtyPercentHP) <= 0){
                                 defender->combatStats->HP = 0;
                         }
-		}
+        }
 };
 
 #endif //__DEAL_DAMAGE_STRATEGY_H__

@@ -18,36 +18,36 @@ class Entity
         Inventory equipped;
 
     public:
-	      Stats *baseStats = new Stats();
-	      Stats *combatStats = new Stats();
-    Entity(){
-        this->name = "Entity";
-        this->level = 1;
-        this->gold = 50;
-        baseStats->HP = 5;
-        baseStats->maxHP = 5;
-        baseStats->ATK = 1;
-        baseStats->DEF = 1;
-        combatStats->HP = 5;
-        combatStats->maxHP = 5;
-        combatStats->ATK = 1;
-        combatStats->DEF = 1;
-	}
+        Stats *baseStats = new Stats();
+        Stats *combatStats = new Stats();
+        Entity()
+        {
+            this->name = "Entity";
+            this->level = 1;
+            baseStats->HP = 5;
+            baseStats->maxHP = 5;
+            baseStats->ATK = 1;
+            baseStats->DEF = 1;
+            combatStats->HP = 5;
+            combatStats->maxHP = 5;
+            combatStats->ATK = 1;
+            combatStats->DEF = 1;
+        }
 
-    Entity(std::string name){
-        this->name= name;
-        this->level = 1;
-        this->gold = 50;
-        baseStats->HP = 5;
-        baseStats->maxHP = 5;
-        baseStats->ATK = 1;
-        baseStats->DEF = 1;
-        combatStats->HP = 5;
-        combatStats->maxHP = 5;
-        combatStats->ATK = 1;
-        combatStats->DEF = 1;
-    }
-  
+        Entity(std::string name)
+        {
+            this->name = name;
+            this->level = 1;
+            baseStats->HP = 5;
+            baseStats->maxHP = 5;
+            baseStats->ATK = 1;
+            baseStats->DEF = 1;
+            combatStats->HP = 5;
+            combatStats->maxHP = 5;
+            combatStats->ATK = 1;
+            combatStats->DEF = 1;
+        }
+
         // __GETTERS__
         std::string getName() { return this->name; }
         int getLevel() { return this->level; }
@@ -57,7 +57,7 @@ class Entity
 
         // __SETTERS__
         void setName(std::string name) { this->name = name; }
-        void setLevel(int level){ this->level = level; }
+        void setLevel(int level) { this->level = level; }
         void setGold(int gold) { this->gold = gold; }
 
         // __PUBLIC_FUNCTIONS__
@@ -73,6 +73,14 @@ class Entity
             this->combatStats->HP = this->baseStats->HP;
             this->combatStats->maxHP = this->baseStats->maxHP;
 
+            for (int i = 0; i < this->equipped.getWeapons().size(); ++i) // add equipped weapon combat stats to player combat stats
+            {
+                this->combatStats->ATK += this->equipped.getWeapons().at(i)->combatStats->ATK;
+                this->combatStats->DEF += this->equipped.getWeapons().at(i)->combatStats->DEF;
+                this->combatStats->HP += this->equipped.getWeapons().at(i)->combatStats->HP;
+                this->combatStats->maxHP += this->equipped.getWeapons().at(i)->combatStats->maxHP;
+            }
+
             for (int i = 0; i < this->equipped.getArmor().size(); ++i) // add all armor combat stats to player's combat stats
             {
                 this->combatStats->ATK += this->equipped.getArmor().at(i)->combatStats->ATK;
@@ -80,14 +88,6 @@ class Entity
                 this->combatStats->HP += this->equipped.getArmor().at(i)->combatStats->HP;
                 this->combatStats->maxHP += this->equipped.getArmor().at(i)->combatStats->maxHP;
             }
-
-            for (int i = 0; i < this->equipped.getWeapons().size(); ++i) // add all weapons combat stats to player combat stats
-            {
-                this->combatStats->ATK += this->equipped.getWeapons().at(i)->combatStats->ATK;
-                this->combatStats->DEF += this->equipped.getWeapons().at(i)->combatStats->DEF;
-                this->combatStats->HP += this->equipped.getWeapons().at(i)->combatStats->HP;
-                this->combatStats->maxHP += this->equipped.getWeapons().at(i)->combatStats->maxHP;
-            }            
         }
 
         void equipWeapon(std::string name)
@@ -170,7 +170,7 @@ class Entity
                     return;
                 }
             }
-            std::invalid_argument ia("Invalid argument. Unable to find armor named \"" + name + "\" inside of this inventory.");
+            std::invalid_argument ia("Invalid argument. Unable to find card named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
         

@@ -56,7 +56,26 @@ HEADERS  += mainwindow.h \
     header/prototypes/prototype_tests.h \
     header/Inventory.h \
     header/inventory_tests.h \
-    header/Stats.h
+    header/Stats.h \
+    header/Shop.h \
+    header/battle/BigHealStrategy.h \
+    header/battle/card_Strategy_Tests.h \
+    header/battle/CardStrategy.h \
+    header/battle/DealDamageStrategy.h \
+    header/battle/EnhanceATKStrategy.h \
+    header/battle/EnhanceDEFStrategy.h \
+    header/battle/SmallHealStrategy.h \
+    header/prototypes/cards/BigHealPrototype.h \
+    header/prototypes/cards/CardPrototype.h \
+    header/prototypes/cards/DealDamagePrototype.h \
+    header/prototypes/cards/EnhanceATKPrototype.h \
+    header/prototypes/cards/EnhanceDEFPrototype.h \
+    header/prototypes/cards/SmallHealPrototype.h \
+    header/prototypes/enemies/BlueSlimePrototype.h \
+    header/prototypes/enemies/MegaGoblinPrototype.h \
+    header/prototypes/card_tests.h \
+    header/Card.h \
+    header/CardFactory.h
 
 FORMS    += mainwindow.ui
 

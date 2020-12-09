@@ -15,7 +15,6 @@ class Player : public Entity{
     Player(std::string name) : Entity(name), EXP(0), maxEXP(5){}
 
 	//getters and setters
-
 	int getEXP(){
 		return this->EXP;
 	}
