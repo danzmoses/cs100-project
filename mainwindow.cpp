@@ -364,6 +364,13 @@ void MainWindow::initializeBattleWithEnemy()
     current_enemy = area_enemies[area_enemies.size() - 1];
     battle = new Battle(player, current_enemy);
 
+    if (area_enemies.size() > 1)
+    {
+        QString name = QString::fromStdString(area_enemies[area_enemies.size() - 2]->getName());
+        ui->nextEnemy->setText("Next Enemy: " + name);
+    }
+    else
+        ui->nextEnemy->setText("Next Enemy: <None>");
     update_battle_menu_player_stats();
     update_battle_menu_enemy_stats();
 }

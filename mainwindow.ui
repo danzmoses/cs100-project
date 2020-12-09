@@ -2568,7 +2568,7 @@
          <string>Next Battle</string>
         </property>
        </widget>
-       <widget class="QLabel" name="start_menu_title_label_15">
+       <widget class="QLabel" name="nextEnemy">
         <property name="geometry">
          <rect>
           <x>718</x>
