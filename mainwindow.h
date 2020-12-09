@@ -37,6 +37,7 @@ private:
     EnemyFactory ef;
     ItemFactory* weaponFactory = new WeaponFactory;
     ItemFactory* armorFactory = new ArmorFactory;
+    CardFactory* cardFactory = new CardFactory;
     std::vector<Enemy*> area_enemies;
     int areaEnemiesCount;
     Shop shop;

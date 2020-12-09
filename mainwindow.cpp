@@ -68,6 +68,25 @@ void MainWindow::updateMainMenuPlayerStats()
         ui->mainMenuArmorLabel->setText("Armor: " + QString::fromStdString(equipped.getArmor().at(0)->getName()));
     else
         ui->mainMenuArmorLabel->setText("Armor: <None>");
+
+    std::vector<Card*> cards = equipped.getCards();
+    if (!cards.empty())
+    {
+        for (unsigned i = 0; i < cards.size(); ++i)
+        {
+            if (i == 0) { ui->mainMenuCard1->setText("Card 1: " + QString::fromStdString(cards[i]->getName())); }
+            else if (i == 1) { ui->mainMenuCard2->setText("Card 2: " + QString::fromStdString(cards[i]->getName())); }
+            else if (i == 2) { ui->mainMenuCard3->setText("Card 3: " + QString::fromStdString(cards[i]->getName())); }
+            else if (i == 3) { ui->mainMenuCard4->setText("Card 4: " + QString::fromStdString(cards[i]->getName())); }
+        }
+    }
+    else
+    {
+        ui->mainMenuCard1->setText("Card 1: <None>");
+        ui->mainMenuCard2->setText("Card 1: <None>");
+        ui->mainMenuCard3->setText("Card 1: <None>");
+        ui->mainMenuCard4->setText("Card 1: <None>");
+    }
 }
 
 void MainWindow::update_battle_menu_player_stats()
@@ -204,6 +223,14 @@ void MainWindow::initializePlayer()
 //    player->addWeaponToInventory("Stone Sword", weaponFactory);
 //    player->addArmorToInventory("Leather Armor", armorFactory);
     player->setGold(5000);
+    player->addCardToInventory("Enhance ATK", cardFactory);
+    player->equipCard("Enhance ATK");
+    player->addCardToInventory("Enhance DEF", cardFactory);
+    player->equipCard("Enhance DEF");
+    player->addCardToInventory("Big Heal", cardFactory);
+    player->equipCard("Big Heal");
+    player->addCardToInventory("Deal Damage", cardFactory);
+    player->equipCard("Deal Damage");
     updateMainMenuPlayerStats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
