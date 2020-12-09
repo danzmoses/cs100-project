@@ -86,9 +86,9 @@ void MainWindow::updateMainMenuPlayerStats()
     else
     {
         ui->mainMenuCard1->setText("Card 1: <None>");
-        ui->mainMenuCard2->setText("Card 1: <None>");
-        ui->mainMenuCard3->setText("Card 1: <None>");
-        ui->mainMenuCard4->setText("Card 1: <None>");
+        ui->mainMenuCard2->setText("Card 2: <None>");
+        ui->mainMenuCard3->setText("Card 3: <None>");
+        ui->mainMenuCard4->setText("Card 4: <None>");
     }
 }
 
@@ -152,13 +152,29 @@ void MainWindow::updateShopMenuPlayerStats()
 void MainWindow::updateShopMenuInventory()
 {
     ui->shopList->clear();
-    std::vector<Item*> items;
-    if (ui->shopInventoryWeaponsRadioButton->isChecked())
-        items = shop.getShopInventory().getWeapons();
-    else if (ui->shopInventoryArmorRadioButton->isChecked())
-        items = shop.getShopInventory().getArmor();
-    for (unsigned i = 0; i < items.size(); ++i)
-        ui->shopList->addItem(QString::fromStdString(items.at(i)->getName()));
+
+    if (ui->shopInventoryCardsRadioButton->isChecked())
+    {
+        std::vector<Card*> cards = shop.getShopInventory().getCards();
+        if (cards.empty())
+            ui->shopList->addItem("No items found");
+        else
+            for (unsigned i = 0; i < cards.size(); ++i)
+            {
+                QString name = QString::fromStdString(cards[i]->getName());
+                ui->shopList->addItem(name);
+            }
+    }
+    else
+    {
+        std::vector<Item*> items;
+        if (ui->shopInventoryWeaponsRadioButton->isChecked())
+            items = shop.getShopInventory().getWeapons();
+        else if (ui->shopInventoryArmorRadioButton->isChecked())
+            items = shop.getShopInventory().getArmor();
+        for (unsigned i = 0; i < items.size(); ++i)
+            ui->shopList->addItem(QString::fromStdString(items.at(i)->getName()));
+    }
 }
 
 void MainWindow::updateShopMenuCurrentlySelectedItem()
@@ -167,12 +183,20 @@ void MainWindow::updateShopMenuCurrentlySelectedItem()
     std::string currentItem = ui->shopList->currentText().toStdString();
     if (!currentItem.empty())
     {
-        Item* item = shop.getShopInventory().getItem(currentItem);
-        QString stats = "";
-        if (item->combatStats->ATK != 0) { stats += "ATK: " + QString::number(item->combatStats->ATK) + '\n'; }
-        if (item->combatStats->DEF != 0) { stats += "DEF: " + QString::number(item->combatStats->DEF) + '\n'; }
-        if (item->combatStats->HP != 0) { stats += "HP: " + QString::number(item->combatStats->HP) + '\n'; }
-        ui->shopMenuCurrentItemStats->setPlainText(stats);
+        if (ui->shopInventoryCardsRadioButton->isChecked())
+        {
+            Card* card = shop.getShopInventory().getCard(currentItem);
+            ui->shopMenuCurrentItemStats->setPlainText(QString::fromStdString(card->getDescription()));
+        }
+        else
+        {
+            Item* item = shop.getShopInventory().getItem(currentItem);
+            QString stats = "";
+            if (item->combatStats->ATK != 0) { stats += "ATK: " + QString::number(item->combatStats->ATK) + '\n'; }
+            if (item->combatStats->DEF != 0) { stats += "DEF: " + QString::number(item->combatStats->DEF) + '\n'; }
+            if (item->combatStats->HP != 0) { stats += "HP: " + QString::number(item->combatStats->HP) + '\n'; }
+            ui->shopMenuCurrentItemStats->setPlainText(stats);
+        }
     }
 }
 
@@ -254,20 +278,23 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-    player->addWeaponToInventory("Wooden Sword", weaponFactory);
-    player->addWeaponToInventory("Stone Sword", weaponFactory);
-    player->addArmorToInventory("Leather Armor", armorFactory);
-    player->equipWeapon("Wooden Sword");
-    player->equipArmor("Leather Armor");
+//    player->addWeaponToInventory("Wooden Sword", weaponFactory);
+//    player->addWeaponToInventory("Stone Sword", weaponFactory);
+//    player->addArmorToInventory("Leather Armor", armorFactory);
+//    player->equipWeapon("Wooden Sword");
+//    player->equipArmor("Leather Armor");
+
+//    player->addCardToInventory("Enhance ATK", cardFactory);
+//    player->equipCard("Enhance ATK");
+//    player->addCardToInventory("Enhance DEF", cardFactory);
+//    player->equipCard("Enhance DEF");
+//    player->addCardToInventory("Big Heal", cardFactory);
+//    player->equipCard("Big Heal");
+//    player->addCardToInventory("Deal Damage", cardFactory);
+//    player->equipCard("Deal Damage");
+
     player->setGold(5000);
-    player->addCardToInventory("Enhance ATK", cardFactory);
-    player->equipCard("Enhance ATK");
-    player->addCardToInventory("Enhance DEF", cardFactory);
-    player->equipCard("Enhance DEF");
-    player->addCardToInventory("Big Heal", cardFactory);
-    player->equipCard("Big Heal");
-    player->addCardToInventory("Deal Damage", cardFactory);
-    player->equipCard("Deal Damage");
+
     updateMainMenuPlayerStats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
