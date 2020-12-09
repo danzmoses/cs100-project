@@ -7,6 +7,8 @@
 #include "prototypes/enemies/RedSlimePrototype.h"
 #include "prototypes/enemies/SkeletonPrototype.h"
 #include "prototypes/enemies/ZombiePrototype.h"
+#include "prototypes/enemies/BlueSlimePrototype.h"
+#include "prototypes/enemies/MegaGoblinPrototype.h"
 #include <vector>
 
 class EnemyFactory{
@@ -17,9 +19,11 @@ class EnemyFactory{
 			this->enemyPrototypes.push_back(new GoblinPrototype());
 			this->enemyPrototypes.push_back(new GreenSlimePrototype());
 			this->enemyPrototypes.push_back(new RedSlimePrototype());
+			this->enemyPrototypes.push_back(new BlueSlimePrototype());
 			this->enemyPrototypes.push_back(new SkeletonPrototype());
 			this->enemyPrototypes.push_back(new ZombiePrototype());
-        	}
+			this->enemyPrototypes.push_back(new MegaGoblinPrototype());
+        }
  
 		virtual EnemyPrototype* createEnemy(std::string name){
 			for(int i = 0; i < enemyPrototypes.size(); ++i){

@@ -59,6 +59,17 @@ class Battle
             damageDone = attackStrategy->attack(attacker, defender);
             defender->combatStats->HP -= damageDone;
         }
+        void endBattle()
+        {
+            if (player->combatStats->HP > 0) // else: nothing happens
+            {
+                int baseEXP = enemy->baseStats->HP / 5;
+                if (baseEXP <= 0)
+                    baseEXP = 1; 
+                player->setEXP(player->getEXP() + enemy->getEXPMult() * baseEXP);
+                player->setGold(player->getGold() + enemy->getGold());
+            }
+        }
         int getPlayerRoll() { return playerRoll; }
         int getEnemyRoll() { return enemyRoll; }
         int getDamageDone() { return damageDone; }
