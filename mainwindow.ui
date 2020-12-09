@@ -5176,7 +5176,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QComboBox" name="comboBox_2">
+       <widget class="QComboBox" name="equipmentMenuCurrentCards">
         <property name="geometry">
          <rect>
           <x>310</x>

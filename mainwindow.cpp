@@ -74,10 +74,11 @@ void MainWindow::updateMainMenuPlayerStats()
     {
         for (unsigned i = 0; i < cards.size(); ++i)
         {
-            if (i == 0) { ui->mainMenuCard1->setText("Card 1: " + QString::fromStdString(cards[i]->getName())); }
-            else if (i == 1) { ui->mainMenuCard2->setText("Card 2: " + QString::fromStdString(cards[i]->getName())); }
-            else if (i == 2) { ui->mainMenuCard3->setText("Card 3: " + QString::fromStdString(cards[i]->getName())); }
-            else if (i == 3) { ui->mainMenuCard4->setText("Card 4: " + QString::fromStdString(cards[i]->getName())); }
+            QString name = QString::fromStdString(cards[i]->getName());
+            if (i == 0) { ui->mainMenuCard1->setText("Card 1: " + name); }
+            else if (i == 1) { ui->mainMenuCard2->setText("Card 2: " + name); }
+            else if (i == 2) { ui->mainMenuCard3->setText("Card 3: " + name); }
+            else if (i == 3) { ui->mainMenuCard4->setText("Card 4: " + name); }
         }
     }
     else
@@ -193,20 +194,41 @@ void MainWindow::updateEquipmentMenuPlayerStats()
     else
         ui->equipmentMenuCurrentArmor->setText("Armor: <None>");
 
-    Inventory inventory = player->getInventory();
-    std::vector<Item*> items;
-    if (ui->viewInventoryWeaponsRadioButton->isChecked())
-        items = inventory.getWeapons();
-    else if (ui->viewInventoryArmorRadioButton->isChecked())
-        items = inventory.getArmor();
+    std::vector<Card*> cards = equipped.getCards();
+    if (!cards.empty())
+    {
+        for (unsigned i = 0; i < cards.size(); ++i)
+        {
+            QString name = QString::fromStdString(cards[i]->getName());
+            ui->equipmentMenuCurrentCards->addItem(name);
+        }
+    }
 
     ui->equipmentList->clear();
-
-    if (items.empty())
-        ui->equipmentList->addItem("No items found");
+    Inventory inventory = player->getInventory();    
+    if (ui->viewInventoryCardsRadioButton->isChecked())
+    {
+        std::vector<Card*> cards = inventory.getCards();
+        if (cards.empty())
+            ui->equipmentList->addItem("No items found");
+        else
+            for (unsigned i = 0; i < cards.size(); ++i)
+                ui->equipmentList->addItem(QString::fromStdString(cards.at(i)->getName()));
+    }
     else
-        for (unsigned i = 0; i < items.size(); ++i)
-            ui->equipmentList->addItem(QString::fromStdString(items.at(i)->getName()));
+    {
+        std::vector<Item*> items;
+        if (ui->viewInventoryWeaponsRadioButton->isChecked())
+            items = inventory.getWeapons();
+        else if (ui->viewInventoryArmorRadioButton->isChecked())
+            items = inventory.getArmor();
+
+        if (items.empty())
+            ui->equipmentList->addItem("No items found");
+        else
+            for (unsigned i = 0; i < items.size(); ++i)
+                ui->equipmentList->addItem(QString::fromStdString(items.at(i)->getName()));
+    }
 
 }
 
@@ -219,9 +241,11 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-//    player->addWeaponToInventory("Wooden Sword", weaponFactory);
-//    player->addWeaponToInventory("Stone Sword", weaponFactory);
-//    player->addArmorToInventory("Leather Armor", armorFactory);
+    player->addWeaponToInventory("Wooden Sword", weaponFactory);
+    player->addWeaponToInventory("Stone Sword", weaponFactory);
+    player->addArmorToInventory("Leather Armor", armorFactory);
+    player->equipWeapon("Wooden Sword");
+    player->equipArmor("Leather Armor");
     player->setGold(5000);
     player->addCardToInventory("Enhance ATK", cardFactory);
     player->equipCard("Enhance ATK");
