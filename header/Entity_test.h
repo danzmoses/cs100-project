@@ -166,7 +166,7 @@ TEST(EnemyTests, GoblinTest){
  	EXPECT_EQ(e->combatStats->maxHP, 4);
  	EXPECT_EQ(e->combatStats->ATK, 3);
  	EXPECT_EQ(e->combatStats->DEF, 1);
- 	EXPECT_EQ(e->getDescription(), "Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items.");
+ 	EXPECT_EQ(e->getDescription(), "Adventurous, greedy, and loot-heavy!");
 
  	e->setName("New Goblin");
  	e->combatStats->HP = 15; 
