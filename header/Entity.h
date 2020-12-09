@@ -199,6 +199,21 @@ class Entity
                         this->equipped.removeItem(name);
             }
         }
+
+        void unequip(std::string name)
+        {
+            for (int i = 0; i < this->equipped.getArmor().size(); ++i)
+                if (this->equipped.getArmor().at(i)->getName() == name)
+                    this->equipped.removeItem(name);
+
+            for (int i = 0; i < this->equipped.getWeapons().size(); ++i)
+                if (this->equipped.getWeapons().at(i)->getName() == name)
+                    this->equipped.removeItem(name);
+
+            for (int i = 0; i < this->equipped.getCards().size(); ++i)
+                if (this->equipped.getCards().at(i)->getName() == name)
+                    this->equipped.removeCard(name);        
+        }
 };
 
 #endif // __ENTITY__

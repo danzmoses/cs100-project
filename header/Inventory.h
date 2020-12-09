@@ -45,7 +45,7 @@ class Inventory
                 if (this->cards.at(i)->getName() == name)
                     return this->cards.at(i);
             
-            std::invalid_argument ia("Invalid argument. Unable to find item named \"" + name + "\" inside of this inventory.");
+            std::invalid_argument ia("Invalid argument. Unable to find card named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
 
@@ -81,7 +81,7 @@ class Inventory
                     return;
                 }
 
-            std::invalid_argument ia("Invalid argument. Unable to find item named \"" + name + "\" inside of this inventory.");
+            std::invalid_argument ia("Invalid argument. Unable to find card named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
         
