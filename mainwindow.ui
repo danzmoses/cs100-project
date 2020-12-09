@@ -3801,7 +3801,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QPlainTextEdit" name="plainTextEdit_2">
+       <widget class="QPlainTextEdit" name="shopMenuCurrentItemStats">
         <property name="geometry">
          <rect>
           <x>580</x>

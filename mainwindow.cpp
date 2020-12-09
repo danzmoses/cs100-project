@@ -34,6 +34,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->shopInventoryArmorRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
     connect(ui->shopInventoryBootsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
     connect(ui->shopInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
+
+    connect(ui->shopList, SIGNAL(currentTextChanged(QString)), this, SLOT(updateShopMenuCurrentlySelectedItem()));
 }
 
 MainWindow::~MainWindow()
@@ -131,11 +133,23 @@ void MainWindow::updateShopMenuInventory()
         items = shop.getShopInventory().getWeapons();
     else if (ui->shopInventoryArmorRadioButton->isChecked())
         items = shop.getShopInventory().getArmor();
-    if (items.empty())
-        ui->shopList->addItem("No items found");
-    else
-        for (unsigned i = 0; i < items.size(); ++i)
-            ui->shopList->addItem(QString::fromStdString(items.at(i)->getName()));
+    for (unsigned i = 0; i < items.size(); ++i)
+        ui->shopList->addItem(QString::fromStdString(items.at(i)->getName()));
+}
+
+void MainWindow::updateShopMenuCurrentlySelectedItem()
+{
+    ui->shopMenuCurrentItemStats->clear();
+    std::string currentItem = ui->shopList->currentText().toStdString();
+    if (!currentItem.empty())
+    {
+        Item* item = shop.getShopInventory().getItem(currentItem);
+        QString stats = "";
+        if (item->combatStats->ATK != 0) { stats += "ATK: " + QString::number(item->combatStats->ATK) + '\n'; }
+        if (item->combatStats->DEF != 0) { stats += "DEF: " + QString::number(item->combatStats->DEF) + '\n'; }
+        if (item->combatStats->HP != 0) { stats += "HP: " + QString::number(item->combatStats->HP) + '\n'; }
+        ui->shopMenuCurrentItemStats->setPlainText(stats);
+    }
 }
 
 void MainWindow::updateEquipmentMenuPlayerStats()

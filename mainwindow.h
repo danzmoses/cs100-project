@@ -57,6 +57,7 @@ private slots:
     void updateEquipmentMenuPlayerStats();
     void updateShopMenuPlayerStats();
     void updateShopMenuInventory();
+    void updateShopMenuCurrentlySelectedItem();
 
     void selectInventoryItemType();
     void selectShopItemType();
