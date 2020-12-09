@@ -216,6 +216,7 @@ void MainWindow::updateShopMenuCurrentlySelectedItem()
         if (ui->shopInventoryCardsRadioButton->isChecked())
         {
             Card* card = shop.getShopInventory().getCard(currentItem);
+            ui->shopMenuCurrentItemCost->setText("Price: " + QString::number(card->getCost()) + " Gold");
             ui->shopMenuCurrentItemStats->setPlainText(QString::fromStdString(card->getDescription()));
         }
         else
@@ -225,6 +226,7 @@ void MainWindow::updateShopMenuCurrentlySelectedItem()
             if (item->combatStats->ATK != 0) { stats += "ATK: " + QString::number(item->combatStats->ATK) + '\n'; }
             if (item->combatStats->DEF != 0) { stats += "DEF: " + QString::number(item->combatStats->DEF) + '\n'; }
             if (item->combatStats->HP != 0) { stats += "HP: " + QString::number(item->combatStats->HP) + '\n'; }
+            ui->shopMenuCurrentItemCost->setText("Price: " + QString::number(item->getCost()) + " Gold");
             ui->shopMenuCurrentItemStats->setPlainText(stats);
         }
     }
@@ -325,7 +327,7 @@ void MainWindow::initializePlayer()
 //    player->addCardToInventory("Deal Damage", cardFactory);
 //    player->equipCard("Deal Damage");
 
-//    player->setGold(5000);
+    player->setGold(0);
 
     updateMainMenuPlayerStats();
     updateShopMenuPlayerStats();
