@@ -569,9 +569,9 @@ void MainWindow::switchToMainMenu()
 
 void MainWindow::switchToBattleMenu()
 {
-    ui->menu_pages->setCurrentIndex(2);
     updateBattleMenuPlayerStats();
     updateBattleMenuEnemyStats();
+    ui->menu_pages->setCurrentIndex(2);
 }
 
 void MainWindow::switchToShopMenu()
