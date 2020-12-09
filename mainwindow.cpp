@@ -21,6 +21,10 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->shopReturnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
     connect(ui->nextBattleButton, SIGNAL(clicked(bool)), this, SLOT(nextBattle()));
 
+    // battle
+    connect(ui->battleMenuCards, SIGNAL(currentTextChanged(QString)), this, SLOT(updateBattleMenuCurrentlySelectedCard()));
+    connect(ui->battleMenuUseCard, SIGNAL(clicked(bool)), this, SLOT(useCard()));
+
     // equipment
     // switch inventory item type
     connect(ui->viewInventoryWeaponsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
@@ -92,7 +96,7 @@ void MainWindow::updateMainMenuPlayerStats()
     }
 }
 
-void MainWindow::update_battle_menu_player_stats()
+void MainWindow::updateBattleMenuPlayerStats()
 {
     QString name = QString::fromStdString(player->getName());
     QString hp = QString::number(player->combatStats->HP);
@@ -103,28 +107,44 @@ void MainWindow::update_battle_menu_player_stats()
     QString atk = QString::number(player->combatStats->ATK);
     QString def = QString::number(player->combatStats->DEF);
 
-    ui->battle_menu_player_name_and_level->setText(name + " (Level " + level + ")");
-    ui->battle_menu_player_health->setText("Health: " + hp + '/' + maxHP);
-    ui->battle_menu_player_exp->setText("EXP: " + exp + '/' + maxEXP);
-    ui->battle_menu_player_atk->setText("ATK: " + atk);
-    ui->battle_menu_player_def->setText("DEF: " + def);
+    ui->battleMenuCards->clear();
+    std::vector<Card*> cards = player->getEquipped().getCards();
+    for (unsigned i = 0; i < cards.size(); ++i)
+        ui->battleMenuCards->addItem(QString::fromStdString(cards[i]->getName()));
+
+    ui->battleMenuPlayerNameAndLevel->setText(name + " (Level " + level + ")");
+    ui->battleMenuPlayerHP->setText("Health: " + hp + '/' + maxHP);
+    ui->battleMenuPlayerEXP->setText("EXP: " + exp + '/' + maxEXP);
+    ui->battleMenuPlayerATK->setText("ATK: " + atk);
+    ui->battleMenuPlayerDEF->setText("DEF: " + def);
+
 }
 
-void MainWindow::update_battle_menu_enemy_stats()
+void MainWindow::updateBattleMenuCurrentlySelectedCard()
 {
-    QString name = QString::fromStdString(current_enemy->getName());
-    QString hp = QString::number(current_enemy->combatStats->HP);
-    QString maxHP = QString::number(current_enemy->combatStats->maxHP);
-    QString level = QString::number(current_enemy->getLevel());
-    QString atk = QString::number(current_enemy->combatStats->ATK);
-    QString def = QString::number(current_enemy->combatStats->DEF);
-    QString desc = QString::fromStdString(current_enemy->getDescription());
+    std::string cardName = ui->battleMenuCards->currentText().toStdString();
+    if (!cardName.empty())
+    {
+        Card* card = player->getInventory().getCard(cardName);
+        ui->battleMenuCardDescription->setPlainText(ui->battleMenuCards->currentText() + ": " + QString::fromStdString(card->getDescription()));
+    }
+}
 
-    ui->battle_menu_enemy_name_and_level->setText(name + " (Level " + level + ")");
-    ui->battle_menu_enemy_health->setText("Health: " + hp + '/' + maxHP);
-    ui->battle_menu_enemy_atk->setText("ATK: " + atk);
-    ui->battle_menu_enemy_def->setText("DEF: " + def);
-    ui->battle_menu_enemy_desc->setPlainText(desc);
+void MainWindow::updateBattleMenuEnemyStats()
+{
+    QString name = QString::fromStdString(currentEnemy->getName());
+    QString hp = QString::number(currentEnemy->combatStats->HP);
+    QString maxHP = QString::number(currentEnemy->combatStats->maxHP);
+    QString level = QString::number(currentEnemy->getLevel());
+    QString atk = QString::number(currentEnemy->combatStats->ATK);
+    QString def = QString::number(currentEnemy->combatStats->DEF);
+    QString desc = QString::fromStdString(currentEnemy->getDescription());
+
+    ui->battleMenuEnemyNameAndLevel->setText(name + " (Level " + level + ")");
+    ui->battleMenuEnemyHP->setText("Health: " + hp + '/' + maxHP);
+    ui->battleMenuEnemyATK->setText("ATK: " + atk);
+    ui->battleMenuEnemyDEF->setText("DEF: " + def);
+    ui->battleMenuEnemyDescription->setPlainText(desc);
 }
 
 void MainWindow::updateShopMenuPlayerStats()
@@ -286,20 +306,22 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
+    player->combatStats->ATK = 50;
+    player->combatStats->DEF = 50;
 //    player->addWeaponToInventory("Wooden Sword", weaponFactory);
 //    player->addWeaponToInventory("Stone Sword", weaponFactory);
 //    player->addArmorToInventory("Leather Armor", armorFactory);
 //    player->equipWeapon("Wooden Sword");
 //    player->equipArmor("Leather Armor");
 
-//    player->addCardToInventory("Enhance ATK", cardFactory);
-//    player->equipCard("Enhance ATK");
-//    player->addCardToInventory("Enhance DEF", cardFactory);
-//    player->equipCard("Enhance DEF");
-//    player->addCardToInventory("Big Heal", cardFactory);
-//    player->equipCard("Big Heal");
-//    player->addCardToInventory("Deal Damage", cardFactory);
-//    player->equipCard("Deal Damage");
+    player->addCardToInventory("Enhance ATK", cardFactory);
+    player->equipCard("Enhance ATK");
+    player->addCardToInventory("Enhance DEF", cardFactory);
+    player->equipCard("Enhance DEF");
+    player->addCardToInventory("Big Heal", cardFactory);
+    player->equipCard("Big Heal");
+    player->addCardToInventory("Deal Damage", cardFactory);
+    player->equipCard("Deal Damage");
 
     player->setGold(5000);
 
@@ -326,11 +348,11 @@ void MainWindow::enterArea()
     initializeBattleWithEnemy();
 
     ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
-    ui->battle_menu_battle_result->clear();
-    ui->battle_menu_roll_difference->clear();
-    ui->battle_menu_turn_result->clear();
-    ui->battle_menu_enemy_roll->clear();
-    ui->battle_menu_player_roll->clear();
+    ui->battleMenuBattleResult->clear();
+    ui->battleMenuRollDifference->clear();
+    ui->battleMenuTurnResult->clear();
+    ui->battleMenuEnemyRoll->clear();
+    ui->battleMenuPlayerRoll->clear();
     switchToBattleMenu();
 }
 
@@ -338,18 +360,18 @@ void MainWindow::nextBattle()
 {
     ++areaEnemiesCount;
     ui->enemiesDefeatedLabel->setText("Enemies Defeated: " + QString::number(areaEnemiesCount) + "/10");
-    ui->battle_menu_battle_result->clear();
-    ui->battle_menu_roll_difference->clear();
-    ui->battle_menu_turn_result->clear();
-    ui->battle_menu_enemy_roll->clear();
-    ui->battle_menu_player_roll->clear();
+    ui->battleMenuBattleResult->clear();
+    ui->battleMenuRollDifference->clear();
+    ui->battleMenuTurnResult->clear();
+    ui->battleMenuEnemyRoll->clear();
+    ui->battleMenuPlayerRoll->clear();
     area_enemies.pop_back();
 
     if (area_enemies.size() > 0)
         initializeBattleWithEnemy();
     else
     {
-        ui->battle_menu_battle_result->setText("You defeated all ten enemies!");
+        ui->battleMenuBattleResult->setText("You defeated all ten enemies!");
         ui->returnToMainMenuButton->setEnabled(true);
     }
     ui->nextBattleButton->setEnabled(false);
@@ -361,8 +383,8 @@ void MainWindow::initializeBattleWithEnemy()
     ui->returnToMainMenuButton->setEnabled(false);
     if (battle != nullptr)
         delete battle;
-    current_enemy = area_enemies[area_enemies.size() - 1];
-    battle = new Battle(player, current_enemy);
+    currentEnemy = area_enemies[area_enemies.size() - 1];
+    battle = new Battle(player, currentEnemy);
 
     if (area_enemies.size() > 1)
     {
@@ -370,9 +392,9 @@ void MainWindow::initializeBattleWithEnemy()
         ui->nextEnemy->setText("Next Enemy: " + name);
     }
     else
-        ui->nextEnemy->setText("Next Enemy: <None>");
-    update_battle_menu_player_stats();
-    update_battle_menu_enemy_stats();
+        ui->nextEnemy->setText("Next Enemy: Boss!");
+    updateBattleMenuPlayerStats();
+    updateBattleMenuEnemyStats();
 }
 
 void MainWindow::nextTurn()
@@ -384,36 +406,60 @@ void MainWindow::nextTurn()
 
     QString damageDone = QString::number(battle->getDamageDone());
     QString playerName = QString::fromStdString(player->getName());
-    QString enemyName = QString::fromStdString(current_enemy->getName());
+    QString enemyName = QString::fromStdString(currentEnemy->getName());
 
-    ui->battle_menu_player_roll->setText(playerName + " Roll: " + playerRoll);
-    ui->battle_menu_enemy_roll->setText(enemyName + " Roll: " + enemyRoll);
+    ui->battleMenuPlayerRoll->setText(playerName + " Roll: " + playerRoll);
+    ui->battleMenuEnemyRoll->setText(enemyName + " Roll: " + enemyRoll);
 
     if (battle->getPlayerWonRoll())
     {
-        ui->battle_menu_turn_result->setText(playerName + " deals " + damageDone + " damage to " + enemyName + "!");
+        ui->battleMenuTurnResult->setText(playerName + " deals " + damageDone + " damage to " + enemyName + "!");
     }
     else
-        ui->battle_menu_turn_result->setText(enemyName + " deals " + damageDone + " damage to " + playerName + "!");
+        ui->battleMenuTurnResult->setText(enemyName + " deals " + damageDone + " damage to " + playerName + "!");
 
-    ui->battle_menu_roll_difference->setText("Roll difference: " + rollDifference);
+    ui->battleMenuRollDifference->setText("Roll difference: " + rollDifference);
 
-    if (player->combatStats->HP <= 0 || current_enemy->combatStats->HP <= 0)
+    if (player->combatStats->HP <= 0 || currentEnemy->combatStats->HP <= 0)
     {
         if (player->combatStats->HP <= 0)
         {
-            ui->battle_menu_battle_result->setText(enemyName + " has won!");
+            ui->battleMenuBattleResult->setText(enemyName + " has won!");
             ui->returnToMainMenuButton->setEnabled(true);
         }
-        else if (current_enemy->combatStats->HP <= 0)
+        else if (currentEnemy->combatStats->HP <= 0)
         {
-            ui->battle_menu_battle_result->setText(playerName + " has won!");
+            ui->battleMenuBattleResult->setText(playerName + " has won!");
             ui->nextBattleButton->setEnabled(true);
         }
         ui->rollButton->setEnabled(false);
     }
-    update_battle_menu_player_stats();
-    update_battle_menu_enemy_stats();
+    updateBattleMenuPlayerStats();
+    updateBattleMenuEnemyStats();
+}
+
+void MainWindow::useCard()
+{
+    QString playerName = QString::fromStdString(player->getName());
+    QString enemyName = QString::fromStdString(currentEnemy->getName());
+    battle->useCard(player, currentEnemy, ui->battleMenuCards->currentText().toStdString());
+    ui->battleMenuTurnResult->setText(playerName + " used " + ui->battleMenuCards->currentText() + " card.");
+    updateBattleMenuPlayerStats();
+    updateBattleMenuEnemyStats();
+    if (player->combatStats->HP <= 0 || currentEnemy->combatStats->HP <= 0)
+    {
+        if (player->combatStats->HP <= 0)
+        {
+            ui->battleMenuBattleResult->setText(enemyName + " has won!");
+            ui->returnToMainMenuButton->setEnabled(true);
+        }
+        else if (currentEnemy->combatStats->HP <= 0)
+        {
+            ui->battleMenuBattleResult->setText(playerName + " has won!");
+            ui->nextBattleButton->setEnabled(true);
+        }
+        ui->rollButton->setEnabled(false);
+    }
 }
 
 void MainWindow::endArea()
@@ -524,6 +570,8 @@ void MainWindow::switchToMainMenu()
 void MainWindow::switchToBattleMenu()
 {
     ui->menu_pages->setCurrentIndex(2);
+    updateBattleMenuPlayerStats();
+    updateBattleMenuEnemyStats();
 }
 
 void MainWindow::switchToShopMenu()

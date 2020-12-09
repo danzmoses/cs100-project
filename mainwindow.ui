@@ -1717,7 +1717,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_20">
            <item>
-            <widget class="QLabel" name="battle_menu_player_atk">
+            <widget class="QLabel" name="battleMenuPlayerATK">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1729,7 +1729,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="battle_menu_player_def">
+            <widget class="QLabel" name="battleMenuPlayerDEF">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -1864,7 +1864,7 @@
           <widget class="QLabel" name="start_menu_goal_label_51">
            <property name="font">
             <font>
-             <pointsize>20</pointsize>
+             <pointsize>16</pointsize>
             </font>
            </property>
            <property name="text">
@@ -1876,7 +1876,50 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="battleMenuCurrentCard"/>
+          <widget class="QComboBox" name="battleMenuCards">
+           <property name="palette">
+            <palette>
+             <active>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>255</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </active>
+             <inactive>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>255</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </inactive>
+             <disabled>
+              <colorrole role="Base">
+               <brush brushstyle="SolidPattern">
+                <color alpha="255">
+                 <red>255</red>
+                 <green>255</green>
+                 <blue>255</blue>
+                </color>
+               </brush>
+              </colorrole>
+             </disabled>
+            </palette>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="QPushButton" name="battleMenuUseCard">
@@ -2009,7 +2052,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_28">
          <item>
-          <widget class="QLabel" name="battle_menu_player_name_and_level">
+          <widget class="QLabel" name="battleMenuPlayerNameAndLevel">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2024,7 +2067,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="battle_menu_player_health">
+          <widget class="QLabel" name="battleMenuPlayerHP">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2039,7 +2082,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="battle_menu_player_exp">
+          <widget class="QLabel" name="battleMenuPlayerEXP">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2172,7 +2215,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_29">
          <item>
-          <widget class="QLabel" name="battle_menu_enemy_name_and_level">
+          <widget class="QLabel" name="battleMenuEnemyNameAndLevel">
            <property name="font">
             <font>
              <pointsize>20</pointsize>
@@ -2187,7 +2230,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLabel" name="battle_menu_enemy_health">
+          <widget class="QLabel" name="battleMenuEnemyHP">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2322,7 +2365,7 @@
          <item>
           <layout class="QVBoxLayout" name="verticalLayout_21">
            <item>
-            <widget class="QLabel" name="battle_menu_enemy_atk">
+            <widget class="QLabel" name="battleMenuEnemyATK">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2334,7 +2377,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="battle_menu_enemy_def">
+            <widget class="QLabel" name="battleMenuEnemyDEF">
              <property name="font">
               <font>
                <pointsize>16</pointsize>
@@ -2360,7 +2403,7 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QLineEdit" name="battle_menu_roll_difference">
+          <widget class="QLineEdit" name="battleMenuRollDifference">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2372,7 +2415,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="battle_menu_turn_result">
+          <widget class="QLineEdit" name="battleMenuTurnResult">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2384,7 +2427,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QLineEdit" name="battle_menu_battle_result">
+          <widget class="QLineEdit" name="battleMenuBattleResult">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2426,7 +2469,7 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
-          <widget class="QLineEdit" name="battle_menu_player_roll">
+          <widget class="QLineEdit" name="battleMenuPlayerRoll">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2450,7 +2493,7 @@
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout_3">
          <item>
-          <widget class="QLineEdit" name="battle_menu_enemy_roll">
+          <widget class="QLineEdit" name="battleMenuEnemyRoll">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2541,7 +2584,7 @@
          <string>Return To Main Menu</string>
         </property>
        </widget>
-       <widget class="QPlainTextEdit" name="battle_menu_enemy_desc">
+       <widget class="QPlainTextEdit" name="battleMenuEnemyDescription">
         <property name="geometry">
          <rect>
           <x>550</x>

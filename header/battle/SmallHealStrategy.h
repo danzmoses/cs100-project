@@ -7,7 +7,7 @@
 
 class SmallHealStrategy : public CardStrategy{
 	public:
-		SmallHealStrategy(){};
+        SmallHealStrategy(){}
 
 		virtual void use(Entity *attacker, Entity *defender){
 			double fourtyPercentHP = (2.0/5) * attacker->combatStats->HP;

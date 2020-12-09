@@ -5,7 +5,7 @@
 
 class EnhanceDEFStrategy : public CardStrategy{
 	public:
-		EnhanceDEFStrategy() {}; 
+        EnhanceDEFStrategy() {}
 
 		virtual void use(Entity *attacker, Entity *defender){
 			attacker->combatStats->DEF += 1;

@@ -5,7 +5,7 @@
 
 class EnhanceATKStrategy : public CardStrategy{
 	public:
-		EnhanceATKStrategy() {};
+        EnhanceATKStrategy() {}
 
 		virtual void use(Entity *attacker, Entity *defender){
 			attacker->combatStats->ATK += 1;

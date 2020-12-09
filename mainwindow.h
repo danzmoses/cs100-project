@@ -32,7 +32,7 @@ public:
 private:
     Ui::MainWindow *ui;
     Player* player = nullptr;
-    Enemy* current_enemy = nullptr;
+    Enemy* currentEnemy = nullptr;
     Battle* battle = nullptr;
     EnemyFactory ef;
     ItemFactory* weaponFactory = new WeaponFactory;
@@ -49,12 +49,15 @@ private slots:
     void enterArea();
     void initializeBattleWithEnemy();
     void nextTurn();
+    void useCard();
     void nextBattle();
     void endArea();
 
     void updateMainMenuPlayerStats();
-    void update_battle_menu_player_stats();
-    void update_battle_menu_enemy_stats();
+    void updateBattleMenuPlayerStats();
+    void updateBattleMenuEnemyStats();
+    void updateBattleMenuCurrentlySelectedCard();
+
     void updateEquipmentMenuPlayerStats();
     void updateEquipmentMenuCurrentlySelectedCard();
     void updateShopMenuPlayerStats();

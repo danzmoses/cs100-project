@@ -7,7 +7,7 @@
 
 class BigHealStrategy : public CardStrategy{
         public:
-                BigHealStrategy(){};
+                BigHealStrategy(){}
 
                 virtual void use(Entity *attacker, Entity *defender){
                         double sixtyPercentHP = (3.0/5) * attacker->combatStats->HP;
