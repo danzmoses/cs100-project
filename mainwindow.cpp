@@ -167,14 +167,11 @@ void MainWindow::updateShopMenuInventory()
     if (ui->shopInventoryCardsRadioButton->isChecked())
     {
         std::vector<Card*> cards = shop.getShopInventory().getCards();
-        if (cards.empty())
-            ui->shopList->addItem("No items found");
-        else
-            for (unsigned i = 0; i < cards.size(); ++i)
-            {
-                QString name = QString::fromStdString(cards[i]->getName());
-                ui->shopList->addItem(name);
-            }
+        for (unsigned i = 0; i < cards.size(); ++i)
+        {
+            QString name = QString::fromStdString(cards[i]->getName());
+            ui->shopList->addItem(name);
+        }
     }
     else
     {
@@ -484,6 +481,17 @@ void MainWindow::purchaseItem()
         else
             ui->purchaseItemResult->setText("Error: Insufficient funds");
     }
+    else if (ui->shopInventoryCardsRadioButton->isChecked())
+    {
+        if (shop.buyCard(player, selectedItem))
+        {
+            ui->purchaseItemResult->setText("Successfully bought " + QString::fromStdString(selectedItem));
+            updateShopMenuInventory();
+        }
+        else
+            ui->purchaseItemResult->setText("Error: Insufficient funds");
+    }
+    updateShopMenuPlayerStats();
 }
 
 void MainWindow::switchToMainMenu()
