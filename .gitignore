@@ -9,3 +9,5 @@ a.out
 .vscode/
 CS100_final_project.code-workspace
 build/
+main
+a.exe

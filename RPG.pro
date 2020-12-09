@@ -14,6 +14,7 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
+    header/battle/test.cpp
 
 HEADERS  += mainwindow.h \
     header/battle/AttackStrategy.h \
@@ -49,7 +50,13 @@ HEADERS  += mainwindow.h \
     header/Item_test.h \
     header/PlayerFactory.h \
     header/WeaponFactory.h \
-    entity_tests.hpp
+    entity_tests.hpp \
+    header/battle/attack_strategy_tests.h \
+    header/prototypes/weapons/IronSwordPrototype.h \
+    header/prototypes/prototype_tests.h \
+    header/Inventory.h \
+    header/inventory_tests.h \
+    header/Stats.h
 
 FORMS    += mainwindow.ui
 
