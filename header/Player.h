@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include <stdexcept>
+#include <cmath>
 
 class Player : public Entity{
 	private:
@@ -37,35 +38,60 @@ class Player : public Entity{
             { 
                 std::invalid_argument ia("Invalid argument. EXP cannot be negative."); 
                 throw ia;
-            } 
-            this->EXP = EXP;
+            }
+
+			if (EXP < this->maxEXP)
+			{
+				this->EXP = EXP;
+				return;
+			}
+
+			while (EXP >= this->maxEXP)
+			{
+				this->EXP = EXP - this->maxEXP;
+				EXP = EXP - this->maxEXP;
+				this->maxEXP += 10;
+				levelUp();
+			}
         }
 
 	void setMaxEXP(int maxEXP){
 		this->maxEXP = maxEXP;
 	} 
 
-	//in battle or after battle, if(this->EXP >= maxEXP){ player->levelUp(); }
-	void levelUp(){
-		int additionalEXP = 0;
-		int numLevels = 0;
-			//bc player's curr EXP could be more than double MaxEXP
-			//each time a multiple of maxEXP is met = level up by 1
-			while(this->EXP >= maxEXP){
-				additionalEXP = this->EXP - maxEXP;
-				this->EXP = additionalEXP;
-				numLevels++;
+	void levelUp()
+	{
+		this->setLevel(this->getLevel() + 1); // level up by 1
+		
+		int pts = 0; // change pts based on the player's lvl.
+		if (this->getLevel() > 0 && this->getLevel() <= 5) // lvl.0-5 gives one point
+			pts = 1;
+		else if (this->getLevel() > 5 && this->getLevel() <= 8) // lvl.6-8 gives two points
+			pts = 2;
+		if (this->getLevel() > 9) //>lvl.9 gives three points
+			pts = 3;
+		
+		int rr = 0; // roll result
+		
+		for (int i = 0; i < pts; ++i)
+		{
+			rr = rand() % 3;
+			if (rr == 0)
+			{
+				baseStats->ATK += 1;
+				combatStats->ATK += 1;
 			}
-			this->setEXP(additionalEXP); 
-            		this->setLevel(this->getLevel() + numLevels);
-			baseStats->ATK += 1;
-			baseStats->DEF += 1;
-			baseStats->maxHP += 5;
-			combatStats->ATK += 1;
-			combatStats->DEF += 1;
-			combatStats->maxHP += 5; 
-			//every time player levels up (no matter how many levels) maxHP increases only once
-			//we can always remove the part where maxHP increases if it becomes a problem/too advantageous in battle
+			else if (rr == 1)
+			{
+				baseStats->DEF += 1;
+				combatStats->DEF += 1;
+			}
+			else if (rr == 2)
+			{
+				baseStats->maxHP += 2;
+				combatStats->maxHP += 2;
+			}
+		}
 	}		
 			
 };

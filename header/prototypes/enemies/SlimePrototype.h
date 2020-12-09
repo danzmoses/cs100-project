@@ -8,7 +8,8 @@ class SlimePrototype : public EnemyPrototype
     public:
         SlimePrototype() : EnemyPrototype() {
 			setLevel(1);
-			setDescription("A bouncing blob of goo. "); 
+			setDescription("A bouncing blob of goo. ");
+			setEXPMult(1);
 			baseStats->HP = 2; 
 			baseStats->maxHP = 2;
 			baseStats->ATK = 1;

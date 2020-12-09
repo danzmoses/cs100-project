@@ -10,6 +10,7 @@ class SkeletonPrototype : public EnemyPrototype
 	        setName("Skeleton"); 
             setLevel(1);
             setDescription("An undead humanoid made up of bones."); 
+            setEXPMult(2);
             baseStats->HP = 5; 
             baseStats->maxHP = 5;
             baseStats->ATK = 2;
