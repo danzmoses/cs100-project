@@ -63,6 +63,22 @@ class Shop
             shopInventory.removeItem(armor);
             return true;
         }
+        bool buyCard(Entity* player, std::string card)
+        {
+            Card* item = nullptr;
+            try {
+                item = shopInventory.getCard(card);
+            } catch(const std::invalid_argument &ia) {
+                return false;
+            }
+
+            if (player->getGold() < item->getCost())
+                return false;
+            player->setGold(player->getGold() - item->getCost());
+            player->addCardToInventory(card, cardFactory);
+            shopInventory.removeCard(card);
+            return true;
+        }
         Inventory getShopInventory() { return shopInventory; }
 };
 
