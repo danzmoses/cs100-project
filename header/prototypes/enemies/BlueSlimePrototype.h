@@ -10,6 +10,7 @@ class BlueSlimePrototype : public SlimePrototype
 	        setName("Blue Slime"); 
             setLevel(1);
             setDescription(getDescription() + "It looks defensive."); 
+            setGold(7);
             baseStats->HP += 0;
             baseStats->maxHP += + 0;
             combatStats->HP += 0;
