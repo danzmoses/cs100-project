@@ -444,10 +444,24 @@ void MainWindow::selectShopItemType()
 void MainWindow::equipItem()
 {
     std::string selectedItem = ui->equipmentList->currentItem()->text().toStdString();
+
     if (ui->viewInventoryWeaponsRadioButton->isChecked())
+    {
         player->equipWeapon(selectedItem);
+        ui->equipItemResult->setText("Equipped " + ui->equipmentList->currentItem()->text());
+    }
     else if (ui->viewInventoryArmorRadioButton->isChecked())
+    {
         player->equipArmor(selectedItem);
+        ui->equipItemResult->setText("Equipped " + ui->equipmentList->currentItem()->text());
+    }
+    else if (ui->viewInventoryCardsRadioButton->isChecked())
+    {
+        if (player->getEquipped().getCards().size() >= 4)
+            ui->equipItemResult->setText("Error: Max cards equipped (4)");
+        else
+            player->equipCard(selectedItem);
+    }
     updateMainMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
 }

@@ -170,7 +170,7 @@ class Entity
                     return;
                 }
             }
-            std::invalid_argument ia("Invalid argument. Unable to find armor named \"" + name + "\" inside of this inventory.");
+            std::invalid_argument ia("Invalid argument. Unable to find card named \"" + name + "\" inside of this inventory.");
             throw ia;
         }
         
