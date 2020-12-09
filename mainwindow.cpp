@@ -28,6 +28,12 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->viewInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
 
     connect(ui->equipmentEquipButton, SIGNAL(clicked(bool)), this, SLOT(equipItem()));
+
+    // switch shop item type
+    connect(ui->shopInventoryWeaponsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
+    connect(ui->shopInventoryArmorRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
+    connect(ui->shopInventoryBootsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
+    connect(ui->shopInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
 }
 
 MainWindow::~MainWindow()
@@ -36,8 +42,6 @@ MainWindow::~MainWindow()
         delete player;
     if (battle != nullptr)
         delete battle;
-    delete weaponFactory;
-    delete armorFactory;
     delete ui;
 }
 
@@ -105,6 +109,7 @@ void MainWindow::updateShopMenuPlayerStats()
     ui->shopMenuHP->setText("Health: " + QString::number(player->combatStats->HP) + '/' + QString::number(player->combatStats->maxHP));
     ui->shopMenuATK->setText("ATK: " + QString::number(player->combatStats->ATK));
     ui->shopMenuDEF->setText("DEF: " + QString::number(player->combatStats->DEF));
+    ui->shopMenuCurrentGold->setText("Current Gold: " + QString::number(player->getGold()));
 
     Inventory equipped = player->getEquipped();
     if (!equipped.getWeapons().empty())
@@ -180,6 +185,7 @@ void MainWindow::initializePlayer()
     player->addWeaponToInventory("Wooden Sword", weaponFactory);
     player->addWeaponToInventory("Stone Sword", weaponFactory);
     player->addArmorToInventory("Leather Armor", armorFactory);
+    player->setGold(500);
     update_main_menu_player_stats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
