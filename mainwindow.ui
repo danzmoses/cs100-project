@@ -1528,7 +1528,7 @@
           <x>0</x>
           <y>0</y>
           <width>1001</width>
-          <height>101</height>
+          <height>113</height>
          </rect>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_2">
@@ -1737,6 +1737,18 @@
              </property>
              <property name="text">
               <string>DEF: 1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="battleMenuPlayerGold">
+             <property name="font">
+              <font>
+               <pointsize>16</pointsize>
+              </font>
+             </property>
+             <property name="text">
+              <string>Gold: 0</string>
              </property>
             </widget>
            </item>
@@ -2599,7 +2611,7 @@
          </font>
         </property>
         <property name="plainText">
-         <string>Deal 5 damage to the enemy</string>
+         <string/>
         </property>
        </widget>
        <widget class="QPushButton" name="nextBattleButton">
@@ -2647,9 +2659,9 @@
        <widget class="QPlainTextEdit" name="battleMenuCardDescription">
         <property name="geometry">
          <rect>
-          <x>110</x>
+          <x>60</x>
           <y>390</y>
-          <width>291</width>
+          <width>341</width>
           <height>61</height>
          </rect>
         </property>
@@ -2659,7 +2671,7 @@
          </font>
         </property>
         <property name="plainText">
-         <string>Deal 5 damage to the enemy</string>
+         <string/>
         </property>
        </widget>
       </widget>
@@ -3666,26 +3678,6 @@
           <pointsize>20</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>Fireball</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Light Heal</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Enhance Attack</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Enhance Defense</string>
-         </property>
-        </item>
        </widget>
        <widget class="QFrame" name="frame_26">
         <property name="geometry">
@@ -5263,26 +5255,6 @@
           <pointsize>20</pointsize>
          </font>
         </property>
-        <item>
-         <property name="text">
-          <string>Fireball</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Light Heal</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Enhance Attack</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Enhance Defense</string>
-         </property>
-        </item>
        </widget>
        <widget class="QPlainTextEdit" name="equipmentMenuCardDescription">
         <property name="geometry">
@@ -5299,7 +5271,7 @@
          </font>
         </property>
         <property name="plainText">
-         <string>Deal 5 damage to the enemy</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLineEdit" name="equipItemResult">

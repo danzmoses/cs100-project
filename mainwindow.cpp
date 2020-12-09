@@ -12,9 +12,6 @@ MainWindow::MainWindow(QWidget *parent) :
     srand(time(0));
     // connections
     connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(initializePlayer()));
-    connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
-    connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
-    connect(ui->returnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(endArea()));
     connect(ui->changeEquipmentButton, SIGNAL(clicked(bool)), this, SLOT(switchToEquipmentMenu()));
     connect(ui->equipmentReturnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
     connect(ui->goToShopButton, SIGNAL(clicked(bool)), this, SLOT(switchToShopMenu()));
@@ -22,6 +19,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->nextBattleButton, SIGNAL(clicked(bool)), this, SLOT(nextBattle()));
 
     // battle
+    connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
+    connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
+    connect(ui->returnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(endArea()));
     connect(ui->battleMenuCards, SIGNAL(currentTextChanged(QString)), this, SLOT(updateBattleMenuCurrentlySelectedCard()));
     connect(ui->battleMenuUseCard, SIGNAL(clicked(bool)), this, SLOT(useCard()));
 
@@ -106,6 +106,7 @@ void MainWindow::updateBattleMenuPlayerStats()
     QString maxEXP = QString::number(player->getMaxEXP());
     QString atk = QString::number(player->combatStats->ATK);
     QString def = QString::number(player->combatStats->DEF);
+    QString gold = QString::number(player->getGold());
 
     ui->battleMenuCards->clear();
     std::vector<Card*> cards = player->getEquipped().getCards();
@@ -117,6 +118,7 @@ void MainWindow::updateBattleMenuPlayerStats()
     ui->battleMenuPlayerEXP->setText("EXP: " + exp + '/' + maxEXP);
     ui->battleMenuPlayerATK->setText("ATK: " + atk);
     ui->battleMenuPlayerDEF->setText("DEF: " + def);
+    ui->battleMenuPlayerGold->setText("Gold: " + gold);
 
 }
 
@@ -306,24 +308,24 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-    player->combatStats->ATK = 50;
-    player->combatStats->DEF = 50;
+//    player->combatStats->ATK = 50;
+//    player->combatStats->DEF = 50;
 //    player->addWeaponToInventory("Wooden Sword", weaponFactory);
 //    player->addWeaponToInventory("Stone Sword", weaponFactory);
 //    player->addArmorToInventory("Leather Armor", armorFactory);
 //    player->equipWeapon("Wooden Sword");
 //    player->equipArmor("Leather Armor");
 
-    player->addCardToInventory("Enhance ATK", cardFactory);
-    player->equipCard("Enhance ATK");
-    player->addCardToInventory("Enhance DEF", cardFactory);
-    player->equipCard("Enhance DEF");
-    player->addCardToInventory("Big Heal", cardFactory);
-    player->equipCard("Big Heal");
-    player->addCardToInventory("Deal Damage", cardFactory);
-    player->equipCard("Deal Damage");
+//    player->addCardToInventory("Enhance ATK", cardFactory);
+//    player->equipCard("Enhance ATK");
+//    player->addCardToInventory("Enhance DEF", cardFactory);
+//    player->equipCard("Enhance DEF");
+//    player->addCardToInventory("Big Heal", cardFactory);
+//    player->equipCard("Big Heal");
+//    player->addCardToInventory("Deal Damage", cardFactory);
+//    player->equipCard("Deal Damage");
 
-    player->setGold(5000);
+//    player->setGold(5000);
 
     updateMainMenuPlayerStats();
     updateShopMenuPlayerStats();
@@ -422,6 +424,10 @@ void MainWindow::nextTurn()
 
     if (player->combatStats->HP <= 0 || currentEnemy->combatStats->HP <= 0)
     {
+        int prevGold = player->getGold();
+        int prevEXP = player->getEXP();
+        int prevLevel = player->getLevel();
+        battle->endBattle();
         if (player->combatStats->HP <= 0)
         {
             ui->battleMenuBattleResult->setText(enemyName + " has won!");
@@ -429,7 +435,14 @@ void MainWindow::nextTurn()
         }
         else if (currentEnemy->combatStats->HP <= 0)
         {
-            ui->battleMenuBattleResult->setText(playerName + " has won!");
+            QString battleResult = playerName + " has won! " + playerName + " gains " + QString::number(player->getGold() - prevGold) + " gold!";
+
+            if (prevLevel < player->getLevel())
+                battleResult += ' ' + playerName + " levels up " + QString::number(player->getLevel() - prevLevel) + " times!";
+            else
+                battleResult += ' ' + playerName + " gains " + QString::number(player->getEXP() - prevEXP) + " EXP!";
+
+            ui->battleMenuBattleResult->setText(battleResult);
             ui->nextBattleButton->setEnabled(true);
         }
         ui->rollButton->setEnabled(false);
