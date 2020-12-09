@@ -13,6 +13,7 @@ class Entity
     private:
         std::string name;
         int level;
+        int gold;
         Inventory inventory;
         Inventory equipped;
 
@@ -22,6 +23,7 @@ class Entity
     Entity(){
         this->name = "Entity";
         this->level = 1;
+        this->gold = 50;
         baseStats->HP = 5;
         baseStats->maxHP = 5;
         baseStats->ATK = 1;
@@ -35,6 +37,7 @@ class Entity
     Entity(std::string name){
         this->name= name;
         this->level = 1;
+        this->gold = 50;
         baseStats->HP = 5;
         baseStats->maxHP = 5;
         baseStats->ATK = 1;
@@ -48,12 +51,14 @@ class Entity
         // __GETTERS__
         std::string getName() { return this->name; }
         int getLevel() { return this->level; }
+        int getGold() { return this->gold; }
         Inventory getInventory() { return this->inventory; }
         Inventory getEquipped() { return this->equipped; }
 
         // __SETTERS__
         void setName(std::string name) { this->name = name; }
         void setLevel(int level){ this->level = level; }
+        void setGold(int gold) { this->gold = gold; }
 
         // __PUBLIC_FUNCTIONS__
         void restoreHP() { combatStats->HP = combatStats->maxHP; }

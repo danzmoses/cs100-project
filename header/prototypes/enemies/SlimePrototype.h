@@ -10,6 +10,7 @@ class SlimePrototype : public EnemyPrototype
 			setLevel(1);
 			setDescription("A bouncing blob of goo. ");
 			setEXPMult(1);
+			setGold(7);
 			baseStats->HP = 2; 
 			baseStats->maxHP = 2;
 			baseStats->ATK = 1;
