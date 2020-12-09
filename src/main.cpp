@@ -16,6 +16,50 @@ using namespace std;
 int main()
 {
     
+    // __ END BATTLE TEST HARNESS __
+
+    // srand(time(0));
+
+    // Player* player = new Player("Rice");
+    // EnemyFactory* ef = new EnemyFactory();
+
+    // Enemy* e1 = ef->createEnemy("Mega Goblin");
+    // Battle b1(player, e1);
+
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player HP: " << player->combatStats->HP << endl;
+    // cout << "Player maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Gold: " << player->getGold() << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl << endl;
+
+    // while (player->combatStats->HP > 0 && e1->combatStats->HP > 0)
+    // {
+    //     b1.nextTurn();
+    //     if (player->combatStats->HP <= 0)
+    //     {
+    //         cout << "Player died!" << endl;
+    //         player->restoreHP();
+    //     }
+    // }
+    // if (player->combatStats->HP > 0)
+    //     cout << "Victory!" << endl;
+    // // else
+    // // {
+    // //     cout << "Defeat.\nRestore HP." << endl;
+    // //     player->restoreHP();
+    // // }
+    // b1.endBattle();
+
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player HP: " << player->combatStats->HP << endl;
+    // cout << "Player maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Gold: " << player->getGold() << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl << endl;
+
     // __ LEVELING TEST HARNESS __
 
     // Player* player = new Player("Rice");
