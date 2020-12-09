@@ -125,35 +125,35 @@ TEST(PlayerTests, levelUpTest){
  	Player *p = new Player("Linda");
  	p->setLevel(1);
 	p->baseStats->ATK = 1;
-        p->baseStats->DEF = 1;
+	p->baseStats->DEF = 1;
  	p->combatStats->ATK = 1;
  	p->combatStats->DEF = 1;
  	p->setMaxEXP(5);
- 	p->setEXP(14);
-	p->baseStats->maxHP = 10;
- 	p->combatStats->maxHP = 10;
+ 	p->setEXP(0);
+	p->baseStats->maxHP = 5;
+ 	p->combatStats->maxHP = 5;
 
  	EXPECT_EQ(p->getLevel(), 1);
 	EXPECT_EQ(p->baseStats->ATK, 1);
-        EXPECT_EQ(p->baseStats->DEF, 1);
+	EXPECT_EQ(p->baseStats->DEF, 1);
  	EXPECT_EQ(p->combatStats->ATK, 1);
  	EXPECT_EQ(p->combatStats->DEF, 1);
  	EXPECT_EQ(p->getMaxEXP(), 5);
- 	EXPECT_EQ(p->getEXP(), 14);
-	EXPECT_EQ(p->baseStats->maxHP, 10);
- 	EXPECT_EQ(p->combatStats->maxHP, 10);	
+ 	EXPECT_EQ(p->getEXP(), 0);
+	EXPECT_EQ(p->baseStats->maxHP, 5);
+ 	EXPECT_EQ(p->combatStats->maxHP, 5);	
 
- 	p->levelUp();
+ 	p->levelUp(); // One of ATK, DEF, and maxHP are increased at random
 	
- 	EXPECT_EQ(p->getLevel(), 3);
- 	EXPECT_EQ(p->getEXP(), 4);
- 	EXPECT_EQ(p->getMaxEXP(), 5);
-	EXPECT_EQ(p->baseStats->ATK, 2);
-        EXPECT_EQ(p->baseStats->DEF, 2);
-        EXPECT_EQ(p->baseStats->maxHP, 15);
- 	EXPECT_EQ(p->combatStats->ATK, 2);
- 	EXPECT_EQ(p->combatStats->DEF, 2);
- 	EXPECT_EQ(p->combatStats->maxHP, 15);	
+ 	EXPECT_EQ(p->getLevel(), 2);
+ 	EXPECT_EQ(p->getMaxEXP(), 15);
+ 	EXPECT_EQ(p->getEXP(), 0);
+
+	p->setEXP(41);
+
+	EXPECT_EQ(p->getLevel(), 4);
+	EXPECT_EQ(p->getMaxEXP(), 35);
+	EXPECT_EQ(p->getEXP(), 1);
 }
 
 // //add tests for enemies
@@ -166,7 +166,7 @@ TEST(EnemyTests, GoblinTest){
  	EXPECT_EQ(e->combatStats->maxHP, 4);
  	EXPECT_EQ(e->combatStats->ATK, 3);
  	EXPECT_EQ(e->combatStats->DEF, 1);
- 	EXPECT_EQ(e->getDescription(), "Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items.");
+ 	EXPECT_EQ(e->getDescription(), "Adventurous, greedy, and loot-heavy!");
 
  	e->setName("New Goblin");
  	e->combatStats->HP = 15; 
