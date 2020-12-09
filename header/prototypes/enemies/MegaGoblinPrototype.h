@@ -11,6 +11,7 @@ class MegaGoblinPrototype : public EnemyPrototype
             setLevel(1);
             setDescription("Double your height, double your loot."); 
             setEXPMult(3);
+            setGold(85);
             baseStats->HP = 15; 
             baseStats->maxHP = 15;
             baseStats->ATK = 2;

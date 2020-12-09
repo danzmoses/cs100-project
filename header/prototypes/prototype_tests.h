@@ -129,6 +129,7 @@ TEST(PrototypeTests, GoblinPrototypeTest)
     EXPECT_EQ(enemy->getName(), "Goblin");
     EXPECT_EQ(enemy->getLevel(), 1);
     EXPECT_EQ(enemy->getDescription(), "Adventurous, greedy, and loot-heavy!");
+    EXPECT_EQ(enemy->getGold(), 11);
 
     enemy->setName("Mega Goblin");
     enemy->setLevel(2);
@@ -157,6 +158,7 @@ TEST(PrototypeTests, GreenSlimePrototypeTest)
     EXPECT_EQ(enemy->getName(), "Green Slime");
     EXPECT_EQ(enemy->getLevel(), 1);
     EXPECT_EQ(enemy->getDescription(), "A bouncing blob of goo. It looks harmless.");
+    EXPECT_EQ(enemy->getGold(), 5);
 
     enemy->setName("Mega Goblin");
     enemy->setLevel(2);
@@ -185,6 +187,8 @@ TEST(PrototypeTests, RedSlimePrototypeTest)
     EXPECT_EQ(enemy->getName(), "Red Slime");
     EXPECT_EQ(enemy->getLevel(), 1);
     EXPECT_EQ(enemy->getDescription(), "A bouncing blob of goo. It looks aggressive.");
+    EXPECT_EQ(enemy->getGold(), 7);
+
 
     enemy->setName("Mega Goblin");
     enemy->setLevel(2);
@@ -213,6 +217,8 @@ TEST(PrototypeTests, SkeletonPrototypeTest)
     EXPECT_EQ(enemy->getName(), "Skeleton");
     EXPECT_EQ(enemy->getLevel(), 1);
     EXPECT_EQ(enemy->getDescription(), "An undead humanoid made up of bones.");
+    EXPECT_EQ(enemy->getGold(), 14);
+
 
     enemy->setName("Mega Goblin");
     enemy->setLevel(2);
@@ -241,6 +247,8 @@ TEST(PrototypeTests, ZombiePrototypeTest)
     EXPECT_EQ(enemy->getName(), "Zombie");
     EXPECT_EQ(enemy->getLevel(), 1);
     EXPECT_EQ(enemy->getDescription(), "brains...");
+    EXPECT_EQ(enemy->getGold(), 20);
+
 
     enemy->setName("Mega Goblin");
     enemy->setLevel(2);

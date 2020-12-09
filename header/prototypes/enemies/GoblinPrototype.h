@@ -11,6 +11,7 @@ class GoblinPrototype : public EnemyPrototype
 			setLevel(1);
 			setDescription("Adventurous, greedy, and loot-heavy!");
 			setEXPMult(1);
+			setGold(11);
 			baseStats->HP = 4;
 			baseStats->maxHP = 4;
 			baseStats->ATK = 3;

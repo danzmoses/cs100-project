@@ -9,7 +9,8 @@ class GreenSlimePrototype : public SlimePrototype
         GreenSlimePrototype() : SlimePrototype() { 
 	        setName("Green Slime"); 
             setLevel(1);
-            setDescription(getDescription() + "It looks harmless."); 
+            setDescription(getDescription() + "It looks harmless.");
+            setGold(5);
             baseStats->HP += 0;
             baseStats->maxHP += + 0;
             combatStats->HP += 0;
