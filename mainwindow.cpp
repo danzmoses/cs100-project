@@ -147,6 +147,17 @@ void MainWindow::updateShopMenuPlayerStats()
         ui->shopMenuCurrentArmor->setText("Armor: " + QString::fromStdString(equipped.getArmor().at(0)->getName()));
     else
         ui->shopMenuCurrentArmor->setText("Armor: <None>");
+
+    ui->shopMenuCards->clear();
+    std::vector<Card*> cards = player->getInventory().getCards();
+    if (!cards.empty())
+    {
+        for (unsigned i = 0; i < cards.size(); ++i)
+        {
+            QString name = QString::fromStdString(cards[i]->getName());
+            ui->shopMenuCards->addItem(name);
+        }
+    }
 }
 
 void MainWindow::updateShopMenuInventory()

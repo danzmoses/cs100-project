@@ -3579,7 +3579,7 @@
          </item>
         </layout>
        </widget>
-       <widget class="QComboBox" name="comboBox_3">
+       <widget class="QComboBox" name="shopMenuCards">
         <property name="geometry">
          <rect>
           <x>310</x>
