@@ -15,92 +15,93 @@ using namespace std;
 
 int main()
 {
+    
     // __ LEVELING TEST HARNESS __
 
-    Player* player = new Player("Rice");
+    // Player* player = new Player("Rice");
 
-    srand(time(0));
+    // srand(time(0));
 
-    cout << "Player Level: " << player->getLevel() << endl;
-    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
-    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
-    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
-    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
-    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
-    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
-    cout << "Player EXP: " << player->getEXP() << endl;
-    cout << "Player maxEXP: " << player->getMaxEXP() << endl << endl;
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    // cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    // cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    // cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl;
+    // cout << "Player maxEXP: " << player->getMaxEXP() << endl << endl;
     
-    cout << "player->setEXP(1)" << endl << endl;
-    player->setEXP(1);
+    // cout << "player->setEXP(1)" << endl << endl;
+    // player->setEXP(1);
  
-    cout << "Player Level: " << player->getLevel() << endl;
-    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
-    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
-    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
-    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
-    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
-    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
-    cout << "Player EXP: " << player->getEXP() << endl;
-    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    // cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    // cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    // cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl;
+    // cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
 
-    cout << "player->setEXP(5)" << endl << endl;
-    player->setEXP(5);
-    cout << "Level Up!" << endl << endl;
+    // cout << "player->setEXP(5)" << endl << endl;
+    // player->setEXP(5);
+    // cout << "Level Up!" << endl << endl;
 
-    cout << "Player Level: " << player->getLevel() << endl;
-    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
-    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
-    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
-    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
-    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
-    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
-    cout << "Player EXP: " << player->getEXP() << endl;
-    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    // cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    // cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    // cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl;
+    // cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
 
-    cout << "player->setEXP(20)" << endl << endl;
-    player->setEXP(20);
-    cout << "Level Up!" << endl << endl;
+    // cout << "player->setEXP(20)" << endl << endl;
+    // player->setEXP(20);
+    // cout << "Level Up!" << endl << endl;
 
-    cout << "Player Level: " << player->getLevel() << endl;
-    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
-    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
-    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
-    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
-    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
-    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
-    cout << "Player EXP: " << player->getEXP() << endl;
-    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    // cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    // cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    // cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl;
+    // cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
 
-    cout << "player->setEXP(65)" << endl << endl;
-    player->setEXP(65);
-    cout << "Level Up!" << endl << endl;
-    cout << "Level Up!" << endl << endl;
+    // cout << "player->setEXP(65)" << endl << endl;
+    // player->setEXP(65);
+    // cout << "Level Up!" << endl << endl;
+    // cout << "Level Up!" << endl << endl;
 
-    cout << "Player Level: " << player->getLevel() << endl;
-    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
-    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
-    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
-    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
-    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
-    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
-    cout << "Player EXP: " << player->getEXP() << endl;
-    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    // cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    // cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    // cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl;
+    // cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
 
 
-    cout << "player->setEXP(46)" << endl << endl;
-    player->setEXP(46);
-    cout << "Level Up!" << endl << endl;
+    // cout << "player->setEXP(46)" << endl << endl;
+    // player->setEXP(46);
+    // cout << "Level Up!" << endl << endl;
 
-    cout << "Player Level: " << player->getLevel() << endl;
-    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
-    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
-    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
-    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
-    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
-    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
-    cout << "Player EXP: " << player->getEXP() << endl;
-    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+    // cout << "Player Level: " << player->getLevel() << endl;
+    // cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    // cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    // cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    // cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    // cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    // cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    // cout << "Player EXP: " << player->getEXP() << endl;
+    // cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
 
     
     // // __ BATTLE TEST HARNESS __
