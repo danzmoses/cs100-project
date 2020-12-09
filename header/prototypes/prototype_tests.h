@@ -128,7 +128,7 @@ TEST(PrototypeTests, GoblinPrototypeTest)
     
     EXPECT_EQ(enemy->getName(), "Goblin");
     EXPECT_EQ(enemy->getLevel(), 1);
-    EXPECT_EQ(enemy->getDescription(), "Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items.");
+    EXPECT_EQ(enemy->getDescription(), "Adventurous, greedy, and loot-heavy!");
 
     enemy->setName("Mega Goblin");
     enemy->setLevel(2);

@@ -50,7 +50,6 @@ class Player : public Entity{
 			{
 				this->EXP = EXP - this->maxEXP;
 				EXP = EXP - this->maxEXP;
-				this->maxEXP += 10;
 				levelUp();
 			}
         }
@@ -62,7 +61,8 @@ class Player : public Entity{
 	void levelUp()
 	{
 		this->setLevel(this->getLevel() + 1); // level up by 1
-		
+		this->maxEXP += 10;
+			
 		int pts = 0; // change pts based on the player's lvl.
 		if (this->getLevel() > 0 && this->getLevel() <= 5) // lvl.0-5 gives one point
 			pts = 1;

@@ -5,107 +5,300 @@
 #include "../header/EnemyFactory.h"
 #include "../header/ArmorFactory.h"
 #include "../header/WeaponFactory.h"
+#include "../header/battle/Battle.h"
+#include <ctime>
+#include <fstream>
+
+
 
 using namespace std;
 
 int main()
 {
+    // __ LEVELING TEST HARNESS __
+
+    Player* player = new Player("Rice");
+
+    srand(time(0));
+
+    cout << "Player Level: " << player->getLevel() << endl;
+    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    cout << "Player EXP: " << player->getEXP() << endl;
+    cout << "Player maxEXP: " << player->getMaxEXP() << endl << endl;
+    
+    cout << "player->setEXP(1)" << endl << endl;
+    player->setEXP(1);
+ 
+    cout << "Player Level: " << player->getLevel() << endl;
+    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    cout << "Player EXP: " << player->getEXP() << endl;
+    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+
+    cout << "player->setEXP(5)" << endl << endl;
+    player->setEXP(5);
+    cout << "Level Up!" << endl << endl;
+
+    cout << "Player Level: " << player->getLevel() << endl;
+    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    cout << "Player EXP: " << player->getEXP() << endl;
+    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+
+    cout << "player->setEXP(20)" << endl << endl;
+    player->setEXP(20);
+    cout << "Level Up!" << endl << endl;
+
+    cout << "Player Level: " << player->getLevel() << endl;
+    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    cout << "Player EXP: " << player->getEXP() << endl;
+    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+
+    cout << "player->setEXP(65)" << endl << endl;
+    player->setEXP(65);
+    cout << "Level Up!" << endl << endl;
+    cout << "Level Up!" << endl << endl;
+
+    cout << "Player Level: " << player->getLevel() << endl;
+    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    cout << "Player EXP: " << player->getEXP() << endl;
+    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+
+
+    cout << "player->setEXP(46)" << endl << endl;
+    player->setEXP(46);
+    cout << "Level Up!" << endl << endl;
+
+    cout << "Player Level: " << player->getLevel() << endl;
+    cout << "Player Base ATK: " << player->baseStats->ATK << endl;
+    cout << "Player Combat ATK: " << player->combatStats->ATK << endl;
+    cout << "Player Base DEF: " << player->baseStats->DEF << endl;
+    cout << "Player Combat DEF: " << player->combatStats->DEF << endl;
+    cout << "Player Base maxHP: " << player->baseStats->maxHP << endl;
+    cout << "Player Combat maxHP: " << player->combatStats->maxHP << endl;
+    cout << "Player EXP: " << player->getEXP() << endl;
+    cout << "Player maxEXP: " << player->getMaxEXP() << endl<< endl;
+
+    
+    // // __ BATTLE TEST HARNESS __
+
+    // srand(time(0));
+    // int playerWins = 0;
+    // int enemyWins = 0;
+    
+    // while (true)
+    // {
+    
+    // bool playerWon = true;
+
+    // Player* player = new Player("Rice");
+    // player->combatStats->ATK = 2;
+    // EnemyFactory* ef = new EnemyFactory();
+    
+    // Enemy* e1 = ef->createEnemy("Green Slime");
+    // Battle* b1 = new Battle(player, e1);
+
+    // while (player->combatStats->HP > 0 && e1->combatStats->HP > 0)
+    // {
+    //     b1->nextTurn();
+    //     cout << "Player HP: " << player->combatStats->HP << endl;
+    //     cout << "Enemy HP: " << e1->combatStats->HP << endl;
+    //     cout << "Player rolled a " << b1->getPlayerRoll() << "!\n";
+    //     cout << "Enemy rolled a " << b1->getEnemyRoll() << "!\n";
+    //     if (b1->getPlayerWonRoll())
+    //         cout << "Player won the roll and dealt ";
+    //     else
+    //         cout << "Enemy won the roll and dealt ";
+    //     cout << b1->getDamageDone() << "!\n\n";
+    // }
+
+    // if (player->combatStats->HP > 0)
+    //     cout << "Player won!\n";
+    // else
+    // {
+    //     cout << "Enemy won!\n";
+    //     playerWon = false;
+    // }
+    
+    // Enemy* e2 = ef->createEnemy("Green Slime");
+    // Battle* b2 = new Battle(player, e2);
+
+    // while (player->combatStats->HP > 0 && e2->combatStats->HP > 0)
+    // {
+    //     b2->nextTurn();
+    //     cout << "Player HP: " << player->combatStats->HP << endl;
+    //     cout << "Enemy HP: " << e2->combatStats->HP << endl;
+    //     cout << "Player rolled a " << b2->getPlayerRoll() << "!\n";
+    //     cout << "Enemy rolled a " << b2->getEnemyRoll() << "!\n";
+    //     if (b2->getPlayerWonRoll())
+    //         cout << "Player won the roll and dealt ";
+    //     else
+    //         cout << "Enemy won the roll and dealt ";
+    //     cout << b2->getDamageDone() << "!\n\n";
+    // }
+
+    // if (player->combatStats->HP > 0)
+    //     cout << "Player won!\n";
+    // else
+    // {
+    //     cout << "Enemy won!\n";
+    //     playerWon = false;
+    // }
+
+    // Enemy* e3 = ef->createEnemy("Green Slime");
+    // Battle* b3 = new Battle(player, e3);
+
+    // while (player->combatStats->HP > 0 && e3->combatStats->HP > 0)
+    // {
+    //     b3->nextTurn();
+    //     cout << "Player HP: " << player->combatStats->HP << endl;
+    //     cout << "Enemy HP: " << e3->combatStats->HP << endl;
+    //     cout << "Player rolled a " << b3->getPlayerRoll() << "!\n";
+    //     cout << "Enemy rolled a " << b3->getEnemyRoll() << "!\n";
+    //     if (b3->getPlayerWonRoll())
+    //         cout << "Player won the roll and dealt ";
+    //     else
+    //         cout << "Enemy won the roll and dealt ";
+    //     cout << b3->getDamageDone() << "!\n\n";
+    // }
+
+    // if (player->combatStats->HP > 0)
+    //     cout << "Player won!\n";
+    // else
+    // {
+    //     cout << "Enemy won!\n";
+    //     playerWon = false;
+    // }
+
+
+    // if (playerWon)
+    //     ++playerWins;
+    // else
+    //     ++enemyWins;
+    
+    // cout << "playerWins: " << playerWins << endl;
+    // cout << "enemyWins: " << enemyWins << endl << endl;
+
+    // }
 
     // __ INVENTORY TEST HARNESS __
 
-    Player* player = new Player("Rice");
-    ItemFactory* af = new ArmorFactory();
-    ItemFactory* wf = new WeaponFactory();
+    // Player* player = new Player("Rice");
+    // ItemFactory* af = new ArmorFactory();
+    // ItemFactory* wf = new WeaponFactory();
 
-    cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
-    cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;
+    // cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
+    // cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;
 
-    cout << "Adding Leather Armor to Player's Inventory..." << endl << endl;
-    player->addArmorToInventory("Leather Armor", af);
-    cout << "Adding Stone Sword to Player's Inventory..." << endl << endl;
-    player->addWeaponToInventory("Stone Sword", wf);
+    // cout << "Adding Leather Armor to Player's Inventory..." << endl << endl;
+    // player->addArmorToInventory("Leather Armor", af);
+    // cout << "Adding Stone Sword to Player's Inventory..." << endl << endl;
+    // player->addWeaponToInventory("Stone Sword", wf);
 
-    cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
-    cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;   
+    // cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
+    // cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;   
 
-    cout << "Player's Inventory's Leather Armor ATK: " << player->getInventory().getItem("Leather Armor")->combatStats->ATK << endl;
-    cout << "Player's Inventory's Leather Armor DEF: " << player->getInventory().getItem("Leather Armor")->combatStats->DEF << endl;
-    cout << "Player's Inventory's Leather Armor HP: " << player->getInventory().getItem("Leather Armor")->combatStats->HP << endl;
-    cout << "Player's Inventory's Leather Armor maxHP: " << player->getInventory().getItem("Leather Armor")->combatStats->maxHP << endl << endl;
+    // cout << "Player's Inventory's Leather Armor ATK: " << player->getInventory().getItem("Leather Armor")->combatStats->ATK << endl;
+    // cout << "Player's Inventory's Leather Armor DEF: " << player->getInventory().getItem("Leather Armor")->combatStats->DEF << endl;
+    // cout << "Player's Inventory's Leather Armor HP: " << player->getInventory().getItem("Leather Armor")->combatStats->HP << endl;
+    // cout << "Player's Inventory's Leather Armor maxHP: " << player->getInventory().getItem("Leather Armor")->combatStats->maxHP << endl << endl;
 
-    cout << "Player's Inventory's Stone Sword ATK: " << player->getInventory().getItem("Stone Sword")->combatStats->ATK << endl;
-    cout << "Player's Inventory's Stone Sword DEF: " << player->getInventory().getItem("Stone Sword")->combatStats->DEF << endl;
-    cout << "Player's Inventory's Stone Sword HP: " << player->getInventory().getItem("Stone Sword")->combatStats->HP << endl;
-    cout << "Player's Inventory's Stone Sword maxHP: " << player->getInventory().getItem("Stone Sword")->combatStats->maxHP << endl << endl;   
+    // cout << "Player's Inventory's Stone Sword ATK: " << player->getInventory().getItem("Stone Sword")->combatStats->ATK << endl;
+    // cout << "Player's Inventory's Stone Sword DEF: " << player->getInventory().getItem("Stone Sword")->combatStats->DEF << endl;
+    // cout << "Player's Inventory's Stone Sword HP: " << player->getInventory().getItem("Stone Sword")->combatStats->HP << endl;
+    // cout << "Player's Inventory's Stone Sword maxHP: " << player->getInventory().getItem("Stone Sword")->combatStats->maxHP << endl << endl;   
 
-    cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
-    cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
+    // cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
+    // cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
 
-    cout << "Equipping Leather Armor..." << endl << endl;
-    player->equipArmor("Leather Armor");
-    cout << "Equipping Stone Sword..." << endl << endl;
-    player->equipWeapon("Stone Sword");
+    // cout << "Equipping Leather Armor..." << endl << endl;
+    // player->equipArmor("Leather Armor");
+    // cout << "Equipping Stone Sword..." << endl << endl;
+    // player->equipWeapon("Stone Sword");
 
-    cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
-    cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
+    // cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
+    // cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
 
-    cout << "Player's Equipped's Leather Armor ATK: " << player->getEquipped().getItem("Leather Armor")->combatStats->ATK << endl;
-    cout << "Player's Equipped's Leather Armor DEF: " << player->getEquipped().getItem("Leather Armor")->combatStats->DEF << endl;
-    cout << "Player's Equipped's Leather Armor HP: " << player->getEquipped().getItem("Leather Armor")->combatStats->HP << endl;
-    cout << "Player's Equipped's Leather Armor maxHP: " << player->getEquipped().getItem("Leather Armor")->combatStats->maxHP << endl << endl;
+    // cout << "Player's Equipped's Leather Armor ATK: " << player->getEquipped().getItem("Leather Armor")->combatStats->ATK << endl;
+    // cout << "Player's Equipped's Leather Armor DEF: " << player->getEquipped().getItem("Leather Armor")->combatStats->DEF << endl;
+    // cout << "Player's Equipped's Leather Armor HP: " << player->getEquipped().getItem("Leather Armor")->combatStats->HP << endl;
+    // cout << "Player's Equipped's Leather Armor maxHP: " << player->getEquipped().getItem("Leather Armor")->combatStats->maxHP << endl << endl;
 
-    cout << "Player's Equipped's Stone Sword ATK: " << player->getEquipped().getItem("Stone Sword")->combatStats->ATK << endl;
-    cout << "Player's Equipped's Stone Sword DEF: " << player->getEquipped().getItem("Stone Sword")->combatStats->DEF << endl;
-    cout << "Player's Equipped's Stone Sword HP: " << player->getEquipped().getItem("Stone Sword")->combatStats->HP << endl;
-    cout << "Player's Equipped's Stone Sword maxHP: " << player->getEquipped().getItem("Stone Sword")->combatStats->maxHP << endl << endl;  
+    // cout << "Player's Equipped's Stone Sword ATK: " << player->getEquipped().getItem("Stone Sword")->combatStats->ATK << endl;
+    // cout << "Player's Equipped's Stone Sword DEF: " << player->getEquipped().getItem("Stone Sword")->combatStats->DEF << endl;
+    // cout << "Player's Equipped's Stone Sword HP: " << player->getEquipped().getItem("Stone Sword")->combatStats->HP << endl;
+    // cout << "Player's Equipped's Stone Sword maxHP: " << player->getEquipped().getItem("Stone Sword")->combatStats->maxHP << endl << endl;  
     
-    cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
-    cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;
+    // cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
+    // cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;
 
-    cout << "Adding Iron Armor to Player's Inventory..." << endl << endl;
-    player->addArmorToInventory("Iron Armor", af);
-    cout << "Adding Iron Sword to Player's Inventory..." << endl << endl;
-    player->addWeaponToInventory("Iron Sword", wf);
+    // cout << "Adding Iron Armor to Player's Inventory..." << endl << endl;
+    // player->addArmorToInventory("Iron Armor", af);
+    // cout << "Adding Iron Sword to Player's Inventory..." << endl << endl;
+    // player->addWeaponToInventory("Iron Sword", wf);
 
-    cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
-    cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;
+    // cout << "Player's Inventory's Armor Size: " << player->getInventory().getArmor().size() << endl;
+    // cout << "Player's Inventory's Weapons Size: " << player->getInventory().getWeapons().size() << endl << endl;
 
-    cout << "Player's Inventory's Iron Armor ATK: " << player->getInventory().getItem("Iron Armor")->combatStats->ATK << endl;
-    cout << "Player's Inventory's Iron Armor DEF: " << player->getInventory().getItem("Iron Armor")->combatStats->DEF << endl;
-    cout << "Player's Inventory's Iron Armor HP: " << player->getInventory().getItem("Iron Armor")->combatStats->HP << endl;
-    cout << "Player's Inventory's Iron Armor maxHP: " << player->getInventory().getItem("Iron Armor")->combatStats->maxHP << endl << endl;
+    // cout << "Player's Inventory's Iron Armor ATK: " << player->getInventory().getItem("Iron Armor")->combatStats->ATK << endl;
+    // cout << "Player's Inventory's Iron Armor DEF: " << player->getInventory().getItem("Iron Armor")->combatStats->DEF << endl;
+    // cout << "Player's Inventory's Iron Armor HP: " << player->getInventory().getItem("Iron Armor")->combatStats->HP << endl;
+    // cout << "Player's Inventory's Iron Armor maxHP: " << player->getInventory().getItem("Iron Armor")->combatStats->maxHP << endl << endl;
 
-    cout << "Player's Inventory's Iron Sword ATK: " << player->getInventory().getItem("Iron Sword")->combatStats->ATK << endl;
-    cout << "Player's Inventory's Iron Sword DEF: " << player->getInventory().getItem("Iron Sword")->combatStats->DEF << endl;
-    cout << "Player's Inventory's Iron Sword HP: " << player->getInventory().getItem("Iron Sword")->combatStats->HP << endl;
-    cout << "Player's Inventory's Iron Sword maxHP: " << player->getInventory().getItem("Iron Sword")->combatStats->maxHP << endl << endl;  
+    // cout << "Player's Inventory's Iron Sword ATK: " << player->getInventory().getItem("Iron Sword")->combatStats->ATK << endl;
+    // cout << "Player's Inventory's Iron Sword DEF: " << player->getInventory().getItem("Iron Sword")->combatStats->DEF << endl;
+    // cout << "Player's Inventory's Iron Sword HP: " << player->getInventory().getItem("Iron Sword")->combatStats->HP << endl;
+    // cout << "Player's Inventory's Iron Sword maxHP: " << player->getInventory().getItem("Iron Sword")->combatStats->maxHP << endl << endl;  
 
-    cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
-    cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
+    // cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
+    // cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
 
-    cout << "Equipping Iron Armor..." << endl << endl;
-    player->equipArmor("Iron Armor");
-    cout << "Equipping Iron Sword..." << endl << endl;
-    player->equipWeapon("Iron Sword");
+    // cout << "Equipping Iron Armor..." << endl << endl;
+    // player->equipArmor("Iron Armor");
+    // cout << "Equipping Iron Sword..." << endl << endl;
+    // player->equipWeapon("Iron Sword");
 
-    cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
-    cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
+    // cout << "Player's Equipped's Armor Size: " << player->getEquipped().getArmor().size() << endl;
+    // cout << "Player's Equipped's Weapons Size: " << player->getEquipped().getWeapons().size() << endl << endl;
 
-    cout << "Player's Equipped's Iron Armor ATK: " << player->getEquipped().getItem("Iron Armor")->combatStats->ATK << endl;
-    cout << "Player's Equipped's Iron Armor DEF: " << player->getEquipped().getItem("Iron Armor")->combatStats->DEF << endl;
-    cout << "Player's Equipped's Iron Armor HP: " << player->getEquipped().getItem("Iron Armor")->combatStats->HP << endl;
-    cout << "Player's Equipped's Iron Armor maxHP: " << player->getEquipped().getItem("Iron Armor")->combatStats->maxHP << endl << endl;
+    // cout << "Player's Equipped's Iron Armor ATK: " << player->getEquipped().getItem("Iron Armor")->combatStats->ATK << endl;
+    // cout << "Player's Equipped's Iron Armor DEF: " << player->getEquipped().getItem("Iron Armor")->combatStats->DEF << endl;
+    // cout << "Player's Equipped's Iron Armor HP: " << player->getEquipped().getItem("Iron Armor")->combatStats->HP << endl;
+    // cout << "Player's Equipped's Iron Armor maxHP: " << player->getEquipped().getItem("Iron Armor")->combatStats->maxHP << endl << endl;
 
-    cout << "Player's Equipped's Iron Sword ATK: " << player->getEquipped().getItem("Iron Sword")->combatStats->ATK << endl;
-    cout << "Player's Equipped's Iron Sword DEF: " << player->getEquipped().getItem("Iron Sword")->combatStats->DEF << endl;
-    cout << "Player's Equipped's Iron Sword HP: " << player->getEquipped().getItem("Iron Sword")->combatStats->HP << endl;
-    cout << "Player's Equipped's Iron Sword maxHP: " << player->getEquipped().getItem("Iron Sword")->combatStats->maxHP << endl << endl; 
+    // cout << "Player's Equipped's Iron Sword ATK: " << player->getEquipped().getItem("Iron Sword")->combatStats->ATK << endl;
+    // cout << "Player's Equipped's Iron Sword DEF: " << player->getEquipped().getItem("Iron Sword")->combatStats->DEF << endl;
+    // cout << "Player's Equipped's Iron Sword HP: " << player->getEquipped().getItem("Iron Sword")->combatStats->HP << endl;
+    // cout << "Player's Equipped's Iron Sword maxHP: " << player->getEquipped().getItem("Iron Sword")->combatStats->maxHP << endl << endl; 
 
     
-    cout << "Removing Leather Armor from Player's Inventory..." << endl;
-    player->removeItemFromInventory("Leather Armor");
-    cout << "Removing Iron Sword from Player's Inventory..." << endl << endl;
-    player->removeItemFromInventory("Iron Sword");
+    // cout << "Removing Leather Armor from Player's Inventory..." << endl;
+    // player->removeItemFromInventory("Leather Armor");
+    // cout << "Removing Iron Sword from Player's Inventory..." << endl << endl;
+    // player->removeItemFromInventory("Iron Sword");
 
 
     // __ ITEM FACTORY, ENEMY FACTORY, AND PLAYER INSTANTIATION TEST HARNESS __
