@@ -36,6 +36,8 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->shopInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
 
     connect(ui->shopList, SIGNAL(currentTextChanged(QString)), this, SLOT(updateShopMenuCurrentlySelectedItem()));
+
+    connect(ui->shopPurchaseButton, SIGNAL(clicked(bool)), this, SLOT(purchaseItem()));
 }
 
 MainWindow::~MainWindow()
@@ -47,7 +49,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::update_main_menu_player_stats()
+void MainWindow::updateMainMenuPlayerStats()
 {
     ui->main_menu_name->setText("Name: " + QString::fromStdString(player->getName()));
     ui->main_menu_level->setText("Level: " + QString::number(player->getLevel()));
@@ -189,6 +191,8 @@ void MainWindow::updateEquipmentMenuPlayerStats()
 
 }
 
+/*************************************************************************/
+
 void MainWindow::initializePlayer()
 {
     std::string name = ui->enter_name_lineedit->text().toStdString();
@@ -196,11 +200,11 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-    player->addWeaponToInventory("Wooden Sword", weaponFactory);
-    player->addWeaponToInventory("Stone Sword", weaponFactory);
-    player->addArmorToInventory("Leather Armor", armorFactory);
-    player->setGold(500);
-    update_main_menu_player_stats();
+//    player->addWeaponToInventory("Wooden Sword", weaponFactory);
+//    player->addWeaponToInventory("Stone Sword", weaponFactory);
+//    player->addArmorToInventory("Leather Armor", armorFactory);
+    player->setGold(5000);
+    updateMainMenuPlayerStats();
     updateShopMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
     updateShopMenuInventory();
@@ -345,12 +349,44 @@ void MainWindow::equipItem()
         player->equipWeapon(selectedItem);
     else if (ui->viewInventoryArmorRadioButton->isChecked())
         player->equipArmor(selectedItem);
-    update_main_menu_player_stats();
+    updateMainMenuPlayerStats();
     updateEquipmentMenuPlayerStats();
+}
+
+void MainWindow::purchaseItem()
+{
+    std::string selectedItem = ui->shopList->currentText().toStdString();
+    if (selectedItem.empty())
+    {
+        ui->purchaseItemResult->setText("Error: No selected item");
+        return;
+    }
+
+    if (ui->shopInventoryWeaponsRadioButton->isChecked())
+    {
+        if (shop.buyWeapon(player, selectedItem))
+        {
+            ui->purchaseItemResult->setText("Successfully bought " + QString::fromStdString(selectedItem));
+            updateShopMenuInventory();
+        }
+        else
+            ui->purchaseItemResult->setText("Error: Insufficient funds");
+    }
+    else if (ui->shopInventoryArmorRadioButton->isChecked())
+    {
+        if (shop.buyArmor(player, selectedItem))
+        {
+            ui->purchaseItemResult->setText("Successfully bought " + QString::fromStdString(selectedItem));
+            updateShopMenuInventory();
+        }
+        else
+            ui->purchaseItemResult->setText("Error: Insufficient funds");
+    }
 }
 
 void MainWindow::switchToMainMenu()
 {
+    updateMainMenuPlayerStats();
     ui->menu_pages->setCurrentIndex(1);
 }
 
@@ -361,10 +397,13 @@ void MainWindow::switchToBattleMenu()
 
 void MainWindow::switchToShopMenu()
 {
+    updateShopMenuPlayerStats();
+    updateShopMenuInventory();
     ui->menu_pages->setCurrentIndex(3);
 }
 
 void MainWindow::switchToEquipmentMenu()
 {
+    updateEquipmentMenuPlayerStats();
     ui->menu_pages->setCurrentIndex(4);
 }

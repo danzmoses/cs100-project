@@ -51,7 +51,7 @@ private slots:
     void nextBattle();
     void endArea();
 
-    void update_main_menu_player_stats();
+    void updateMainMenuPlayerStats();
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
     void updateEquipmentMenuPlayerStats();
@@ -62,6 +62,7 @@ private slots:
     void selectInventoryItemType();
     void selectShopItemType();
     void equipItem();
+    void purchaseItem();
 
     // switch between menu pages
     void switchToMainMenu();
