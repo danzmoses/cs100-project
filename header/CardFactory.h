@@ -31,6 +31,14 @@ class CardFactory{
 			std::invalid_argument ia("Invalid argument. Couldn't find \"" + name + '\"' );
 			throw ia;	
 		}
+
+        std::vector<Card*> getPrototypes()
+        {
+            std::vector<Card*> cards;
+            for (int i = 0; i < cardPrototypes.size(); ++i)
+                cards.push_back(cardPrototypes.at(i));
+            return cards;
+        }
 };
 
 #endif //__CARD_FACTORY_H__
