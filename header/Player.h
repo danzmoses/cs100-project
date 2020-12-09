@@ -66,7 +66,7 @@ class Player : public Entity{
 		
 		for (int i = 0; i < pts; ++i)
 		{
-			rr = rand() % 3;
+            rr = rand() % 3;
 			if (rr == 0)
 			{
 				baseStats->ATK += 1;
@@ -79,7 +79,9 @@ class Player : public Entity{
 			}
 			else if (rr == 2)
 			{
+                baseStats->HP += 2;
 				baseStats->maxHP += 2;
+                combatStats->HP += 2;
 				combatStats->maxHP += 2;
 			}
 		}
