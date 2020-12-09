@@ -16,6 +16,32 @@ using namespace std;
 int main()
 {
     
+    // __ UNEQUIP TEST HARNESS __
+
+    Player* player = new Player("Rice");
+    CardFactory* cf = new CardFactory();
+
+    player->addCardToInventory("Big Heal", cf);
+    player->addCardToInventory("Small Heal", cf);
+    player->addCardToInventory("Enhance ATK", cf);
+    player->addCardToInventory("Enhance DEF", cf);
+    player->addCardToInventory("Deal Damage", cf);
+
+    cout << player->getEquipped().getCards().size(); 
+
+    player->equipCard("Big Heal");
+    player->equipCard("Small Heal");
+    player->equipCard("Enhance ATK");
+    player->equipCard("Enhance DEF");
+    // player->equipCard("Deal Damage");
+
+    cout << player->getEquipped().getCards().size(); 
+
+    player->unequip("Big Heal");
+
+    cout << player->getEquipped().getCards().size(); 
+
+    
     // __ LEVELING TEST HARNESS __
 
     // Player* player = new Player("Rice");
