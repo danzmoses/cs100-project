@@ -21,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->shopReturnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
     connect(ui->nextBattleButton, SIGNAL(clicked(bool)), this, SLOT(nextBattle()));
 
+    // equipment
     // switch inventory item type
     connect(ui->viewInventoryWeaponsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
     connect(ui->viewInventoryArmorRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
@@ -28,7 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->viewInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectInventoryItemType()));
 
     connect(ui->equipmentEquipButton, SIGNAL(clicked(bool)), this, SLOT(equipItem()));
+    connect(ui->equipmentMenuCurrentCards, SIGNAL(currentTextChanged(QString)), this, SLOT(updateEquipmentMenuCurrentlySelectedCard()));
 
+    // shop
     // switch shop item type
     connect(ui->shopInventoryWeaponsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
     connect(ui->shopInventoryArmorRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
@@ -36,7 +39,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->shopInventoryCardsRadioButton, SIGNAL(clicked(bool)), this, SLOT(selectShopItemType()));
 
     connect(ui->shopList, SIGNAL(currentTextChanged(QString)), this, SLOT(updateShopMenuCurrentlySelectedItem()));
-
     connect(ui->shopPurchaseButton, SIGNAL(clicked(bool)), this, SLOT(purchaseItem()));
 }
 
@@ -194,6 +196,7 @@ void MainWindow::updateEquipmentMenuPlayerStats()
     else
         ui->equipmentMenuCurrentArmor->setText("Armor: <None>");
 
+    ui->equipmentMenuCurrentCards->clear();
     std::vector<Card*> cards = equipped.getCards();
     if (!cards.empty())
     {
@@ -230,6 +233,16 @@ void MainWindow::updateEquipmentMenuPlayerStats()
                 ui->equipmentList->addItem(QString::fromStdString(items.at(i)->getName()));
     }
 
+}
+
+void MainWindow::updateEquipmentMenuCurrentlySelectedCard()
+{
+    std::string cardName = ui->equipmentMenuCurrentCards->currentText().toStdString();
+    if (!cardName.empty())
+    {
+        Card* card = player->getInventory().getCard(cardName);
+        ui->equipmentMenuCardDescription->setPlainText(QString::fromStdString(card->getDescription()));
+    }
 }
 
 /*************************************************************************/

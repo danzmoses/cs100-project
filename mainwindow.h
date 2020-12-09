@@ -56,6 +56,7 @@ private slots:
     void update_battle_menu_player_stats();
     void update_battle_menu_enemy_stats();
     void updateEquipmentMenuPlayerStats();
+    void updateEquipmentMenuCurrentlySelectedCard();
     void updateShopMenuPlayerStats();
     void updateShopMenuInventory();
     void updateShopMenuCurrentlySelectedItem();

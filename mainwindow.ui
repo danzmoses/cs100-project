@@ -5211,7 +5211,7 @@
          </property>
         </item>
        </widget>
-       <widget class="QPlainTextEdit" name="plainTextEdit">
+       <widget class="QPlainTextEdit" name="equipmentMenuCardDescription">
         <property name="geometry">
          <rect>
           <x>220</x>
@@ -5222,7 +5222,7 @@
         </property>
         <property name="font">
          <font>
-          <pointsize>16</pointsize>
+          <pointsize>14</pointsize>
          </font>
         </property>
         <property name="plainText">
