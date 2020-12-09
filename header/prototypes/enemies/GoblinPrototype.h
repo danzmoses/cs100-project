@@ -9,7 +9,8 @@ class GoblinPrototype : public EnemyPrototype
         GoblinPrototype() : EnemyPrototype() { 
 			setName("Goblin");
 			setLevel(1);
-			setDescription("Adventurous, greedy, and loot-heavy! Goblins tend to have a higher chance to drop items."); 
+			setDescription("Adventurous, greedy, and loot-heavy!");
+			setEXPMult(1);
 			baseStats->HP = 4;
 			baseStats->maxHP = 4;
 			baseStats->ATK = 3;
