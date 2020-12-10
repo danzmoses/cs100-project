@@ -48,4 +48,4 @@
  - Step 3: Enter this git repository next to "Repository" and click "Next" and follow the rest of the instructions.
  - Step 4: If all steps are done correctly, press the green arrow on the bottom left of the screen to run the application.
  ## Testing
- ![CI](https://github.com/cs100/final-project-dmose013-lly022-rmose005/workflows/CI/badge.svg)
+![CI](https://github.com/cs100/final-project-dmose013-lly022-rmose005/workflows/CI/badge.svg)
