@@ -316,9 +316,9 @@ void MainWindow::initializePlayer()
 //    player->baseStats->HP = player->combatStats->HP = 25;
 //    player->baseStats->maxHP = player->combatStats->maxHP = 25;
 
-    player->addWeaponToInventory("Wooden Sword", weaponFactory);
-    player->addWeaponToInventory("Stone Sword", weaponFactory);
-    player->addArmorToInventory("Leather Armor", armorFactory);
+//    player->addWeaponToInventory("Wooden Sword", weaponFactory);
+//    player->addWeaponToInventory("Stone Sword", weaponFactory);
+//    player->addArmorToInventory("Leather Armor", armorFactory);
 //    player->equipWeapon("Wooden Sword");
 //    player->equipArmor("Leather Armor");
 
