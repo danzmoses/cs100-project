@@ -87,6 +87,7 @@ class Battle
         {
             setCardStrategy(cardName);
             cardStrategy->use(attacker, defender);
+            attacker->unequip(cardName);
         }
 
         void endBattle()

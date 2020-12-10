@@ -539,6 +539,7 @@ void MainWindow::endArea()
 {
     ui->battleMenuAreaResult->clear();
     player->restoreHP();
+    player->updateCombatStats();
     switchToMainMenu();
 }
 
