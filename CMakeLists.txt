@@ -7,6 +7,11 @@ ADD_SUBDIRECTORY(googletest)
 
 ADD_EXECUTABLE(test
     test.cpp
+    header/Entity_test.h
+    header/Item_test.h
+    header/prototypes/prototype_tests.h
+    header/inventory_tests.h
+    header/battle/attack_strategy_tests.h
 )
 
 ADD_EXECUTABLE(main

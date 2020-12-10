@@ -8,7 +8,7 @@ class SwordPrototype : public WeaponPrototype
     public:
         SwordPrototype() : WeaponPrototype() { this->setName(" Sword"); }
         SwordPrototype(std::string name) : WeaponPrototype(name) {}
-        virtual WeaponPrototype* Clone() { return this; }
+        virtual WeaponPrototype* Clone() = 0;
 };
 
 #endif // __SWORD_PROTOTYPE__

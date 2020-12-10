@@ -14,6 +14,7 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
+    header/battle/test.cpp
 
 HEADERS  += mainwindow.h \
     header/battle/AttackStrategy.h \
@@ -38,7 +39,43 @@ HEADERS  += mainwindow.h \
     header/Item.h \
     header/ItemFactory.h \
     header/Player.h \
-    header/Weapon.h
+    header/Weapon.h \
+    header/prototypes/armor/IronArmorPrototype.h \
+    header/prototypes/armor/LeatherArmorPrototype.h \
+    header/prototypes/weapons/StoneSwordPrototype.h \
+    header/prototypes/weapons/SwordPrototype.h \
+    header/prototypes/weapons/WoodenSwordPrototype.h \
+    header/ArmorFactory.h \
+    header/Entity_test.h \
+    header/Item_test.h \
+    header/PlayerFactory.h \
+    header/WeaponFactory.h \
+    entity_tests.hpp \
+    header/battle/attack_strategy_tests.h \
+    header/prototypes/weapons/IronSwordPrototype.h \
+    header/prototypes/prototype_tests.h \
+    header/Inventory.h \
+    header/inventory_tests.h \
+    header/Stats.h \
+    header/Shop.h \
+    header/battle/BigHealStrategy.h \
+    header/battle/card_Strategy_Tests.h \
+    header/battle/CardStrategy.h \
+    header/battle/DealDamageStrategy.h \
+    header/battle/EnhanceATKStrategy.h \
+    header/battle/EnhanceDEFStrategy.h \
+    header/battle/SmallHealStrategy.h \
+    header/prototypes/cards/BigHealPrototype.h \
+    header/prototypes/cards/CardPrototype.h \
+    header/prototypes/cards/DealDamagePrototype.h \
+    header/prototypes/cards/EnhanceATKPrototype.h \
+    header/prototypes/cards/EnhanceDEFPrototype.h \
+    header/prototypes/cards/SmallHealPrototype.h \
+    header/prototypes/enemies/BlueSlimePrototype.h \
+    header/prototypes/enemies/MegaGoblinPrototype.h \
+    header/prototypes/card_tests.h \
+    header/Card.h \
+    header/CardFactory.h
 
 FORMS    += mainwindow.ui
 
@@ -47,4 +84,6 @@ DISTFILES += \
     images/Prototype.png \
     images/Strategy.png \
     .gitmodules \
-    README.md
+    README.md \
+    .gitignore \
+    CMakeLists.txt

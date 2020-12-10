@@ -6,11 +6,18 @@
 class GreenSlimePrototype : public SlimePrototype 
 {
     public:
-        GreenSlimePrototype() : SlimePrototype() { setName("Green Slime"); setHP(getHP() + 0); setMaxHP(getHP() + 0); 
-            setDescription(getDescription() + "It looks harmless."); 
+        GreenSlimePrototype() : SlimePrototype() { 
+	        setName("Green Slime"); 
+            setLevel(1);
+            setDescription(getDescription() + "It looks harmless.");
+            setGold(5);
+            baseStats->HP += 0;
+            baseStats->maxHP += + 0;
+            combatStats->HP += 0;
+            combatStats->maxHP += 0;
         }
         GreenSlimePrototype(std::string name) : SlimePrototype(name) {}
-        virtual EnemyPrototype* Clone() { return this; }
+        virtual EnemyPrototype* Clone() { return new GreenSlimePrototype(); }
 };
 
 #endif //__GREEN_SLIME_PROTOTYPE__
