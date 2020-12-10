@@ -40,6 +40,7 @@ private:
     CardFactory* cardFactory = new CardFactory;
     std::vector<Enemy*> areaEnemies;
     int areaEnemiesCount;
+    int area = 1;
     Shop shop;
 
 private slots:

@@ -310,8 +310,11 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-//    player->combatStats->ATK = 50;
-//    player->combatStats->DEF = 50;
+//    player->baseStats->ATK = player->combatStats->ATK = 2;
+//    player->baseStats->DEF = player->combatStats->DEF = 2;
+//    player->baseStats->HP = player->combatStats->HP = 25;
+//    player->baseStats->maxHP = player->combatStats->maxHP = 25;
+
 //    player->addWeaponToInventory("Wooden Sword", weaponFactory);
 //    player->addWeaponToInventory("Stone Sword", weaponFactory);
 //    player->addArmorToInventory("Leather Armor", armorFactory);
@@ -420,19 +423,31 @@ void MainWindow::initializeBattleWithEnemy()
     currentEnemy = areaEnemies.back();
     battle = new Battle(player, currentEnemy);
 
-    if (areaEnemies.size() > 1)
+    if (areaEnemies.size() > 2)
     {
         QString name = QString::fromStdString(areaEnemies[areaEnemies.size()-2]->getName());
         ui->nextEnemy->setText("Next Enemy: " + name);
     }
+    else if (areaEnemies.size() == 2)
+    {
+        QString unknownAreaBoss = "Area " + QString::number(area) + " Boss: ???";
+        if (ui->mainMenuAreaBossName->text() == unknownAreaBoss)
+        {
+            ui->mainMenuAreaBossName->setText("Area " + QString::number(area) + " Boss: " + QString::fromStdString(areaEnemies[0]->getName()));
+            ui->nextEnemy->setText("Next Enemy: ???");
+        }
+        else
+            ui->nextEnemy->setText(QString::fromStdString(areaEnemies[0]->getName()));
+    }
     else
-        ui->nextEnemy->setText("Next Enemy: Boss!");
+        ui->nextEnemy->setText("This is the last enemy!");
     updateBattleMenuPlayerStats();
     updateBattleMenuEnemyStats();
 }
 
 void MainWindow::nextTurn()
 {
+    ui->rollButton->setEnabled(false);
     battle->nextTurn();
     QString playerRoll = QString::number(battle->getPlayerRoll());
     QString enemyRoll = QString::number(battle->getEnemyRoll());
@@ -463,6 +478,7 @@ void MainWindow::nextTurn()
         if (player->combatStats->HP <= 0)
         {
             ui->battleMenuBattleResult->setText(enemyName + " has won!");
+            ui->battleMenuAreaResult->setText("You lost! Go back to the main menu to try again.");
             ui->returnToMainMenuButton->setEnabled(true);
         }
         else if (currentEnemy->combatStats->HP <= 0)
@@ -475,10 +491,22 @@ void MainWindow::nextTurn()
                 battleResult += ' ' + playerName + " gains " + QString::number(player->getEXP() - prevEXP) + " EXP!";
 
             ui->battleMenuBattleResult->setText(battleResult);
-            ui->nextBattleButton->setEnabled(true);
+
+            if (areaEnemies.size() == 1)
+            {
+                ui->battleMenuAreaResult->setText("You have completed Area " + QString::number(area) + '!');
+                ++area;
+                ui->mainMenuAreaBossName->setText("Area " + QString::number(area) + " Boss: ???");
+                ui->nextBattleButton->setEnabled(false);
+                ui->returnToMainMenuButton->setEnabled(true);
+            }
+            else
+                ui->nextBattleButton->setEnabled(true);
         }
         ui->rollButton->setEnabled(false);
     }
+    else
+        ui->rollButton->setEnabled(true);
     updateBattleMenuPlayerStats();
     updateBattleMenuEnemyStats();
 }
@@ -509,6 +537,7 @@ void MainWindow::useCard()
 
 void MainWindow::endArea()
 {
+    ui->battleMenuAreaResult->clear();
     player->restoreHP();
     switchToMainMenu();
 }
@@ -609,6 +638,8 @@ void MainWindow::purchaseItem()
 void MainWindow::switchToMainMenu()
 {
     updateMainMenuPlayerStats();
+    ui->mainMenuCurrentArea->setText("Current Area: Area " + QString::number(area));
+    ui->mainMenuCurrentGoal->setText("Defeat 10 enemies to reach Area " + QString::number(area));
     ui->menu_pages->setCurrentIndex(1);
 }
 

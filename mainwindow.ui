@@ -406,7 +406,7 @@
         </property>
         <layout class="QHBoxLayout" name="start_menu_title_layout_5">
          <item>
-          <widget class="QLabel" name="start_menu_title_label_5">
+          <widget class="QLabel" name="mainMenuAreaBossName">
            <property name="font">
             <font>
              <pointsize>20</pointsize>
@@ -872,7 +872,7 @@
         </property>
         <layout class="QHBoxLayout" name="start_menu_title_layout_6">
          <item>
-          <widget class="QLabel" name="start_menu_title_label_6">
+          <widget class="QLabel" name="mainMenuCurrentArea">
            <property name="font">
             <font>
              <pointsize>20</pointsize>
@@ -899,7 +899,7 @@
         </property>
         <layout class="QHBoxLayout" name="start_menu_title_layout_8">
          <item>
-          <widget class="QLabel" name="start_menu_title_label_8">
+          <widget class="QLabel" name="mainMenuCurrentGoal">
            <property name="font">
             <font>
              <pointsize>20</pointsize>
@@ -2415,18 +2415,6 @@
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_3">
          <item>
-          <widget class="QLineEdit" name="battleMenuRollDifference">
-           <property name="font">
-            <font>
-             <pointsize>16</pointsize>
-            </font>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QLineEdit" name="battleMenuTurnResult">
            <property name="font">
             <font>
@@ -2440,6 +2428,18 @@
          </item>
          <item>
           <widget class="QLineEdit" name="battleMenuBattleResult">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLineEdit" name="battleMenuAreaResult">
            <property name="font">
             <font>
              <pointsize>16</pointsize>
@@ -2475,7 +2475,7 @@
          <rect>
           <x>160</x>
           <y>490</y>
-          <width>331</width>
+          <width>231</width>
           <height>41</height>
          </rect>
         </property>
@@ -2497,9 +2497,9 @@
        <widget class="QWidget" name="horizontalLayoutWidget_4">
         <property name="geometry">
          <rect>
-          <x>500</x>
+          <x>600</x>
           <y>490</y>
-          <width>331</width>
+          <width>231</width>
           <height>41</height>
          </rect>
         </property>
@@ -2673,6 +2673,30 @@
         <property name="plainText">
          <string/>
         </property>
+       </widget>
+       <widget class="QWidget" name="horizontalLayoutWidget_5">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>490</y>
+          <width>191</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_16">
+         <item>
+          <widget class="QLineEdit" name="battleMenuRollDifference">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+            </font>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </widget>
       <widget class="QWidget" name="shop_page">
