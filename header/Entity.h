@@ -24,6 +24,7 @@ class Entity
         {
             this->name = "Entity";
             this->level = 1;
+            this->gold = 0;
             baseStats->HP = 5;
             baseStats->maxHP = 5;
             baseStats->ATK = 1;
@@ -38,6 +39,7 @@ class Entity
         {
             this->name = name;
             this->level = 1;
+            this->gold = 0;
             baseStats->HP = 5;
             baseStats->maxHP = 5;
             baseStats->ATK = 1;
