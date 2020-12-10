@@ -51,6 +51,10 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+ We are unable to deploy an installation package for this application at this time. For now, use the steps below to run this program.
+ - Step 1: If you do not have a version of Qt or QtCreator, use one of the installers at https://www.qt.io/offline-installers.
+ - Step 2: Open QtCreator and go to File->New File or Project->Import Project->Git Clone
+ - Step 3: Enter this git repository next to "Repository" and click "Next" and follow the rest of the instructions.
+ - Step 4: If all steps are done correctly, press the green arrow on the bottom left of the screen to run the application.
  ## Testing
  ![CI](https://github.com/cs100/final-project-dmose013-lly022-rmose005/workflows/CI/badge.svg)
