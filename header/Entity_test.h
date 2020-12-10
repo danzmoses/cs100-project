@@ -26,7 +26,7 @@ TEST(PlayerTests, DefaultConstructorTest){
 	
  	//Player member variables
  	//testing getters
- 	EXPECT_EQ(p->getGold(), 50);
+ 	EXPECT_EQ(p->getGold(), 0);
  	EXPECT_EQ(p->getLevel(), 1);
  	EXPECT_EQ(p->getEXP(), 0);
 
@@ -83,7 +83,7 @@ TEST(PlayerTests, nameConstructorTest){
 	
  	//Player member variables
  	//testing getters
- 	EXPECT_EQ(p->getGold(), 50);
+ 	EXPECT_EQ(p->getGold(), 0);
  	EXPECT_EQ(p->getEXP(), 0);
  	EXPECT_EQ(p->getLevel(), 1);
 	
