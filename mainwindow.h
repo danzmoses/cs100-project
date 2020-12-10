@@ -75,6 +75,7 @@ private slots:
     void switchToBattleMenu();
     void switchToShopMenu();
     void switchToEquipmentMenu();
+    void toggleDeveloperMode();
 };
 
 #endif // MAINWINDOW_H

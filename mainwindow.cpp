@@ -9,6 +9,14 @@ MainWindow::MainWindow(QWidget *parent) :
     const QSize BUTTON_SIZE = QSize(100, 10);
     ui->rollButton->setMinimumSize(BUTTON_SIZE);
 
+    ui->startMenuSetATK->setVisible(false);
+    ui->startMenuSetDEF->setVisible(false);
+    ui->startMenuSetHP->setVisible(false);
+    ui->startMenuSetATKLabel->setVisible(false);
+    ui->startMenuSetDEFLabel->setVisible(false);
+    ui->startMenuSetHPLabel->setVisible(false);
+    ui->startMenuSetGoldLabel->setVisible(false);
+    ui->startMenuSetGold->setVisible(false);
     srand(time(0));
     // connections
     connect(ui->startButton, SIGNAL(clicked(bool)), this, SLOT(initializePlayer()));
@@ -17,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->goToShopButton, SIGNAL(clicked(bool)), this, SLOT(switchToShopMenu()));
     connect(ui->shopReturnToMainMenuButton, SIGNAL(clicked(bool)), this, SLOT(switchToMainMenu()));
     connect(ui->nextBattleButton, SIGNAL(clicked(bool)), this, SLOT(nextBattle()));
-
+    connect(ui->enableDeveloperMode, SIGNAL(toggled(bool)), this, SLOT(toggleDeveloperMode()));
     // battle
     connect(ui->battleButton, SIGNAL(clicked(bool)), this, SLOT(enterArea()));
     connect(ui->rollButton, SIGNAL(clicked(bool)), this, SLOT(nextTurn()));
@@ -311,8 +319,20 @@ void MainWindow::initializePlayer()
         name = "Hero";
 
     player = new Player(name);
-//    player->baseStats->ATK = player->combatStats->ATK = 2;
-//    player->baseStats->DEF = player->combatStats->DEF = 2;
+
+    player->setGold(0);
+    if (ui->enableDeveloperMode->isChecked())
+    {
+        player->baseStats->ATK = player->combatStats->ATK = ui->startMenuSetATK->value();
+        player->baseStats->DEF = player->combatStats->DEF = ui->startMenuSetDEF->value();
+        player->baseStats->HP = player->combatStats->HP = ui->startMenuSetHP->value();
+        player->baseStats->maxHP = player->combatStats->maxHP = ui->startMenuSetHP->value();
+        player->setGold(ui->startMenuSetGold->value());
+    }
+
+
+//    player->baseStats->ATK = player->combatStats->ATK = 10;
+//    player->baseStats->DEF = player->combatStats->DEF = 10;
 //    player->baseStats->HP = player->combatStats->HP = 25;
 //    player->baseStats->maxHP = player->combatStats->maxHP = 25;
 
@@ -330,8 +350,6 @@ void MainWindow::initializePlayer()
 //    player->equipCard("Big Heal");
 //    player->addCardToInventory("Deal Damage", cardFactory);
 //    player->equipCard("Deal Damage");
-
-    player->setGold(0);
 
     updateMainMenuPlayerStats();
     updateShopMenuPlayerStats();
@@ -687,4 +705,30 @@ void MainWindow::switchToEquipmentMenu()
 {
     updateEquipmentMenuPlayerStats();
     ui->menu_pages->setCurrentIndex(4);
+}
+
+void MainWindow::toggleDeveloperMode()
+{
+    if (ui->enableDeveloperMode->isChecked())
+    {
+        ui->startMenuSetATK->setVisible(true);
+        ui->startMenuSetDEF->setVisible(true);
+        ui->startMenuSetHP->setVisible(true);
+        ui->startMenuSetATKLabel->setVisible(true);
+        ui->startMenuSetDEFLabel->setVisible(true);
+        ui->startMenuSetHPLabel->setVisible(true);
+        ui->startMenuSetGoldLabel->setVisible(true);
+        ui->startMenuSetGold->setVisible(true);
+    }
+    else
+    {
+        ui->startMenuSetATK->setVisible(false);
+        ui->startMenuSetDEF->setVisible(false);
+        ui->startMenuSetHP->setVisible(false);
+        ui->startMenuSetATKLabel->setVisible(false);
+        ui->startMenuSetDEFLabel->setVisible(false);
+        ui->startMenuSetHPLabel->setVisible(false);
+        ui->startMenuSetGoldLabel->setVisible(false);
+        ui->startMenuSetGold->setVisible(false);
+    }
 }
