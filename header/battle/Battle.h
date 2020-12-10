@@ -98,6 +98,7 @@ class Battle
                     baseEXP = 1; 
                 player->setEXP(player->getEXP() + enemy->getEXPMult() * baseEXP);
                 player->setGold(player->getGold() + enemy->getGold());
+                player->updateCombatStats();
             }
         }
         int getPlayerRoll() { return playerRoll; }
