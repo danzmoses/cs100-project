@@ -33,15 +33,6 @@
 
 - The Prototype design pattern allows us to create different types of enemies such as Goblins or Slimes, etc. There will be preset classes in the "Prototypes" folder that we will use to instantiate these different types of enemies. The BossPrototype will also go under EnemyPrototype.
 - In this design pattern, EnemyPrototype is the Prototype. GreenSlimePrototype, RedSlimePrototype, and GoblinPrototype are the Concrete Prototypes. The Client in this case is the EnemyFactory, which calls clone on a prototype to return a copy of that prototype.
- 
- > ## Phase III
- > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
- > * Before the meeting you should perform a sprint plan like you did in Phase II
- > * In the meeting with your TA you will discuss: 
- >   - How effective your last sprint was (each member should talk about what they did)
- >   - Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- >   - Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- >   - What tasks you are planning for this next sprint.
 
  > ## Final deliverable
  > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
