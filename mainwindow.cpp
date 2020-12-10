@@ -289,6 +289,7 @@ void MainWindow::updateEquipmentMenuPlayerStats()
                 ui->equipmentList->addItem(QString::fromStdString(items.at(i)->getName()));
     }
 
+    ui->equipmentList->setFocus();
 }
 
 void MainWindow::updateEquipmentMenuCurrentlySelectedCard()
@@ -315,9 +316,9 @@ void MainWindow::initializePlayer()
 //    player->baseStats->HP = player->combatStats->HP = 25;
 //    player->baseStats->maxHP = player->combatStats->maxHP = 25;
 
-//    player->addWeaponToInventory("Wooden Sword", weaponFactory);
-//    player->addWeaponToInventory("Stone Sword", weaponFactory);
-//    player->addArmorToInventory("Leather Armor", armorFactory);
+    player->addWeaponToInventory("Wooden Sword", weaponFactory);
+    player->addWeaponToInventory("Stone Sword", weaponFactory);
+    player->addArmorToInventory("Leather Armor", armorFactory);
 //    player->equipWeapon("Wooden Sword");
 //    player->equipArmor("Leather Armor");
 
@@ -571,20 +572,44 @@ void MainWindow::selectShopItemType()
 
 void MainWindow::equipItem()
 {
+    if (ui->equipmentList->currentItem()->text() == "No items found")
+    {
+        ui->equipItemResult->setText("Error: No item selected");
+        return;
+    }
+
     std::string selectedItem = ui->equipmentList->currentItem()->text().toStdString();
 
     if (ui->viewInventoryWeaponsRadioButton->isChecked())
     {
-        player->equipWeapon(selectedItem);
-        ui->equipItemResult->setText("Equipped " + ui->equipmentList->currentItem()->text());
+        if (player->getEquipped().getWeapons().size() > 0 && selectedItem == player->getEquipped().getWeapons().at(0)->getName())
+            ui->equipItemResult->setText("Error: Weapon already equipped");
+        else
+        {
+            player->equipWeapon(selectedItem);
+            ui->equipItemResult->setText("Equipped " + ui->equipmentList->currentItem()->text());
+        }
     }
     else if (ui->viewInventoryArmorRadioButton->isChecked())
     {
-        player->equipArmor(selectedItem);
-        ui->equipItemResult->setText("Equipped " + ui->equipmentList->currentItem()->text());
+        if (player->getEquipped().getArmor().size() > 0 && selectedItem == player->getEquipped().getArmor().at(0)->getName())
+            ui->equipItemResult->setText("Error: Armor already equipped");
+        else
+        {
+            player->equipArmor(selectedItem);
+            ui->equipItemResult->setText("Equipped " + ui->equipmentList->currentItem()->text());
+        }
     }
     else if (ui->viewInventoryCardsRadioButton->isChecked())
     {
+        for (unsigned i = 0; i < player->getEquipped().getCards().size(); ++i)
+        {
+            if (selectedItem == player->getEquipped().getCards()[i]->getName())
+            {
+                ui->equipItemResult->setText("Error: Card already equipped");
+                return;
+            }
+        }
         if (player->getEquipped().getCards().size() >= 4)
             ui->equipItemResult->setText("Error: Max cards equipped (4)");
         else
