@@ -34,6 +34,16 @@
 - The Prototype design pattern allows us to create different types of enemies such as Goblins or Slimes, etc. There will be preset classes in the "Prototypes" folder that we will use to instantiate these different types of enemies. The BossPrototype will also go under EnemyPrototype.
 - In this design pattern, EnemyPrototype is the Prototype. GreenSlimePrototype, RedSlimePrototype, and GoblinPrototype are the Concrete Prototypes. The Client in this case is the EnemyFactory, which calls clone on a prototype to return a copy of that prototype.
 
+### Card Strategy Class Diagram
+> ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/CardStrategyDesign.png?raw=true)
+
+- The Card Strategy design pattern helps us group the Card functionality algorithms together. The algorithm changes based on the type of card that is equipped and selected by the attacker. This allows us to use cards such as EnhanceDEF, EnhanceATK, etc. to temporarily increase a Player's stats in combat. There are also Cards that restore health, and deal damage, all of which can easily be expanded with this design pattern.
+
+### Card Prototype Class Diagram
+> ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/CardFactoryAndPrototype.png?raw=true)
+- The Card Prototype design patterns allows us create different types of cards. There will be preset classes in the "prototypes/cards" directory that we will use to instantiate each of the Cards.
+- This design pattern relies on CardPrototype, which is inherited by all other CardPrototypes such as EnhanceATK, EnhanceDEF, SmallHeal, etc. The derived classes can serve base classes of even more subclasses, which will eventually turn into a Conrcrete Prototype. In each Prototype, the client will be able to use the function Clone() to return an instance of a CardPrototype of their choice. 
+
  > ## Final deliverable
  > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
  > Before the demo, you should do the following:
