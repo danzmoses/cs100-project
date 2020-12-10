@@ -339,15 +339,45 @@ void MainWindow::initializePlayer()
 void MainWindow::enterArea()
 {
     areaEnemiesCount = 0;
-    for (int i = 1; i <= 10; ++i)
+    for (int i = 1; i <= 11; ++i)
     {
-        int temp = rand() % 3 + 1;
-        if (temp == 1)
-            area_enemies.push_back(ef.createEnemy("Green Slime"));
-        if (temp == 2)
-            area_enemies.push_back(ef.createEnemy("Red Slime"));
-        if (temp == 3)
-            area_enemies.push_back(ef.createEnemy("Goblin"));
+        if (i == 10 || i == 11)
+        {
+            if (rand() % 2 == 0)
+                areaEnemies.push_back(ef.createEnemy("Green Slime"));
+            else
+                areaEnemies.push_back(ef.createEnemy("Red Slime"));
+        }
+        else if (i == 8 || i == 9)
+        {
+            if (rand() % 2 == 0)
+                areaEnemies.push_back(ef.createEnemy("Red Slime"));
+            else
+                areaEnemies.push_back(ef.createEnemy("Blue Slime"));
+        }
+        else if (i == 6 || i == 7)
+        {
+            if (rand() % 2 == 0)
+                areaEnemies.push_back(ef.createEnemy("Blue Slime"));
+            else
+                areaEnemies.push_back(ef.createEnemy("Goblin"));
+        }
+        else if (i == 4 || i == 5)
+        {
+            if (rand() % 2 == 0)
+                areaEnemies.push_back(ef.createEnemy("Goblin"));
+            else
+                areaEnemies.push_back(ef.createEnemy("Skeleton"));
+        }
+        else if (i == 2 || i == 3)
+        {
+            if (rand() % 2 == 0)
+                areaEnemies.push_back(ef.createEnemy("Skeleton"));
+            else
+                areaEnemies.push_back(ef.createEnemy("Zombie"));
+        }
+        else
+            areaEnemies.push_back(ef.createEnemy("Mega Goblin"));
     }
     initializeBattleWithEnemy();
 
@@ -369,13 +399,13 @@ void MainWindow::nextBattle()
     ui->battleMenuTurnResult->clear();
     ui->battleMenuEnemyRoll->clear();
     ui->battleMenuPlayerRoll->clear();
-    area_enemies.pop_back();
+    areaEnemies.pop_back();
 
-    if (area_enemies.size() > 0)
+    if (areaEnemies.size() > 0)
         initializeBattleWithEnemy();
     else
     {
-        ui->battleMenuBattleResult->setText("You defeated all ten enemies!");
+        ui->battleMenuBattleResult->setText("You defeated all ten enemies and the boss!");
         ui->returnToMainMenuButton->setEnabled(true);
     }
     ui->nextBattleButton->setEnabled(false);
@@ -387,12 +417,12 @@ void MainWindow::initializeBattleWithEnemy()
     ui->returnToMainMenuButton->setEnabled(false);
     if (battle != nullptr)
         delete battle;
-    currentEnemy = area_enemies[area_enemies.size() - 1];
+    currentEnemy = areaEnemies.back();
     battle = new Battle(player, currentEnemy);
 
-    if (area_enemies.size() > 1)
+    if (areaEnemies.size() > 1)
     {
-        QString name = QString::fromStdString(area_enemies[area_enemies.size() - 2]->getName());
+        QString name = QString::fromStdString(areaEnemies[areaEnemies.size()-2]->getName());
         ui->nextEnemy->setText("Next Enemy: " + name);
     }
     else
