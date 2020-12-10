@@ -40,7 +40,16 @@
  > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
  > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
  ## Screenshots
- > Screenshots of the input/output after running your application
+ ### Start Menu
+ > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/screenshots/startMenu.png?raw=true)
+ ### Main Menu
+ > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/screenshots/mainMenu.png?raw=true)
+ ### Equipment Menu
+ > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/screenshots/equipmentMenu.png?raw=true)
+ ### Shop Menu
+ > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/screenshots/shopMenu.png?raw=true)
+ ### Battle Menu
+ > ![alt text](https://github.com/cs100/final-project-dmose013-lly022-rmose005/blob/master/images/screenshots/battleMenu.png?raw=true)
  ## Installation/Usage
  We are unable to deploy an installation package for this application at this time. For now, use the steps below to run this program.
  - Step 1: If you do not have a version of Qt or QtCreator, use one of the installers at https://www.qt.io/offline-installers.
@@ -48,4 +57,4 @@
  - Step 3: Enter this git repository next to "Repository" and click "Next" and follow the rest of the instructions.
  - Step 4: If all steps are done correctly, press the green arrow on the bottom left of the screen to run the application.
  ## Testing
-![CI](https://github.com/cs100/final-project-dmose013-lly022-rmose005/workflows/CI/badge.svg)
+ ![CI](https://github.com/cs100/final-project-dmose013-lly022-rmose005/workflows/CI/badge.svg)
