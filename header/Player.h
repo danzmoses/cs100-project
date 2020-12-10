@@ -85,6 +85,7 @@ class Player : public Entity{
 				combatStats->maxHP += 2;
 			}
 		}
+        updateCombatStats();
 	}		
 			
 };
