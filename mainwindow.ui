@@ -277,7 +277,51 @@
            </spacer>
           </item>
           <item>
-           <widget class="QCheckBox" name="checkBox">
+           <widget class="QLabel" name="startMenuSetGoldLabel">
+            <property name="text">
+             <string>Set Gold</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="startMenuSetGold">
+            <property name="maximum">
+             <number>1000</number>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="startMenuSetHPLabel">
+            <property name="text">
+             <string>Set HP</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="startMenuSetHP"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="startMenuSetATKLabel">
+            <property name="text">
+             <string>Set ATK</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="startMenuSetATK"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="startMenuSetDEFLabel">
+            <property name="text">
+             <string>Set DEF</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSpinBox" name="startMenuSetDEF"/>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="enableDeveloperMode">
             <property name="layoutDirection">
              <enum>Qt::LeftToRight</enum>
             </property>
